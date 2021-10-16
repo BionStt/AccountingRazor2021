@@ -1,0 +1,131 @@
+﻿CREATE PROCEDURE [dbo].MoveAccountSubtree
+	@AccID INT
+	, @NewParentID INT
+	, @Debug BIT = 0
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	--Disable triggers during operations
+	ALTER TABLE DataAccount DISABLE TRIGGER trg_DataAccount_DEL;
+	ALTER TABLE DataAccount DISABLE TRIGGER trg_DataAccount_INS;
+	ALTER TABLE DataAccount DISABLE TRIGGER trg_DataAccount_UPD;
+
+	--Treat 0/-1/NULL the same: means we want to make the top of this subtree a Root node
+	IF (@NewParentID <= 0 OR @NewParentID IS NULL)
+	BEGIN
+		SET @NewParentID = -1;
+	END
+
+	--Cannot move a subtree under itself
+	ELSE IF @NewParentID IN (
+		SELECT SubAccount.NoUrutId
+		FROM DataAccount Account1
+		JOIN DataAccount SubAccount
+				ON SubAccount.Lft BETWEEN Account1.Lft AND Account1.Rgt
+		WHERE Account1.NoUrutId = @AccID)
+	BEGIN
+		RAISERROR (N'Cannot move subtree to a node within itself.', 18, 1);
+		RETURN;
+	END
+
+	--Cannot move subtree to a node that doesnt exist
+	ELSE IF NOT EXISTS (SELECT 1 FROM DataAccount WHERE NoUrutId = @NewParentID)
+	BEGIN
+		RAISERROR (N'Cannot move subtree to a node that doesn''t exist.', 18, 1);
+		RETURN;
+	END
+
+	--Cannot move subtree that doesnt exist
+	ELSE IF NOT EXISTS (SELECT 1 FROM DataAccount WHERE NoUrutId = @AccID)
+	BEGIN
+		RAISERROR (N'Cannot move subtree that doesn''t exist.', 18, 1);
+		RETURN;
+	END
+
+	--Get old Parent & Subtree size
+	DECLARE @OldParentID INT
+		, @SubtreeSize INT
+		, @SubtreeOldLeft INT
+		, @SubtreeOldRight INT
+		, @SubtreeOldDepth INT
+
+	SELECT @OldParentID = Parent,  @SubtreeSize = Rgt - Lft + 1
+		, @SubtreeOldLeft = Lft, @SubtreeOldRight = Rgt, @SubtreeOldDepth = Depth
+	FROM DataAccount
+	WHERE Account = @AccID
+
+	--Cannot move subtree to its own Parent, i.e. there's nothing to do b/c new parent is same as old
+	IF @OldParentID = @NewParentID
+	BEGIN
+		RAISERROR (N'Cannot move subtree to its own parent.', 18, 1);
+		RETURN;
+	END
+
+	--Get new Parent position
+	DECLARE @NewParentRight INT
+		, @NewParentDepth INT;
+
+	--If we're going Root, place it to the Right of existing Roots
+	IF @NewParentID = -1
+	BEGIN
+		SELECT @NewParentRight = MAX(Rgt) + 1, @NewParentDepth = -1
+		FROM DataAccount
+	END
+	--Else, place it to the Right of its new siblings-to-be
+	ELSE
+	BEGIN
+		SELECT @NewParentRight = Rgt, @NewParentDepth = Depth
+		FROM DataAccount
+		WHERE Account = @NewParentID
+	END
+
+	--Get new positions for use
+	SELECT NoUrutId
+		, Lft + @NewParentRight - @SubtreeOldLeft AS PLeft
+		, Rgt + @NewParentRight - @SubtreeOldLeft AS PRight
+		, Depth + (@NewParentDepth - @SubtreeOldDepth) + 1 AS Depth
+	INTO #MoveNodes
+	FROM DataAccount
+	WHERE NoUrutId IN (
+		SELECT SubAccount.NoUrutId
+		FROM DataAccount Account1
+		JOIN DataAccount SubAccount
+				ON SubAccount.Lft BETWEEN Account1.Lft AND Account1.Rgt
+		WHERE Account1.NoUrutId = @AccID
+	)
+
+	IF (@Debug = 1)
+		SELECT * FROM #MoveNodes
+		ORDER BY PLeft
+
+	--Make gap in tree (at destination branch) equal to the SubtreeSize
+	UPDATE DataAccount
+	SET Lft = CASE WHEN Lft > @NewParentRight THEN Lft + @SubtreeSize ELSE Lft END,
+		Rgt = CASE WHEN Rgt >= @NewParentRight THEN Rgt + @SubtreeSize ELSE Rgt END
+	WHERE Rgt >= @NewParentRight
+
+	--Update Subtree positions to new ones
+	UPDATE DataAccount
+	SET Lft = #MoveNodes.PLeft, Rgt = #MoveNodes.PRight, Depth = #MoveNodes.Depth
+	FROM DataAccount
+	JOIN #MoveNodes
+			ON DataAccount.NoUrutId= #MoveNodes.NoUrutId
+
+	--Maintain the Adjacency-List part (set ParentID)
+	UPDATE DataAccount
+	SET Parent = (CASE WHEN @NewParentID = -1 THEN NULL ELSE @NewParentID END)
+	WHERE NoUrutId = @AccID
+
+	--Close gaps, i.e. after the Subtree is gone from its old Parent, said old parent node has no children;
+	--while nodes to the right & above now have inflated values, except where they include the newly moved subtree.
+	UPDATE DataAccount
+	SET Lft = CASE WHEN Lft > @SubtreeOldRight THEN Lft - @SubtreeSize ELSE Lft END,
+		Rgt = CASE WHEN Rgt >= @SubtreeOldRight THEN Rgt - @SubtreeSize ELSE Rgt END
+	WHERE Rgt >= @SubtreeOldRight
+
+	--Re-enable triggers when done
+	ALTER TABLE DataAccount ENABLE TRIGGER trg_DataAccount_DEL;
+	ALTER TABLE DataAccount ENABLE TRIGGER trg_DataAccount_INS;
+	ALTER TABLE DataAccount ENABLE TRIGGER trg_DataAccount_UPD;
+END
