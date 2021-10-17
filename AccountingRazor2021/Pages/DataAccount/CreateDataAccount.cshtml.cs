@@ -33,9 +33,6 @@ namespace AccountingRazor2021.Pages.DataAccount
         public CreateDataAccountCommandRequest DataAccount { get; set; }
 
         public async Task OnGetAsync()
-        
-        
-        
         {
             var DataAccounting = await _mediator.Send(new ListDataAccountForParentQuery());
             ViewData["insert1"] = new SelectList(DataAccounting, "NoUrutId", "NamaAkun");
