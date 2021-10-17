@@ -21,20 +21,20 @@ namespace AccountingRazor2021.Domain
         {
 
         }
-        public Guid DataAccountId { get; set; }
-        public int NoUrutId { get; set; }
+        public Guid DataAccountId { get; private set; }
+        public int NoUrutId { get;  set; }
 
 
-        public int? Lft { get; set; }
-        public int? Rgt { get; set; }
-        public int? Depth { get; set; }
+        public int? Lft { get; private set; }
+        public int? Rgt { get; private set; }
+        public int? Depth { get; private set; }
 
-        public string Parent { get; set; }      
-        public string KodeAccount { get; set; }
-        public string Account { get; set; }
-        public int? NormalPos { get; set; }
-        public string Kelompok { get; set; }
-        public string Aktif { get; set; }
+        public string Parent { get; private set; }      
+        public string KodeAccount { get; private set; }
+        public string Account { get; private set; }
+        public int? NormalPos { get; private set; }
+        public string Kelompok { get; private set; }
+        public string Aktif { get; private set; }
         // public string Alias {get;set;} //utk bhs inggris ?
         //  public int? DataMataUangId { get; set; }
 

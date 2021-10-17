@@ -8,15 +8,15 @@ namespace AccountingRazor2021.Domain
 {
     public class DataBuktiTransaksi
     {
-        public Guid DataBuktiTransaksiId { get; set; }
-        public int NoUrutId { get; set; }
+        public Guid DataBuktiTransaksiId { get; private set; }
+        public int NoUrutId { get; private set; }
 
-        public int TipeJournalId { get; set; }
-        public string NoBukti { get; set; }
-        public DateTime TanggalInput { get; set; }
-        public string Keterangan { get; set; }
-        public string ValidateBy { get; set; }
-        public DateTime ValidatedDate { get; set; }
-        public Decimal Total { get; set; }
+        public int TipeJournalId { get; private set; }
+        public string NoBukti { get; private set; }
+        public DateTime TanggalInput { get; private set; }
+        public string Keterangan { get; private set; }
+        public string ValidateBy { get; private set; }
+        public DateTime ValidatedDate { get; private set; }
+        public Decimal Total { get; private set; }
     }
 }

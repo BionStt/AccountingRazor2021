@@ -21,7 +21,7 @@ namespace AccountingRazor2021.Persistence.Context
         }
         public DbSet<DataAccount> DataAccounts { get; set; }
         public DbSet<DataBuktiTransaksi> DataBuktiTransaksi { get; set; }
-        public DbSet<DataJournalDetails> DataJournal { get; set; }
+        public DbSet<DataJournalDetails> DataJournalDetails { get; set; }
         public DbSet<DataJournalHeader> DataJournalHeaders { get; set; }
         public DbSet<DataPeriode> DataPeriodes { get; set; }
         public DbSet<DataSaldoAwal> DataSaldoAwals { get; set; }

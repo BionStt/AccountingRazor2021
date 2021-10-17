@@ -8,20 +8,38 @@ namespace AccountingRazor2021.Domain
 {
     public class DataJournalHeader
     {
-        public Guid DataJournalHeaderId { get; set; }
-        public int NoUrutId { get; set; }
+        protected DataJournalHeader()
+        {
 
+        }
+        private DataJournalHeader( string keterangan, int tipeJournalId, string userInput)
+        {
+            // NoBuktiJournal = noBuktiJournal;
+            NoBuktiJournal = GenerateNBJ(DateTime.Now);
+            Keterangan = keterangan;
+            TipeJournalId = tipeJournalId;
+            UserInput = userInput;
+        }
+        public static DataJournalHeader CreateDataJournalHeader( string keterangan, int tipeJournalId, string userInput)
+        {
+            return new DataJournalHeader(keterangan, tipeJournalId, userInput);
 
+        }
+        public Guid DataJournalHeaderId { get; private set; }
+        public int NoUrutId { get; private set; }
+        public DateTime TanggalInput { get; private set; }
+        public DateTime? Validasi { get; private set; }
+        public string ValidasiOleh { get; private set; }
 
-        public int? DataPeriodeId { get; set; }
-        public DateTime TanggalInput { get; set; }
-        public string NoBuktiJournal { get; set; }
-        public string Keterangan { get; set; }
-        public int TipeJournalId { get; set; }
-        public string UserInput { get; set; }
-        public DateTime? Validasi { get; set; }
-        public string ValidasiOleh { get; set; }
-        public string Aktif { get; set; }
+        public int? DataPeriodeId { get; private set; }
+      
+        public string NoBuktiJournal { get; private set; }
+        public string Keterangan { get; private set; }
+        public int TipeJournalId { get; private set; }
+        public string UserInput { get; private set; }
+      
+       
+        public string Aktif { get; private set; }
 
 
         private string GenerateNBJ(DateTime TanggalInput)
@@ -30,19 +48,45 @@ namespace AccountingRazor2021.Domain
             var thn = TanggalInput.Year;
             var NoBuktiJurnal = string.Empty;
 
-            if (bln == 1) { NoBuktiJurnal = "NBJ/" + "/I/" + thn; }
-            else if (bln == 2) { NoBuktiJurnal = "NBJ/" + "/II/" + thn; }
-            else if (bln == 3) { NoBuktiJurnal = "NBJ/" + "/III/" + thn; }
-            else if (bln == 4) { NoBuktiJurnal = "NBJ/" + "/IV/" + thn; }
-            else if (bln == 5) { NoBuktiJurnal = "NBJ/" + "/V/" + thn; }
-            else if (bln == 6) { NoBuktiJurnal = "NBJ/" + "/VI/" + thn; }
-            else if (bln == 7) { NoBuktiJurnal = "NBJ/" + "/VII/" + thn; }
-            else if (bln == 8) { NoBuktiJurnal = "NBJ/" + "/VIII/" + thn; }
-            else if (bln == 9) { NoBuktiJurnal = "NBJ/" + "/IX/" + thn; }
-            else if (bln == 10) { NoBuktiJurnal = "NBJ/" + "/X/" + thn; }
-            else if (bln == 11) { NoBuktiJurnal = "NBJ/" + "/XI/" + thn; }
-            else if (bln == 12) { NoBuktiJurnal = "NBJ/" + "/XII/" + thn; }
-
+            switch (bln)
+            {
+                case 1:
+                    NoBuktiJurnal = "NBJ/" + "/I/" + thn;
+                    break;
+                case 2:
+                    NoBuktiJurnal = "NBJ/" + "/II/" + thn;
+                    break;
+                case 3:
+                    NoBuktiJurnal = "NBJ/" + "/III/" + thn;
+                    break;
+                case 4:
+                    NoBuktiJurnal = "NBJ/" + "/IV/" + thn;
+                    break;
+                case 5:
+                    NoBuktiJurnal = "NBJ/" + "/V/" + thn;
+                    break;
+                case 6:
+                    NoBuktiJurnal = "NBJ/" + "/VI/" + thn;
+                    break;
+                case 7:
+                    NoBuktiJurnal = "NBJ/" + "/VII/" + thn;
+                    break;
+                case 8:
+                    NoBuktiJurnal = "NBJ/" + "/VIII/" + thn;
+                    break;
+                case 9:
+                    NoBuktiJurnal = "NBJ/" + "/IX/" + thn;
+                    break;
+                case 10:
+                    NoBuktiJurnal = "NBJ/" + "/X/" + thn;
+                    break;
+               case 11:
+                    NoBuktiJurnal = "NBJ/" + "/XI/" + thn;
+                    break;
+                case 12:
+                    NoBuktiJurnal = "NBJ/" + "/XII/" + thn;
+                    break;
+            }
             return NoBuktiJurnal;
         }
 
