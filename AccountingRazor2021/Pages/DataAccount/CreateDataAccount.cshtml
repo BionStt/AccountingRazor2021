@@ -1,0 +1,137 @@
+﻿@page
+@model AccountingRazor2021.Pages.DataAccount.CreateDataAccountModel
+
+@{
+    ViewData["Title"] = "CreateDataAccount";
+}
+
+<h1>Create</h1>
+
+<h4>DataAccount</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DataAccount.Parent" class="control-label"></label>
+                @*<input asp-for="DataAccount.Parent" class="form-control" />*@
+
+
+                <select id="Parent1a" asp-items="ViewBag.insert1" asp-for="DataAccount.Parent" class="form-control">
+                    <option value="0">(Tidak Ada)</option>
+                </select>
+
+                <span asp-validation-for="DataAccount.Parent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Insert Setelah</label>
+                <select id="Insert1b" name="Parent1" asp-for="DataAccount.Parent" class="form-control">
+                    <option value="0">(Tidak Ada)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DataAccount.KodeAccount" class="control-label"></label>
+                <input asp-for="DataAccount.KodeAccount" class="form-control" />
+                <span asp-validation-for="DataAccount.KodeAccount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataAccount.Account" class="control-label"></label>
+                <input asp-for="DataAccount.Account" class="form-control" />
+                <span asp-validation-for="DataAccount.Account" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataAccount.NormalPos" class="control-label"></label>
+                @*<input asp-for="DataAccount.NormalPos" class="form-control" />*@
+                <select name="NormalPos1" asp-for="DataAccount.NormalPos" class="form-control">
+                    <option value="1">Debit</option>
+                    <option value="-1">Kredit</option>
+                </select>
+                <span asp-validation-for="DataAccount.NormalPos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataAccount.Kelompok" class="control-label"></label>
+                @*<input asp-for="DataAccount.Kelompok" class="form-control" />*@
+                <select name="Kelompok1" asp-for="DataAccount.Kelompok" class="form-control">
+                    <option value="N">Neraca</option>
+                    <option value="L">Laba/rugi</option>
+                </select>
+                <span asp-validation-for="DataAccount.Kelompok" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+<script>
+    $("#Parent1a").change(function () {
+        var data1ab = $(this).val();
+       /* alert(data1ab);*/
+        if (data1ab != null && data1ab != '') {
+            $.ajax({
+                type: 'Get',
+                url: '/DataAccount/CreateDataAccount?handler=Filter',
+                //dataType: "json",
+                contentType: "application/json", //datatype dengan contenttype sptnya sama aja
+                //data: { 'data1a': $("#Parent1a").val() }, // bisa langsung ke gini atau ditampung dalam variable diatas tuh .
+                data: { 'data1a': data1ab },
+                success: function (data) {
+
+                    if (data != null && !jQuery.isEmptyObject(data)) {
+                        FillDropDown("Insert1b", jQuery.parseJSON(data))
+                    }
+
+                },
+                error: function (data) {
+                    alert(data.responseText);
+                    alert(data.responseJSON);
+                    alert(data.status);
+                    alert(data.statusText);
+
+                    alert('error nih');
+                    alert(Jquery.parseJSON(data));
+                }
+            });
+        }
+
+    });
+
+
+
+    function FillDropDown(selector, vData) {
+
+        if (vData.length > 0) {
+            var vItems = [];
+            for (var i in vData) {
+                if (vData[i].Selected)
+                    vItems.push('<option selectedselected=selected value="' + vData[i].Value + '">' + vData[i].Text + '</option>');
+                else
+                    vItems.push('<option value="' + vData[i].Value + '">' + vData[i].Text + '</option>');
+            }
+            $('#' + selector).empty();
+            $('#' + selector).append(vItems.join(''));
+            return true;
+        }
+        else {
+
+            $('#' + selector).empty();
+            $('#' + selector).append(' <option value="0">(Tidak Ada)</option>')
+            return false;
+        }
+    }
+</script>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

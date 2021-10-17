@@ -21,9 +21,34 @@ namespace AccountingRazor2021.ServiceApplication.DataAccount.Commands.CreateData
 
         public async Task<Guid> Handle(CreateDataAccountDapperCommand request, CancellationToken cancellationToken)
         {
-            var entity = Domain.DataAccount.CreateDataAccount(request.Parent, request.KodeAccount, request.Account, request.NormalPos, request.Kelompok);
-            
-            return entity.DataAccountId;
+             var xx = Guid.NewGuid();
+            var parameters = new DynamicParameters();
+            parameters.Add("KodeAccount", request.KodeAccount);
+            parameters.Add("Account", request.Account);
+            parameters.Add("NormalPos", request.NormalPos);
+            parameters.Add("Kelompok", request.Kelompok);
+            parameters.Add("DataAccountId", xx);
+
+
+            if (request.Parent != "0")
+            {
+                parameters.Add("Parent", request.Parent);
+            }
+            else 
+            {
+                parameters.Add("Parent", (string)null); 
+            }
+          
+            var sql = "INSERT INTO DataAccount(KodeAccount, Account, NormalPos, Kelompok, DataAccountId,Parent) VALUES(@KodeAccount, @Account, @NormalPos, @Kelompok, @DataAccountId,@Parent)";
+
+            using (var conn = _connectionFactory.GetDbConnection())
+            {
+                await conn.QueryAsync(sql,parameters);
+
+            }
+            // var entity = Domain.DataAccount.CreateDataAccount(request.Parent, request.KodeAccount, request.Account, request.NormalPos, request.Kelompok);
+
+            return xx;
 
             //var sql = "INSERT INTO Employee(Name) "
             //       + "VALUES(@Name)";
@@ -38,6 +63,18 @@ namespace AccountingRazor2021.ServiceApplication.DataAccount.Commands.CreateData
             //    ", command);
             //    await conn.QueryAsync(sql, parameters);
             //}
+
+            //const string sql = @" insert into dbo.Product (Name)
+            //            values (@Name);
+            //            SELECT CAST(SCOPE_IDENTITY() as int)";
+
+            //using (var connection = _dataAccess.GetOpenConnection())
+            //{
+            //    var id = connection.Query<int>(sql, new { Name = name }).Single();
+            //    return id;
+            
+
+
         }
     }
 }

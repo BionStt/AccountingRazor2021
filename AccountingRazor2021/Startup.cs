@@ -10,6 +10,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MediatR;
+using AccountingRazor2021.Persistence.Dapper;
 
 namespace AccountingRazor2021
 {
@@ -28,8 +30,13 @@ namespace AccountingRazor2021
             string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
             services.AddDbContext<AccountingDbContext>(options => options.UseSqlServer(connectionString));
 
+            services.AddTransient<IDbConnectionFactory>(x => new DapperConnectionFactory(connectionString));
+
+            services.AddMediatR(typeof(Startup));
 
             services.AddRazorPages();
+            services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
