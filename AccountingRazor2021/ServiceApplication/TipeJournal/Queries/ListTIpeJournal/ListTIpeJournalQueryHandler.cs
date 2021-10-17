@@ -22,11 +22,12 @@ namespace AccountingRazor2021.ServiceApplication.TipeJournal.Queries.ListTIpeJou
 
         public  async Task<IReadOnlyCollection<ListTIpeJournalResponse>> Handle(ListTIpeJournalQuery request, CancellationToken cancellationToken)
         {
-            var returnQuery = await _dbContext.DataAccounts.Select(x => new ListTIpeJournalResponse
+            var returnQuery = await _dbContext.TipeJournals.Select(x => new ListTIpeJournalResponse
             {
-               
+               NamaJournal=x.NamaJournal,
+               NoUrutId= x.NoUrutId
 
-            }).AsNoTracking().ToListAsync(cancellationToken);
+            }).AsNoTracking().OrderBy(x=>x.NoUrutId).ToListAsync(cancellationToken);
 
             return returnQuery;
         }
