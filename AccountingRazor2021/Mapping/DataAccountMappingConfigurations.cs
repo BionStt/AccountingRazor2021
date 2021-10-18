@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using AccountingRazor2021.Dto;
 using AccountingRazor2021.ServiceApplication.DataAccount.Commands.CreateDataAccount;
 using AccountingRazor2021.ServiceApplication.DataAccount.Commands.CreateDataAccountDapper;
+using AccountingRazor2021.ServiceApplication.DataJournals.Commands.CreateDataJournals;
+using AccountingRazor2021.ServiceApplication.DataJournalsDetails.Commands.CreateDataJournalsDetails;
 
 namespace AccountingRazor2021.Mapping
 {
@@ -35,5 +37,28 @@ namespace AccountingRazor2021.Mapping
             };
 
         }
+        public static CreateDataJournalsDetailsCommand ToCommand(this CreateDataJournalsDetailsRequest model)
+        {
+            return new CreateDataJournalsDetailsCommand { 
+            DataAccountId = model.DataAccountId,
+            DataJournalHeaderId = model.DataJournalHeaderId,
+            Debit = model.Debit,
+            Kredit = model.Kredit,
+            Keterangan = model.Keterangan
+            };
+        }
+        public static CreateDataJournalsCommand ToCommand(this CreateDataJournalsRequest model)
+        {
+            return new CreateDataJournalsCommand { 
+            Keterangan = model.Keterangan,
+            TanggalInput = model.TanggalInput,
+            TipeJournalId = model.TipeJournalId,
+            UserInput = model.UserInput
+            
+            };
+        }
+
+
+
     }
 }
