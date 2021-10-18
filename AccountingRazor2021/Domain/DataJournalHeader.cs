@@ -10,19 +10,20 @@ namespace AccountingRazor2021.Domain
     {
         protected DataJournalHeader()
         {
-
+           
         }
-        private DataJournalHeader( string keterangan, int tipeJournalId, string userInput)
+        private DataJournalHeader(DateTime tanggalInput, string keterangan, int tipeJournalId, string userInput)
         {
             // NoBuktiJournal = noBuktiJournal;
             NoBuktiJournal = GenerateNBJ(DateTime.Now);
             Keterangan = keterangan;
             TipeJournalId = tipeJournalId;
             UserInput = userInput;
+            TanggalInput = tanggalInput;
         }
-        public static DataJournalHeader CreateDataJournalHeader( string keterangan, int tipeJournalId, string userInput)
+        public static DataJournalHeader CreateDataJournalHeader(DateTime tanggalInput,string keterangan, int tipeJournalId, string userInput)
         {
-            return new DataJournalHeader(keterangan, tipeJournalId, userInput);
+            return new DataJournalHeader(tanggalInput,keterangan, tipeJournalId, userInput);
 
         }
         public Guid DataJournalHeaderId { get; private set; }

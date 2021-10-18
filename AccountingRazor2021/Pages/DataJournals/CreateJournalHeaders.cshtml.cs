@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AccountingRazor2021.Dto;
+using AccountingRazor2021.ServiceApplication.TipeJournal.Queries.ListTIpeJournal;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AccountingRazor2021.Pages.DataJournals
 {
@@ -20,8 +22,11 @@ namespace AccountingRazor2021.Pages.DataJournals
             _mediator = mediator;
         }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
+            var dataJournal = await _mediator.Send(new ListTIpeJournalQuery());
+            ViewData["TipeJournalId"] = new SelectList(dataJournal, "NoUrutId", "NamaJournal");
+
         }
     }
 }

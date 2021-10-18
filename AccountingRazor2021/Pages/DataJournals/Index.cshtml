@@ -1,0 +1,68 @@
+﻿@page
+@model AccountingRazor2021.Pages.DataJournals.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                TanggalInput
+               
+            </th>
+            <th>
+                NoBuktiJournal
+               
+            </th>
+            <th>
+                Keterangan
+               
+            </th>
+            <th>
+                UserInput
+            
+            </th>
+          
+            <th>
+                ValidasiOleh
+              
+            </th>
+          
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TanggalInput)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NoBuktiJournal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Keterangan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserInput)
+                </td>
+              
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValidasiOleh)
+                </td>
+              
+                <td>
+                    @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

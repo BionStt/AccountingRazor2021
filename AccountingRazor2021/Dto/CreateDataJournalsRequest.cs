@@ -12,5 +12,6 @@ namespace AccountingRazor2021.Dto
         public string Keterangan { get; set; }
         public int TipeJournalId { get; set; }
         public string UserInput { get; set; }
+        public DateTime TanggalInput { get; set; }
     }
 }

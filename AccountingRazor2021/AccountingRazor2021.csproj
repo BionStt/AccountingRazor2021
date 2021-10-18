@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <Folder Include="ServiceApplication\DataJournalsDetails\Queries\" />
-    <Folder Include="ServiceApplication\DataJournals\Queries\" />
     <Folder Include="ServiceApplication\TipeJournal\Commands\" />
   </ItemGroup>
 

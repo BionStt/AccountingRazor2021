@@ -14,6 +14,7 @@ namespace AccountingRazor2021.Domain
         }
         private TipeJournal(string kodeJournal, string namaJournal)
         {
+            TipeJournalId = Guid.NewGuid();
             KodeJournal = kodeJournal;
             NamaJournal = namaJournal;
         }

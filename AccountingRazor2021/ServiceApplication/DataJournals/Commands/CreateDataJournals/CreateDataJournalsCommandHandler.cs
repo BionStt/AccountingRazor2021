@@ -20,7 +20,7 @@ namespace AccountingRazor2021.ServiceApplication.DataJournals.Commands.CreateDat
 
         public async Task<Guid> Handle(CreateDataJournalsCommand request, CancellationToken cancellationToken)
         {
-            var entity = Domain.DataJournalHeader.CreateDataJournalHeader(request.Keterangan,request.TipeJournalId,request.UserInput);
+            var entity = Domain.DataJournalHeader.CreateDataJournalHeader(request.TanggalInput,request.Keterangan,request.TipeJournalId,request.UserInput);
 
             await _dbContext.DataJournalHeaders.AddAsync(entity);
             await _dbContext.SaveChangesAsync(cancellationToken);
