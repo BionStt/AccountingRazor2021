@@ -1,5 +1,5 @@
-﻿CREATE TRIGGER [dbo].trg_DataAccount_UPD
-	ON [dbo].DataAccount
+﻿CREATE TRIGGER [dbo].[trg_DataAccount_UPD]
+	ON [dbo].[DataAccount]
 	INSTEAD OF UPDATE
 AS
 BEGIN
@@ -42,3 +42,8 @@ BEGIN
 		ON Inserted.NoUrutId = DataAccount.NoUrutId
 END
 GO
+
+ALTER TABLE [dbo].[DataAccount] ENABLE TRIGGER [trg_DataAccount_UPD]
+GO
+
+

@@ -1,6 +1,5 @@
-﻿
-CREATE TRIGGER [dbo].trg_DataAccount_DEL
-	ON [dbo].DataAccount
+﻿CREATE TRIGGER [dbo].[trg_DataAccount_DEL]
+	ON [dbo].[DataAccount]
 	INSTEAD OF DELETE
 AS
 BEGIN
@@ -57,3 +56,8 @@ BEGIN
 	END
 END
 GO
+
+ALTER TABLE [dbo].[DataAccount] ENABLE TRIGGER [trg_DataAccount_DEL]
+GO
+
+

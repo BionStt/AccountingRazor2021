@@ -1,0 +1,5 @@
+﻿SELECT Account.AccountId, Account.ParentId AS Parent1, '[' + Account.kodeAccount + ']  - ' + Account.Account AS namaAkun, Account_1.Account, Account_1.kodeAccount, Account_1.ParentId
+FROM   Account INNER JOIN
+             Account AS Account_1 ON Account.ParentId = Account_1.AccountId
+WHERE (Account.Depth = 3)
+ORDER BY Account.kodeAccount

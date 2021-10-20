@@ -47,18 +47,18 @@
                     </tr>
                     <tr>
                         <td>
-                            <select name="IdAccount1" asp-items="ViewBag.Account1" class="form-control">
+                            <select asp-for="DataJournalDetailsRequest.DataAccountId" name="IdAccount1" asp-items="ViewBag.Account1" class="form-control">
                                 <option>------------ Silahkan Pilih Akun ------------</option>
                             </select>
                         </td>
                         <td>
-                            <input name="Debit1" style="text-align:right" value="0" class="form-control" />
+                            <input asp-for="DataJournalDetailsRequest.Debit" name="Debit1" style="text-align:right" value="0" class="form-control" />
                         </td>
                         <td>
-                            <input name="Kredit1" style="text-align:right" value="0" class="form-control" />
+                            <input asp-for="DataJournalDetailsRequest.Kredit" name="Kredit1" style="text-align:right" value="0" class="form-control" />
                         </td>
                         <td>
-                            <input name="Keterangan1" class="form-control" />
+                            <input asp-for="DataJournalDetailsRequest.Keterangan" name="Keterangan1" class="form-control" />
                         </td>
                     </tr>
                 </table>
@@ -79,6 +79,7 @@
 </div>
 <hr />
 <hr />
+@if(Model.DataJournalDetails !=null){
 <div>
     <table>
         <caption style="text-align:center">Rincian Jurnal Transaksi</caption>
@@ -96,7 +97,7 @@
                 <th>Debit</th>
                 <th>Kredit</th>
             </tr>
-            @foreach (var item in Model)
+            @foreach (var item in Model.DataJournalDetails)
             {
                 <tr>
                     <td>@i</td>
@@ -134,7 +135,7 @@
 
     </table>
 </div>
-
+}
 <div>
     <a asp-action="Index">Back to List</a>
 </div>

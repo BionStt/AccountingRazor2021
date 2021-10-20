@@ -38,7 +38,7 @@ namespace AccountingRazor2021.Pages.DataJournals
             var xx = DataJournalHeaders.ToCommand();
             var bb = await _mediator.Send(xx);
 
-            return RedirectToPage("./DataJournalsDetail/CreateDataJournalsDetail",  new { KodeJournalHeaderId = bb });
+            return RedirectToPage("/DataJournalsDetail/CreateDataJournalsDetail",  new { KodeJournalHeaderId = bb });
             // return RedirectToPage("./DataJournalsDetail/CreateDataJournalsDetail", "SingleOrder", new { orderId = order.Id });
             //return RedirectToPage();
 

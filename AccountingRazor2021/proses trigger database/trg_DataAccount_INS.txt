@@ -1,5 +1,5 @@
-﻿CREATE TRIGGER [dbo].trg_DataAccount_INS
-	ON [dbo].DataAccount
+﻿CREATE TRIGGER [dbo].[trg_DataAccount_INS]
+	ON [dbo].[DataAccount]
 	AFTER INSERT
 AS
 BEGIN
@@ -52,3 +52,7 @@ BEGIN
 		WHERE NoUrutId = (SELECT NoUrutId FROM Inserted)
 	END
 END
+GO
+
+ALTER TABLE [dbo].[DataAccount] ENABLE TRIGGER [trg_DataAccount_INS]
+GO

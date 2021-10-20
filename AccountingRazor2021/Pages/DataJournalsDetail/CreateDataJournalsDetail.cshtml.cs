@@ -7,6 +7,7 @@ using AccountingRazor2021.Mapping;
 using AccountingRazor2021.ServiceApplication.DataAccount.Queries.GetDataAccountByDepth;
 using AccountingRazor2021.ServiceApplication.DataJournals.Queries.GetDataJournalHeader;
 using AccountingRazor2021.ServiceApplication.DataJournals.Queries.GetDataJournalHeaderById;
+using AccountingRazor2021.ServiceApplication.DataJournalsDetails.Queries.ListDataJournalDetailsByHeaderId;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -23,11 +24,14 @@ namespace AccountingRazor2021.Pages.DataJournalsDetail
             _mediator = mediator;
         }
         [BindProperty]
-        public CreateDataJournalsDetailsRequest DataJournalDetails { get; set; }
+        public CreateDataJournalsDetailsRequest DataJournalDetailsRequest { get; set; }
+
+        public IReadOnlyCollection<ListDataJournalDetailsByHeaderIdQueryResponse> DataJournalDetails { get; set; }
+
         public async Task OnGetAsync(Guid KodeJournalHeaderId)
         {
-            var DataJournalHeader = await _mediator.Send(new GetDataJournalHeaderQuery());
-            ViewData["DataJournalHeader1"] = new SelectList(DataJournalHeader.OrderByDescending(x => x.NoUrutId).Take(10).ToList(), "NoUrutId", "JournalHeaders");
+
+            DataJournalDetails = await _mediator.Send(new ListDataJournalDetailsByHeaderIdQuery { KodeJournalHeaderId = KodeJournalHeaderId });
 
 
             var bb = await _mediator.Send(new GetDataAccountByDepthQuery());
@@ -71,12 +75,13 @@ namespace AccountingRazor2021.Pages.DataJournalsDetail
 
             //DataAccount.NormalPos = int.Parse(NormalPos1);
 
-            var xx = DataJournalDetails.ToCommand();
-            await _mediator.Send(xx);
+            var xx = DataJournalDetailsRequest.ToCommand();
+            var xx1 = await _mediator.Send(xx);
 
 
+            return RedirectToPage("./DataJournalsDetail/CreateDataJournalsDetail", new { KodeJournalHeaderId = xx1 });
 
-            return RedirectToPage();
+          //  return RedirectToPage("",new { });
             //  return RedirectToPage("./Index");
 
         }

@@ -1,0 +1,8 @@
+﻿
+untuk view accounting razor
+
+SELECT DataAccount.NoUrutId, DataAccount.Parent AS Parent1, '[' + DataAccount.KodeAccount + '] - ' + DataAccount.Account AS NamaAkun, DataAccount_1.Account, DataAccount_1.KodeAccount, DataAccount_1.NoUrutId AS NoUrutId2, DataAccount_1.Parent AS parent2
+FROM   DataAccount INNER JOIN
+             DataAccount AS DataAccount_1 ON DataAccount.Parent = DataAccount_1.NoUrutId
+WHERE (DataAccount.Depth = 3)
+ORDER BY DataAccount.KodeAccount
