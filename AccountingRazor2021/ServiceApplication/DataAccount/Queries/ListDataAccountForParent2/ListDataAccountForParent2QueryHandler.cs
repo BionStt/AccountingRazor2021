@@ -29,7 +29,7 @@ namespace AccountingRazor2021.ServiceApplication.DataAccount.Queries.ListDataAcc
                                     select new ListDataAccountForParent2QueryResponse
                                     {
                                         NoUrutId = child.NoUrutId,
-                                        NamaAkun = "[" + child.KodeAccount + "] - " + child.Account + " - " + Analyze(child.Kelompok) + " - " + NormalPos(child.NormalPos)
+                                        NamaAkun = "[ " + child.KodeAccount + " ] - " + child.Account + " - " + Analyze(child.Kelompok) + " - " + NormalPos(child.NormalPos)
 
                                     }).AsNoTracking().ToListAsync(cancellationToken);
 

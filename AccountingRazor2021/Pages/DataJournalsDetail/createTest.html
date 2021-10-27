@@ -1,0 +1,270 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>createTest</title>
+</head>
+<body>
+    <style>
+        table,th,td{
+            border:  1px solid black;
+
+        }
+    </style>
+    <div>
+        <table style="width: 100%;">
+            <tr>
+                <th>No Bukti</th>
+                <th>Tanggal Input</th>
+                <th>Keterangan</th>
+            </tr>
+            <tr>
+                <td>@ViewBag.NoBuktij11</td>
+                <td>@string.Format("{0:d}" ,ViewBag.TglInputjournal)</td>
+                <td>@ViewBag.Keterangan1</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div>
+                    <table>
+                        <caption>Silahkan pilih data transaksi Anda</caption>
+                        <tr>
+                            <th>Akun</th>
+                            <th>Debit</th>
+                            <th>Kredit</th>
+                            <th>Keterangan</th>
+                            <th>Id Header</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select asp-for="DataJournalDetailsRequest.DataAccountId" name="IdAccount1" asp-items="@ViewBag.Account1" class="form-control">
+                                    <option>------------ Silahkan Pilih Akun ------------</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input asp-for="DataJournalDetailsRequest.Debit" name="Debit1" style="text-align:right" value="0" class="form-control" />
+                            </td>
+                            <td>
+                                <input asp-for="DataJournalDetailsRequest.Kredit" name="Kredit1" style="text-align:right" value="0" class="form-control" />
+                            </td>
+                            <td>
+                                <input asp-for="DataJournalDetailsRequest.Keterangan" name="Keterangan1a" class="form-control" />
+                            </td>
+                            <td>
+                                <input type="hidden" value="@ViewBag.IDHeader1" asp-for="DataJournalDetailsRequest.DataJournalHeaderId" name="DatajournalHeaderId1a" class="form-control" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div hidden class="form-group">
+                    <label class="control-label"></label>
+                    <input name="IdBukti1" value="@ViewBag.IDHeader1" class="form-control" />
+                </div>
+                <div hidden class="form-group">
+                    <label class="control-label"></label>
+                    <input name="UserInput1" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr />
+    <hr />
+    @if(Model.DataJournalDetails !=null){
+    <div>
+        <table>
+            <caption style="text-align:center">Rincian Jurnal Transaksi</caption>
+            @{int i = 1;
+            Decimal? debit11 = 0;
+            decimal? kredit22 = 0;
+
+            }
+            @if (Model == null) { }
+            else
+            {
+            <tr>
+                <th>No.</th>
+                <th>Kode Akun - Akun</th>
+                <th>Debit</th>
+                <th>Kredit</th>
+            </tr>
+            @foreach (var item in Model.DataJournalDetails)
+            {
+            <tr>
+                <td>@i</td>
+                <td>@item.KodeNamaAkun</td>
+                <td>
+                    @string.Format("{0:c}", item.Debit1)
+                </td>
+
+                <div>
+                    <table>
+                        <tr>
+                            <th>No Bukti</th>
+                            <th>Tanggal Input</th>
+                            <th>Keterangan</th>
+                        </tr>
+                        <tr>
+                            <td>@ViewBag.NoBuktij11</td>
+                            <td>@string.Format("{0:d}" ,ViewBag.TglInputjournal)</td>
+                            <td>@ViewBag.Keterangan1</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+
+                        <form method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div>
+                                <table>
+                                    <caption>Silahkan pilih data transaksi Anda</caption>
+                                    <tr>
+                                        <th>Akun</th>
+                                        <th>Debit</th>
+                                        <th>Kredit</th>
+                                        <th>Keterangan</th>
+                                        <th>Id Header</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <select asp-for="DataJournalDetailsRequest.DataAccountId" name="IdAccount1" asp-items="@ViewBag.Account1" class="form-control">
+                                                <option>------------ Silahkan Pilih Akun ------------</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input asp-for="DataJournalDetailsRequest.Debit" name="Debit1" style="text-align:right" value="0" class="form-control" />
+                                        </td>
+                                        <td>
+                                            <input asp-for="DataJournalDetailsRequest.Kredit" name="Kredit1" style="text-align:right" value="0" class="form-control" />
+                                        </td>
+                                        <td>
+                                            <input asp-for="DataJournalDetailsRequest.Keterangan" name="Keterangan1a" class="form-control" />
+                                        </td>
+                                        <td>
+                                            <input type="hidden" value="@ViewBag.IDHeader1" asp-for="DataJournalDetailsRequest.DataJournalHeaderId" name="DatajournalHeaderId1a" class="form-control" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div hidden class="form-group">
+                                <label class="control-label"></label>
+                                <input name="IdBukti1" value="@ViewBag.IDHeader1" class="form-control" />
+                            </div>
+                            <div hidden class="form-group">
+                                <label class="control-label"></label>
+                                <input name="UserInput1" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <hr />
+                <hr />
+                @if(Model.DataJournalDetails !=null){
+                <div>
+                    <table>
+                        <caption style="text-align:center">Rincian Jurnal Transaksi</caption>
+                        @{int i = 1;
+                        Decimal? debit11 = 0;
+                        decimal? kredit22 = 0;
+
+                        }
+                        @if (Model == null) { }
+                        else
+                        {
+                        <tr>
+                            <th>No.</th>
+                            <th>Kode Akun - Akun</th>
+                            <th>Debit</th>
+                            <th>Kredit</th>
+                        </tr>
+                        @foreach (var item in Model.DataJournalDetails)
+                        {
+                        <tr>
+                            <td>@i</td>
+                            <td>@item.KodeNamaAkun</td>
+                            <td>
+                                @string.Format("{0:c}", item.Debit1)
+                            </td>
+                            <td>
+                                @string.Format("{0:c}", item.Kredit1)
+                            </td>
+                        </tr>
+                        debit11 = debit11 + item.Debit1;
+                        kredit22 = kredit22 + item.Kredit1;
+                        i++;
+                        }
+                        <tr>
+                            <td></td>
+                            <td>
+                                @if (debit11 < kredit22)
+                                {
+                                <p style="color:red;text-align:center">Tidak Seimbang</p>
+                                }
+                                else if (debit11 > kredit22)
+                                { <p style="color:red;text-align:center">Tidak Seimbang</p> }
+                                else
+                                { <p style="text-align:center">Seimbang</p>}
+
+                            </td>
+                            <td>   @string.Format("{0:c}", debit11)</td>
+                            <td>@string.Format("{0:c}", kredit22)</td>
+                        </tr>
+
+                        }
+
+
+                    </table>
+                </div>
+                }
+                <div>
+                    <a asp-action="Index">Back to List</a>
+                </div>
+                <td>
+                    @string.Format("{0:c}", item.Kredit1)
+                </td>
+            </tr>
+            debit11 = debit11 + item.Debit1;
+            kredit22 = kredit22 + item.Kredit1;
+            i++;
+            }
+            <tr>
+                <td></td>
+                <td>
+                    @if (debit11 < kredit22)
+                    {
+                    <p style="color:red;text-align:center">Tidak Seimbang</p>
+                    }
+                    else if (debit11 > kredit22)
+                    { <p style="color:red;text-align:center">Tidak Seimbang</p> }
+                    else
+                    { <p style="text-align:center">Seimbang</p>}
+
+                </td>
+                <td>   @string.Format("{0:c}", debit11)</td>
+                <td>@string.Format("{0:c}", kredit22)</td>
+            </tr>
+
+            }
+
+
+        </table>
+    </div>
+    }
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+</body>
+</html>

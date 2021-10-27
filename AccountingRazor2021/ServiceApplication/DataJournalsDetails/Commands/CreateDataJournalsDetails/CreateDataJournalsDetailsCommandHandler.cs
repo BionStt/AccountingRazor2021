@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AccountingRazor2021.Persistence.Context;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace AccountingRazor2021.ServiceApplication.DataJournalsDetails.Commands.CreateDataJournalsDetails
 {
@@ -20,12 +21,14 @@ namespace AccountingRazor2021.ServiceApplication.DataJournalsDetails.Commands.Cr
 
         public async Task<Guid> Handle(CreateDataJournalsDetailsCommand request, CancellationToken cancellationToken)
         {
-            var entity = Domain.DataJournalDetails.CreateDataJournalDetails(request.DataJournalHeaderId,request.DataAccountId,request.Debit,request.Kredit,request.Keterangan);
+            var xx = _dbContext.DataAccounts.Where(x => x.NoUrutId == request.DataAccountId).Select(x=>new { x.DataAccountId}).SingleOrDefaultAsync();
+
+            var entity = Domain.DataJournalDetails.CreateDataJournalDetails(request.DataJournalHeaderId, xx.Result.DataAccountId, request.Debit,request.Kredit,request.Keterangan);
 
             await _dbContext.DataJournalDetails.AddAsync(entity);
             await _dbContext.SaveChangesAsync(cancellationToken);
 
-            return entity.DataJournalDetailsId;
+            return request.DataJournalHeaderId;
         }
     }
 }

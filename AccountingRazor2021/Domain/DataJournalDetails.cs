@@ -32,7 +32,7 @@ namespace AccountingRazor2021.Domain
         public Decimal? Debit { get; private set; }
         public Decimal? Kredit { get; private set; }
         public string Keterangan { get; private set; }
-
+        public DateTime TanggalInput { get; set; }
 
 
 

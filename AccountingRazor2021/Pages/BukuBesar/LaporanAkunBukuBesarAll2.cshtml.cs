@@ -10,24 +10,22 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AccountingRazor2021.Pages.BukuBesar
 {
-    public class LaporanAkunBukuBesarAllModel : PageModel
+    public class LaporanAkunBukuBesarAll2Model : PageModel
     {
         private readonly IMediator _mediator;
-        [BindProperty(SupportsGet = true)]
-        public IReadOnlyCollection<GetDataJournalAllResponse> Item { get; set; }
 
-
-        public LaporanAkunBukuBesarAllModel(IMediator mediator)
+        public LaporanAkunBukuBesarAll2Model(IMediator mediator)
         {
             _mediator = mediator;
         }
+
+        [BindProperty(SupportsGet = true)]
+        public IReadOnlyCollection<GetDataJournalAllResponse> Item { get; set; }
 
         public async Task OnGetAsync()
         {
             var aa1 = await _mediator.Send(new GetDataJournalAllQuery());
             Item = aa1.OrderBy(x => x.TanggalInput).OrderBy(x => x.DataAkun).ToList();
-
-
 
         }
     }

@@ -9,7 +9,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="">
+        <form method="post" >
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @*<div class="form-group">
                     <label asp-for="DataPeriodeId" class="control-label"></label>
@@ -27,7 +27,7 @@
                 </div>*@
             <div class="form-group">
                 <label asp-for="DataJournalHeaders.Keterangan" class="control-label"></label>
-                <input asp-for="DataJournalHeaders.Keterangan" class="form-control" />
+                <input asp-for="DataJournalHeaders.Keterangan" placeholder="Masukan inputan keterangan" class="form-control" />
                 <span asp-validation-for="DataJournalHeaders.Keterangan" class="text-danger"></span>
             </div>
             <div class="form-group">

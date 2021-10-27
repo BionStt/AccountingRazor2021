@@ -9,30 +9,26 @@ using AccountingRazor2021.Persistence.Context;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace AccountingRazor2021.ServiceApplication.DataAccount.Queries.ListDataAccountForParent
+namespace AccountingRazor2021.ServiceApplication.DataAccount.Queries.GetNamaAkunByNoUrutId
 {
-    public class ListDataAccountForParentQueryHandler : IRequestHandler<ListDataAccountForParentQuery, IReadOnlyCollection<ListDataAccountForParentQueryResponse>>
+    public class GetNamaAkunByNoUrutIdQueryHandler : IRequestHandler<GetNamaAkunByNoUrutIdQuery, GetNamaAkunByNoUrutIdResponse>
     {
         private readonly AccountingDbContext _dbContext;
 
-        public ListDataAccountForParentQueryHandler(AccountingDbContext dbContext)
+        public GetNamaAkunByNoUrutIdQueryHandler(AccountingDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task<IReadOnlyCollection<ListDataAccountForParentQueryResponse>> Handle(ListDataAccountForParentQuery request, CancellationToken cancellationToken)
+        public  async Task<GetNamaAkunByNoUrutIdResponse> Handle(GetNamaAkunByNoUrutIdQuery request, CancellationToken cancellationToken)
         {
-            var returnQuery = await _dbContext.DataAccounts.OrderBy(x=>x.KodeAccount).Where(x=>x.Parent==null).Select(x => new ListDataAccountForParentQueryResponse
-            {
-               NoUrutId = x.NoUrutId,
+            var returnQuery = await _dbContext.DataAccounts.Where(x=>x.NoUrutId== int.Parse(request.NoUrutId)).Select(x=>new GetNamaAkunByNoUrutIdResponse {
                 NamaAkun = "[ " + x.KodeAccount + " ] - " + x.Account + " - " + Analyze(x.Kelompok) + " - " + NormalPos(x.NormalPos)
 
-
-            }).AsNoTracking().ToListAsync(cancellationToken);
+            }).AsNoTracking().SingleOrDefaultAsync();
 
             return returnQuery;
         }
-
         static String Analyze(String value)
         {
             // Return a value for each argument.
@@ -61,6 +57,5 @@ namespace AccountingRazor2021.ServiceApplication.DataAccount.Queries.ListDataAcc
                     return String.Empty;
             }
         }
-
     }
 }

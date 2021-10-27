@@ -39,7 +39,7 @@ namespace AccountingRazor2021.Mapping
         }
         public static CreateDataJournalsDetailsCommand ToCommand(this CreateDataJournalsDetailsRequest model)
         {
-            return new CreateDataJournalsDetailsCommand { 
+            return new CreateDataJournalsDetailsCommand {
             DataAccountId = model.DataAccountId,
             DataJournalHeaderId = model.DataJournalHeaderId,
             Debit = model.Debit,
@@ -49,12 +49,12 @@ namespace AccountingRazor2021.Mapping
         }
         public static CreateDataJournalsCommand ToCommand(this CreateDataJournalsRequest model)
         {
-            return new CreateDataJournalsCommand { 
+            return new CreateDataJournalsCommand {
             Keterangan = model.Keterangan,
             TanggalInput = model.TanggalInput,
             TipeJournalId = model.TipeJournalId,
             UserInput = model.UserInput
-            
+
             };
         }
 

@@ -3,3 +3,6 @@
 EntityFrameworkCore\Update-Database -CONTEXT AccountingDbContext
 
 EntityFrameworkCore\Drop-Database -CONTEXT AccountingDbContext
+
+
+EntityFrameworkCore\Add-Migration InitialCreate3 -Context AccountingDbContext -OutputDir Persistence/Migrations

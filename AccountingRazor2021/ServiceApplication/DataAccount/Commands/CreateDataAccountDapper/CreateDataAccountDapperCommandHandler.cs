@@ -24,7 +24,7 @@ namespace AccountingRazor2021.ServiceApplication.DataAccount.Commands.CreateData
              var xx = Guid.NewGuid();
             var parameters = new DynamicParameters();
             parameters.Add("KodeAccount", request.KodeAccount);
-            parameters.Add("Account", request.Account);
+            parameters.Add("Account", request.Account.ToUpper());
             parameters.Add("NormalPos", request.NormalPos);
             parameters.Add("Kelompok", request.Kelompok);
             parameters.Add("DataAccountId", xx);

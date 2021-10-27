@@ -7,47 +7,44 @@
     <a asp-action="Index">Back to List</a>
 </div>
 <div>
-    <a asp-controller="JournalHeaders" asp-action="Create">Tambah Jurnal Transaksi</a>
+    @*<a asp-controller="DataJournals" asp-action="CreateJournalHeaders">Tambah Jurnal Transaksi</a>*@
+    <a asp-page="/DataJournals/CreateJournalHeaders">Tambah Jurnal Transaksi </a>
 </div>
 
 <h1>Create</h1>
 
 <h4>DataJournal</h4>
 
-
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
 
 <hr />
-<div>
-    <table>
-        <tr>
-            <th>No Bukti</th>
-            <th>Tanggal Input</th>
-            <th>Keterangan</th>
-        </tr>
-        <tr>
-            <td>@ViewBag.NoBuktij11</td>
-            <td>@ViewBag.TglInputjournal</td>
-            <td>@ViewBag.Keterangan1</td>
-        </tr>
-    </table>
-</div>
+
+</br>
 
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
+    <div class="col-md-12">
+
+        <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div>
-                <table>
-                    <caption>Silahkan pilih data transaksi Anda</caption>
-                    <tr>
-                        <th>Akun</th>
+                <p>Silahkan pilih data transaksi Anda</p>
+                <table style="width:100%">
+                   
+                    <tr style="width:100%">
+                        <th style="width:50%">Akun</th>
                         <th>Debit</th>
                         <th>Kredit</th>
                         <th>Keterangan</th>
+                        <th hidden>Id Header</th>
                     </tr>
                     <tr>
                         <td>
-                            <select asp-for="DataJournalDetailsRequest.DataAccountId" name="IdAccount1" asp-items="ViewBag.Account1" class="form-control">
+                            <select asp-for="DataJournalDetailsRequest.DataAccountId" name="IdAccount1" asp-items="@ViewBag.Account1" class="form-control">
                                 <option>------------ Silahkan Pilih Akun ------------</option>
                             </select>
                         </td>
@@ -58,7 +55,10 @@
                             <input asp-for="DataJournalDetailsRequest.Kredit" name="Kredit1" style="text-align:right" value="0" class="form-control" />
                         </td>
                         <td>
-                            <input asp-for="DataJournalDetailsRequest.Keterangan" name="Keterangan1" class="form-control" />
+                            <input asp-for="DataJournalDetailsRequest.Keterangan" name="Keterangan1b" value="@ViewBag.Keterangan1" placeholder="Masukan inputan keterangan" class="form-control" />
+                        </td>
+                        <td>
+                            <input type="hidden" value="@ViewBag.IDHeader1" asp-for="DataJournalDetailsRequest.DataJournalHeaderId" name="DatajournalHeaderId1a" class="form-control" />
                         </td>
                     </tr>
                 </table>
@@ -72,74 +72,103 @@
                 <input name="UserInput1" class="form-control" />
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 <hr />
 <hr />
-@if(Model.DataJournalDetails !=null){
-<div>
-    <table>
-        <caption style="text-align:center">Rincian Jurnal Transaksi</caption>
-        @{int i = 1;
-            Decimal? debit11 = 0;
-            decimal? kredit22 = 0;
+<div class="hidden-print">
+    <p></p>
+    @*<a style="color:green;text-decoration:none;" href="javascript:window.print()">
+            <span style="color:green;text-decoration:none;">
+                <img height="12" src="https://ecs7.tokopedia.net/img/print.png" alt="Print" />&nbsp;Cetak
+            </span>
+            <span style="display:inline-block; width:25px ;"></span>
+        </a>*@
+    <input name="b_print" type="button" class="ipt" onClick="printdiv('div_print');" value=" Print ">
+</div>
 
-        }
-        @if (Model == null) { }
-        else
-        {
+<br />
+<div id="div_print">
+    <div>
+        <table style="width:100%">
             <tr>
-                <th>No.</th>
-                <th>Kode Akun - Akun</th>
-                <th>Debit</th>
-                <th>Kredit</th>
+                <th>No Bukti</th>
+                <th>Tanggal Input</th>
+                <th>Keterangan</th>
             </tr>
-            @foreach (var item in Model.DataJournalDetails)
-            {
-                <tr>
-                    <td>@i</td>
-                    <td>@item.KodeNamaAkun</td>
-                    <td>
-                        @string.Format("{0:c}", item.Debit1)
-                    </td>
-                    <td>
-                        @string.Format("{0:c}", item.Kredit1)
-                    </td>
-                </tr>
-                debit11 = debit11 + item.Debit1;
-                kredit22 = kredit22 + item.Kredit1;
-                i++;
-            }
             <tr>
-                <td></td>
-                <td>
-                    @if (debit11 < kredit22)
+                <td>@ViewBag.NoBuktij11</td>
+                <td>@string.Format("{0:d}", ViewBag.TglInputjournal)</td>
+                <td>@ViewBag.Keterangan1</td>
+            </tr>
+        </table>
+    </div>
+    <br />
+    @if (Model.DataJournalDetails != null)
+    {
+        <div>
+            <p>Rincian Jurnal Transaksi</p>
+            <table style="width:100%">
+
+                @{int i = 1;
+                    Decimal? debit11 = 0;
+                    decimal? kredit22 = 0;
+
+                }
+                @if (Model == null) { }
+                else
+                {
+                    <tr>
+                        <th>No.</th>
+                        <th>Kode Akun - Akun</th>
+                        <th>Debit</th>
+                        <th>Kredit</th>
+                    </tr>
+                    @foreach (var item in Model.DataJournalDetails)
                     {
-                        <p style="color:red;text-align:center">Tidak Seimbang</p>
+                        <tr>
+                            <td style="text-align:center">@i</td>
+                            <td>@item.KodeNamaAkun</td>
+                            <td>
+                                @string.Format("{0:c0}", item.Debit1)
+                            </td>
+                            <td>
+                                @string.Format("{0:c0}", item.Kredit1)
+                            </td>
+                        </tr>
+                        debit11 = debit11 + item.Debit1;
+                        kredit22 = kredit22 + item.Kredit1;
+                        i++;
                     }
-                    else if (debit11 > kredit22)
-                    { <p style="color:red;text-align:center">Tidak Seimbang</p> }
-                    else
-                    { <p style="text-align:center">Seimbang</p>}
+                    <tr>
+                        <td></td>
+                        <td>
+                            @if (debit11 < kredit22)
+                            {
+                                <p style="color:red;text-align:center">Tidak Seimbang</p>
+                            }
+                            else if (debit11 > kredit22)
+                            { <p style="color:red;text-align:center">Tidak Seimbang</p> }
+                            else
+                            { <p style="text-align:center">Seimbang</p>}
 
-                </td>
-                <td>   @string.Format("{0:c}", debit11)</td>
-                <td>@string.Format("{0:c}", kredit22)</td>
-            </tr>
+                        </td>
+                        <td>   @string.Format("{0:c0}", debit11)</td>
+                        <td>@string.Format("{0:c0}", kredit22)</td>
+                    </tr>
 
-        }
+                }
 
 
-    </table>
+            </table>
+        </div>
+    }
 </div>
-}
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

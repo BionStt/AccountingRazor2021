@@ -30,7 +30,7 @@ namespace AccountingRazor2021.ServiceApplication.DataAccount.Queries.GetDataAcco
                             NoUrutId = a.NoUrutId,
                             Account = b.Account,
                             KodeAccount = a.KodeAccount,
-                            DataAkun1 = "[" + a.KodeAccount + "] - " + a.Account + " - " + Analyze(b.Kelompok) + " - " + NormalPos(b.NormalPos), 
+                            DataAkun1 = "[ " + a.KodeAccount + " ] - " + a.Account + " - " + Analyze(b.Kelompok) + " - " + NormalPos(b.NormalPos), 
                             DataAkun2 = b.KodeAccount + " - " + b.Account + " - " + Analyze(b.Kelompok) + " - " + NormalPos(b.NormalPos) 
                             
                             }).AsNoTracking().ToListAsync(cancellationToken);

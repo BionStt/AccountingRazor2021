@@ -23,6 +23,7 @@ namespace AccountingRazor2021.Pages.DataJournalsDetail
         {
             _mediator = mediator;
         }
+
         [BindProperty]
         public CreateDataJournalsDetailsRequest DataJournalDetailsRequest { get; set; }
 
@@ -56,7 +57,7 @@ namespace AccountingRazor2021.Pages.DataJournalsDetail
              var DataJournalHeader1 = await _mediator.Send(new GetDataJournalHeaderByIdQuery { KodeJournalHeaderId = KodeJournalHeaderId });
 
             ViewData["Keterangan1"] = DataJournalHeader1.Keterangan;
-          //  ViewData["IDHeader1"] = KodeIdHeader1;
+            ViewData["IDHeader1"] = KodeJournalHeaderId;
             ViewData["NoBuktij11"] = DataJournalHeader1.NoBuktiJournalHeader;
             ViewData["TglInputjournal"] = DataJournalHeader1.TanggalInput;
         }
@@ -64,7 +65,7 @@ namespace AccountingRazor2021.Pages.DataJournalsDetail
         {
             public IList<SelectListItem> AccountIdList { get; set; }
         }
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int IdAccount1, decimal Debit1, decimal Kredit1 ,string Keterangan1b, Guid DatajournalHeaderId1a)
         {
 
             if (!ModelState.IsValid)
@@ -74,12 +75,17 @@ namespace AccountingRazor2021.Pages.DataJournalsDetail
             //DataAccount.Kelompok = Kelompok1;
 
             //DataAccount.NormalPos = int.Parse(NormalPos1);
+            DataJournalDetailsRequest.DataAccountId = IdAccount1;
+            DataJournalDetailsRequest.Debit = Debit1;
+            DataJournalDetailsRequest.Kredit =Kredit1;
+             DataJournalDetailsRequest.Keterangan = Keterangan1b;
+            DataJournalDetailsRequest.DataJournalHeaderId = DatajournalHeaderId1a;
 
             var xx = DataJournalDetailsRequest.ToCommand();
             var xx1 = await _mediator.Send(xx);
 
 
-            return RedirectToPage("./DataJournalsDetail/CreateDataJournalsDetail", new { KodeJournalHeaderId = xx1 });
+            return RedirectToPage("/DataJournalsDetail/CreateDataJournalsDetail", new { KodeJournalHeaderId = xx1 });
 
           //  return RedirectToPage("",new { });
             //  return RedirectToPage("./Index");

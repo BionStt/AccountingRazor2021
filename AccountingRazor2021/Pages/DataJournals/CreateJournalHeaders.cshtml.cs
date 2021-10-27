@@ -18,6 +18,7 @@ namespace AccountingRazor2021.Pages.DataJournals
 
         [BindProperty]
         public CreateDataJournalsRequest DataJournalHeaders { get; set; }
+
         public CreateJournalHeadersModel(IMediator mediator)
         {
             _mediator = mediator;
@@ -29,7 +30,7 @@ namespace AccountingRazor2021.Pages.DataJournals
             ViewData["TipeJournalId"] = new SelectList(dataJournal, "NoUrutId", "NamaJournal");
 
         }
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(CreateDataJournalsRequest DataJournalHeaders)
         {
             if (!ModelState.IsValid)
             {

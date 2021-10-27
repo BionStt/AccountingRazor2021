@@ -1,10 +1,10 @@
 ﻿@page
-@model AccountingRazor2021.Pages.DataAccount.IndexModel
+@model AccountingRazor2021.Pages.DataSaldoAwal.DataSaldoAwalIndexModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "DataSaldoAwalIndex";
 }
 
-<h1>Index</h1>
+<h1>Data Saldo Awal Index</h1>
 
 <div class="hidden-print">
     <p></p>
@@ -23,31 +23,21 @@
     <table class="table">
         <thead>
             <tr>
-                @*<th>
-                        @Html.DisplayNameFor(model => model.Lft)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Rgt)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Parent)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Depth)
-                    </th>*@
-                <th>
+               <th>
                     Kode Account
                 </th>
                 <th>
                     Account
                 </th>
-                <th>
+                @*<th>
                     NormalPos
-                </th>
+                </th>*@
                 <th>
                     Kelompok
                 </th>
                 <th>Depth</th>
+                <th>Debit</th>
+                <th>Kredit</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -55,19 +45,7 @@
             @foreach (var item in Model.Item)
             {
                 <tr>
-                    @*<td>
-                            @Html.DisplayFor(modelItem => item.Lft)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Rgt)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Parent)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Depth)
-                        </td>*@
-                    <td style="font-weight:bold">
+                  <td style="font-weight:bold">
                         @Html.DisplayFor(modelItem => item.KodeAccount)
                     </td>
                     @if (item.Depth * 20 + 3 == 23)
@@ -100,7 +78,7 @@
                             @Html.DisplayFor(modelItem => item.Account)
                         </td>
                     }
-                    <td>
+                    @*<td>
                         @if (item.NormalPos == 1)
                         {
                             <p> Debit</p>
@@ -109,7 +87,7 @@
                         {
                             <p>Kredit</p>
                         }
-                    </td>
+                    </td>*@
                     <td>
                         @if (item.Kelompok == "N")
                         {
@@ -122,8 +100,21 @@
                             </p>}
 
                     </td>
+
                     <td>
                         @Html.DisplayFor(modelItem => item.Depth)
+                    </td>
+                    <td>
+                        @if(item.Depth == 3)
+                            {
+                            <input type"number" />
+                            }
+                    </td>
+                    <td>
+                        @if (item.Depth == 3)
+                        {
+                            <input type"number" />
+                        }
                     </td>
 
                     @*<td>
@@ -136,4 +127,5 @@
         </tbody>
     </table>
 </div>
+
 

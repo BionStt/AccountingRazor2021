@@ -9,30 +9,27 @@ using AccountingRazor2021.Persistence.Context;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace AccountingRazor2021.ServiceApplication.DataAccount.Queries.ListDataAccountForParent
+namespace AccountingRazor2021.ServiceApplication.DataAccount.Queries.LIstDataAccountForDepthNum3
 {
-    public class ListDataAccountForParentQueryHandler : IRequestHandler<ListDataAccountForParentQuery, IReadOnlyCollection<ListDataAccountForParentQueryResponse>>
+    public class LIstDataAccountForDepthNum3QueryHandler : IRequestHandler<LIstDataAccountForDepthNum3Query, IReadOnlyCollection<LIstDataAccountForDepthNum3Response>>
     {
         private readonly AccountingDbContext _dbContext;
 
-        public ListDataAccountForParentQueryHandler(AccountingDbContext dbContext)
+        public LIstDataAccountForDepthNum3QueryHandler(AccountingDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task<IReadOnlyCollection<ListDataAccountForParentQueryResponse>> Handle(ListDataAccountForParentQuery request, CancellationToken cancellationToken)
+        public async Task<IReadOnlyCollection<LIstDataAccountForDepthNum3Response>> Handle(LIstDataAccountForDepthNum3Query request, CancellationToken cancellationToken)
         {
-            var returnQuery = await _dbContext.DataAccounts.OrderBy(x=>x.KodeAccount).Where(x=>x.Parent==null).Select(x => new ListDataAccountForParentQueryResponse
-            {
-               NoUrutId = x.NoUrutId,
-                NamaAkun = "[ " + x.KodeAccount + " ] - " + x.Account + " - " + Analyze(x.Kelompok) + " - " + NormalPos(x.NormalPos)
+            var returnQuery = await _dbContext.DataAccounts.Where(x=>x.Depth==3).OrderBy(x=>x.KodeAccount).Select(x=>new LIstDataAccountForDepthNum3Response { 
+            NoUrutId = x.NoUrutId,
+            NamaAkun = "[ " + x.KodeAccount + " ] - " + x.Account + " - " + Analyze(x.Kelompok) + " - " + NormalPos(x.NormalPos)
 
-
-            }).AsNoTracking().ToListAsync(cancellationToken);
+            }).AsNoTracking().ToListAsync();
 
             return returnQuery;
         }
-
         static String Analyze(String value)
         {
             // Return a value for each argument.
@@ -61,6 +58,5 @@ namespace AccountingRazor2021.ServiceApplication.DataAccount.Queries.ListDataAcc
                     return String.Empty;
             }
         }
-
     }
 }
