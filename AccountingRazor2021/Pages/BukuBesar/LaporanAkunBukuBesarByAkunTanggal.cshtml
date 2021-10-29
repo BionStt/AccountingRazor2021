@@ -1,5 +1,5 @@
 ﻿@page
-@model AccountingRazor2021.Pages.BukuBesar.LaporanAkunBukuBesarByAkunModel
+@model AccountingRazor2021.Pages.BukuBesar.LaporanAkunBukuBesarByAkunTanggalModel
 @{
     ViewData["Title"] = "Laporan Akun Buku Besar Berdasarkan Akun";
 }
@@ -8,21 +8,25 @@
     <table class="table table-bordered table-striped grid">
         <tr>
             <th>Kode Akun - Nama Akun</th>
+            <th>Periode Awal</th>
+            <th>Periode Akhir</th>
             <th>Tindakan </th>
         </tr>
         <tr>
-           
+
             <td>
 
                 <select name="Akun1" asp-items="@ViewBag.Akun1"></select>
             </td>
-            <td>   <input type="submit" value="Tampilkan"  class="btn btn-default" /></td>
+            <td><input type="datetime" name="PeriodeAwal"/></td>
+            <td><input type="datetime" name="PeriodeAkhir"/></td>
+            <td>   <input type="submit" value="Tampilkan" class="btn btn-default" /></td>
         </tr>
     </table>
 </form>
 
 
-@if (Model.listDataJournalDetailsByAkunResponse != null)
+@if (Model.listDataJournalDetailsByAkunTanggalResponse != null)
 {
 
 
@@ -32,7 +36,7 @@
         <p>Akun : @ViewBag.dtNamaAkun2</p>
         <p style="text-align:center">Rincian Buku Besar</p>
         <table class="table table-bordered table-striped grid" style="width:100%">
-            
+
             @{int i = 1;
                 Decimal? debit11 = 0;
                 decimal? kredit22 = 0;
@@ -51,7 +55,7 @@
                     <th>Kredit</th>
                     <th>Saldo</th>
                 </tr>
-                @foreach (var item in Model.listDataJournalDetailsByAkunResponse)
+                @foreach (var item in Model.listDataJournalDetailsByAkunTanggalResponse)
                 {
                     saldo1 = saldo1 + (item.Debit1 - item.Kredit1);
                     <tr>
