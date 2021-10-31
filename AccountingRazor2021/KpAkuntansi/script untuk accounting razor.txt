@@ -1,0 +1,102 @@
+	// $parent tidak ditentukan, select semua root
+SELECT COUNT(parent.NoUrutId) - 1 AS depth, node.NoUrutId, node.KodeAccount, node.Account, node.NormalPos, 
+node.Kelompok, NULL AS parent, (CASE WHEN (node.rgt - node.lft) = 1 THEN 'false' ELSE 'true' END) AS hasChild
+FROM   DataAccount AS node CROSS JOIN
+             DataAccount AS parent
+WHERE (node.Lft BETWEEN parent.Lft AND parent.Rgt)
+GROUP BY node.NoUrutId, node.KodeAccount, node.Account, node.NormalPos, node.Kelompok, node.Lft, node.Rgt, node.Depth
+HAVING (node.Depth = 0)
+ORDER BY node.Lft
+
+
+	// Select anak dari $parent ini
+SELECT TOP (100) PERCENT node.NoUrutId, node.kodeAccount, node.account, node.normalPos,node.Parent, node.kelompok, (CASE WHEN (node.rgt - node.lft) = 1 THEN 'true' ELSE 'false' END) AS hasChild, COUNT(parent.NoUrutId) - (subTree.depth + 1) AS depth
+FROM   (SELECT node.NoUrutId, COUNT(parent.NoUrutId) - 1 AS depth
+             FROM    dbo.DataAccount AS node CROSS JOIN
+                           dbo.DataAccount AS parent
+             WHERE  (node.lft BETWEEN parent.lft AND parent.rgt) 
+             GROUP BY node.NoUrutId) AS subTree INNER JOIN
+             dbo.DataAccount AS subParent ON subTree.NoUrutId = subParent.NoUrutId CROSS JOIN
+             dbo.DataAccount AS node CROSS JOIN
+             dbo.DataAccount AS parent
+WHERE (node.lft BETWEEN parent.lft AND parent.rgt) AND (node.lft BETWEEN subParent.lft AND subParent.rgt)
+GROUP BY node.NoUrutId, node.kodeAccount, node.account, node.normalPos, node.kelompok, node.rgt, node.lft, subTree.depth,node.Parent
+HAVING (subTree.depth = 1)
+ORDER BY node.lft
+
+// select anak dari parent root
+subTree.NoUrutId = 1 = AKTIVA ,
+subTree.NoUrutId = 5 = PASIVA / KEWAJIBAN,
+subTree.NoUrutId = 3 = MODAL / EKUITAS ,
+subTree.NoUrutId = 4 = PENDAPATAN,
+subTree.NoUrutId = 5 = HARGA POKOK / HPP,
+subTree.NoUrutId = 6 = BIAYA, 
+subTree.NoUrutId = 7 = PENDAPATAN LAIN LAIN, 
+subTree.NoUrutId = 8 = BIAYA LAIN-LAIN, 
+subTree.NoUrutId = 145 = , 
+mainkan  node.Depth range 0-3 nanti akan muncul detail
+
+select node.NoUrutId, node.kodeAccount, node.account, node.normalPos, node.kelompok,node.parent,
+(case
+when  (node.rgt-node.lft)=1 then 'false' else 'true'
+end) as hasChild,
+(COUNT(parent.NoUrutId) - (subTree.depth + 1)) as depth
+from DataAccount as node, DataAccount as parent, DataAccount as subParent,
+(select node.NoUrutId, (COUNT(parent.NoUrutId)-1) as depth 
+from DataAccount as node, DataAccount as parent
+where node.lft between parent.lft and parent.rgt 
+group by node.NoUrutId
+) as subTree
+where node.lft between parent.lft and parent.rgt
+and node.lft between subParent.lft and subParent.rgt
+and subParent.NoUrutId = subTree.NoUrutId and subTree.NoUrutId = 145
+group by node.NoUrutId,node.kodeAccount, node.account, node.normalPos, node.kelompok,node.rgt,node.lft,subTree.depth,node.parent,node.Depth
+//node.Depth = 1
+order by node.lft
+
+
+
+select node.NoUrutId, node.kodeAccount, node.account, node.normalPos, node.kelompok,node.parent,
+(case
+when  (node.rgt-node.lft)=1 then 'false' else 'true'
+end) as hasChild,
+(COUNT(parent.NoUrutId) - (subTree.depth + 1)) as depth
+from DataAccount as node, DataAccount as parent, DataAccount as subParent,
+(select node.NoUrutId, (COUNT(parent.NoUrutId)-1) as depth 
+from DataAccount as node, DataAccount as parent
+where node.lft between parent.lft and parent.rgt 
+group by node.NoUrutId
+) as subTree
+where node.lft between parent.lft and parent.rgt
+and node.lft between subParent.lft and subParent.rgt
+and subParent.NoUrutId = subTree.NoUrutId and subTree.NoUrutId = 1
+group by node.NoUrutId,node.kodeAccount, node.account, node.normalPos, node.kelompok,node.rgt,node.lft,subTree.depth,node.parent,node.Depth
+having node.Depth = 2
+order by node.lft
+
+
+
+
+//untuk journal 
+SELECT COUNT(parent.NoUrutId) - 1 AS depth, node.NoUrutId, node.KodeAccount, node.Account, node.NormalPos, node.Kelompok, NULL AS parent, (CASE WHEN (node.rgt - node.lft) = 1 THEN 'false' ELSE 'true' END) AS hasChild
+FROM   DataAccount AS node CROSS JOIN
+             DataAccount AS parent
+WHERE (node.Lft BETWEEN parent.Lft AND parent.Rgt)
+GROUP BY node.NoUrutId, node.KodeAccount, node.Account, node.NormalPos, node.Kelompok, node.Lft, node.Rgt, node.Depth
+HAVING (node.Depth BETWEEN 2 AND 3)
+ORDER BY node.Lft
+
+
+//total dari jurnal akun per nama akun tinggal disetting kodeaccountnya by string dan periode tanggal kejadian
+SELECT TOP (100) PERCENT SUM(j.Debit - j.Kredit) AS saldo, a.KodeAccount, a.Account
+FROM   DataJournal AS j INNER JOIN
+             DataJournalHeader AS b ON j.DataJournalHeaderId = b.DataJournalHeaderId INNER JOIN
+             DataAccount AS a ON j.DataAccountId = a.DataAccountId
+GROUP BY j.NoUrutId, a.KodeAccount, a.Account
+
+
+//Mendapatkan jumlah journal (debit, kredit) berdasarkan account per periode awal s/d akhir.
+//_fetchTransPeriode
+
+
+

@@ -5,18 +5,12 @@
 }
 
 
-<script language="javascript">
-    function printdiv(printpage) {
-        var headstr = "<html><head><title></title></head><body>";
-        var footstr = "</body>";
-        var newstr = document.all.item(printpage).innerHTML;
-        var oldstr = document.body.innerHTML;
-        document.body.innerHTML = headstr + newstr + footstr;
-        window.print();
-        document.body.innerHTML = oldstr;
-        return false;
+<style>
+    table, th, td {
+        border: 1px solid black;
     }
-</script>
+</style>
+
 
 <div class="hidden-print">
     <p></p>
@@ -28,8 +22,8 @@
     <div>
         <h2>Laporan Buku Besar</h2>
         @*<p>Akun : @ViewBag.Akun1</p>*@
-        <table class="table table-bordered table-striped grid" style="width:100%">
-            <caption style="text-align:center">Rincian Buku Besar</caption>
+        <table style="width:100%">
+
             @{int i = 1;
                 Decimal? debit11 = 0;
                 decimal? kredit22 = 0;
@@ -68,7 +62,7 @@
                     {
                         saldo1 = saldo1 + (item.Debit1 - item.Kredit1);
                         <tr>
-                            <td>@i</td>
+                            <td style="text-align:center">@i</td>
                             <td>
                                 @string.Format("{0:d}", item.TanggalInput)
                             </td>
@@ -82,13 +76,13 @@
                                     <td style="padding-left:43px">@item.KodeNamaAkun</td>}*@
 
                             <td style="text-align:right">
-                                @string.Format("{0:c}", item.Debit1)
+                                @string.Format("{0:c0}", item.Debit1)
                             </td>
                             <td style="text-align:right">
-                                @string.Format("{0:c}", item.Kredit1)
+                                @string.Format("{0:c0}", item.Kredit1)
                             </td>
-                            <td>
-                                @string.Format("{0:c}", saldo1)
+                            <td style="text-align:right">
+                                @string.Format("{0:c0}", saldo1)
                             </td>
                         </tr>
                         debit11 = debit11 + item.Debit1;
@@ -123,8 +117,8 @@
                         { <p style="text-align:center">Seimbang</p>}
 
                     </td>
-                    <td style="text-align:right">   @string.Format("{0:c}", debit11a)</td>
-                    <td style="text-align:right">@string.Format("{0:c}", kredit22a)</td>
+                    <td style="text-align:right">   @string.Format("{0:c0}", debit11a)</td>
+                    <td style="text-align:right">@string.Format("{0:c0}", kredit22a)</td>
                 </tr>
 
             }
@@ -132,17 +126,30 @@
         </table>
     </div>
     <div class="report-footer">
-        <div class="otorisasi">
-            <div class="otorisasi-left">
-                <div class="jabatan">Dibuat Oleh</div>
-                <div class="nama">Bion</div>
-            </div>
-            <div class="otorisasi-right">
-                <div class="jabatan">Disetujui Oleh</div>
-                <div class="nama">Bion</div>
-            </div>
-            <div style="clear: both;"></div>
-        </div>
+        <table class="table table-bordered table-striped grid">
+            <tr>
+                <td colspan="3">Dibuat Oleh</td>
+                <td colspan="3">Disetujui Oleh</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
     </div>
 
 </div>
+
+
+<script language="javascript">
+    function printdiv(printpage) {
+        var headstr = "<html><head><title></title></head><body>";
+        var footstr = "</body>";
+        var newstr = document.all.item(printpage).innerHTML;
+        var oldstr = document.body.innerHTML;
+        document.body.innerHTML = headstr + newstr + footstr;
+        window.print();
+        document.body.innerHTML = oldstr;
+        return false;
+    }
+</script>

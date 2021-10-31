@@ -15,6 +15,7 @@ namespace AccountingRazor2021.Dto
         public string NoBuktiJournal { get; set; }
         public string Keterangan { get; set; }
         public string UserInput { get; set; }
+        public decimal TotalRupiah { get; set; }
         public string ValidasiOleh { get; set; }
 
 

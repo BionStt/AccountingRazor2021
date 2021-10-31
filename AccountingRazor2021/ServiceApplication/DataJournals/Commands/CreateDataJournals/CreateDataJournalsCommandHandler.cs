@@ -42,7 +42,7 @@ namespace AccountingRazor2021.ServiceApplication.DataJournals.Commands.CreateDat
             //    xy = "1";
             //}
 
-            var entity = Domain.DataJournalHeader.CreateDataJournalHeader(request.TanggalInput,request.Keterangan,request.TipeJournalId,request.UserInput, GenerateNBJ(request.TanggalInput, xy));
+            var entity = Domain.DataJournalHeader.CreateDataJournalHeader(request.TanggalInput,request.Keterangan,request.TipeJournalId,request.UserInput, GenerateNBJ(request.TanggalInput, xy),request.TotalRupiah);
 
             await _dbContext.DataJournalHeaders.AddAsync(entity);
             await _dbContext.SaveChangesAsync(cancellationToken);

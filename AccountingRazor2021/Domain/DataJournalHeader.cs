@@ -12,7 +12,7 @@ namespace AccountingRazor2021.Domain
         {
            
         }
-        private DataJournalHeader(DateTime tanggalInput, string keterangan, int tipeJournalId, string userInput,string NoBuktiJournal1)
+        private DataJournalHeader(DateTime tanggalInput, string keterangan, int tipeJournalId, string userInput, string NoBuktiJournal1, decimal totalRupiah)
         {
             // NoBuktiJournal = noBuktiJournal;
             //NoBuktiJournal = GenerateNBJ(DateTime.Now);
@@ -21,10 +21,11 @@ namespace AccountingRazor2021.Domain
             TipeJournalId = tipeJournalId;
             UserInput = userInput;
             TanggalInput = tanggalInput;
+            TotalRupiah = totalRupiah;
         }
-        public static DataJournalHeader CreateDataJournalHeader(DateTime tanggalInput,string keterangan, int tipeJournalId, string userInput, string NoBuktiJournal1)
+        public static DataJournalHeader CreateDataJournalHeader(DateTime tanggalInput,string keterangan, int tipeJournalId, string userInput, string NoBuktiJournal1, decimal totalRupiah)
         {
-            return new DataJournalHeader(tanggalInput,keterangan, tipeJournalId, userInput,NoBuktiJournal1);
+            return new DataJournalHeader(tanggalInput,keterangan, tipeJournalId, userInput,NoBuktiJournal1,totalRupiah);
 
         }
         public Guid DataJournalHeaderId { get; private set; }
@@ -33,10 +34,11 @@ namespace AccountingRazor2021.Domain
         public DateTime? Validasi { get; private set; }
         public string ValidasiOleh { get; private set; }
 
-        public int? DataPeriodeId { get; private set; }
+       // public int? DataPeriodeId { get; private set; }
       
         public string NoBuktiJournal { get; private set; }
         public string Keterangan { get; private set; }
+        public decimal  TotalRupiah { get; private set; }
         public int TipeJournalId { get; private set; }
         public string UserInput { get; private set; }
       

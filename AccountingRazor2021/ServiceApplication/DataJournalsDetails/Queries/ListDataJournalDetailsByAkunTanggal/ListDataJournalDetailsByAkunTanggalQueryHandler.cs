@@ -25,7 +25,7 @@ namespace AccountingRazor2021.ServiceApplication.DataJournalsDetails.Queries.Lis
             var returnQuery = await (from a in _dbContext.DataJournalDetails
                                      join b in _dbContext.DataAccounts on a.DataAccountId equals b.DataAccountId
                                      join c in _dbContext.DataJournalHeaders on a.DataJournalHeaderId equals c.DataJournalHeaderId
-                                     where b.NoUrutId == int.Parse(request.NoUrutId)  && (c.TanggalInput >= request.PeriodeAwal && c.TanggalInput <= request.PeriodeAkhir)
+                                     where b.NoUrutId == int.Parse(request.NoUrutId)  && (c.TanggalInput.Date >= request.PeriodeAwal.Date && c.TanggalInput.Date <= request.PeriodeAkhir.Date)
                                      select new ListDataJournalDetailsByAkunTanggalResponse
                                      {
                                          NoUrutId = b.NoUrutId,

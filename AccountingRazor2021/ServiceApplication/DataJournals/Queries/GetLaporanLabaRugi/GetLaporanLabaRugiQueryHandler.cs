@@ -24,11 +24,11 @@ namespace AccountingRazor2021.ServiceApplication.DataJournals.Queries.GetLaporan
         {
             var returnQuery = await (from a1 in _dbContext.DataAccounts
                             join b2 in _dbContext.DataAccounts on a1.Parent equals b2.NoUrutId.ToString()
-                            join c in _dbContext.DataAccounts on a1.NoUrutId equals Int32.Parse(c.Parent)
+                            join c in _dbContext.DataAccounts on a1.NoUrutId.ToString() equals c.Parent
                             join e in _dbContext.DataAccounts on b2.Parent equals e.NoUrutId.ToString()
                             from d in _dbContext.DataJournalDetails.Where(x => x.DataAccountId == c.DataAccountId).DefaultIfEmpty()
                             join f in _dbContext.DataJournalHeaders on d.DataJournalHeaderId equals f.DataJournalHeaderId
-                            where b2.Kelompok == "L" && (f.TanggalInput >= request.Tanggal1 && f.TanggalInput <= request.Tanggal2)
+                            where b2.Kelompok == "L" && (f.TanggalInput.Date >= request.Tanggal1.Date && f.TanggalInput.Date <= request.Tanggal2.Date)
                             orderby a1.KodeAccount, c.KodeAccount, a1.Depth
                             let nm = c.KodeAccount + " - " + c.Account
                             select new

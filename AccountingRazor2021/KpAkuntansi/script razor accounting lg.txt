@@ -1,0 +1,491 @@
+﻿USE [master]
+GO
+/****** Object:  Database [AccountingRazor2021]    Script Date: 30/10/2021 17.33.50 ******/
+CREATE DATABASE [AccountingRazor2021]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'AccountingRazor2021', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\AccountingRazor2021.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'AccountingRazor2021_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\AccountingRazor2021_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+GO
+ALTER DATABASE [AccountingRazor2021] SET COMPATIBILITY_LEVEL = 140
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [AccountingRazor2021].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [AccountingRazor2021] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [AccountingRazor2021] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [AccountingRazor2021] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [AccountingRazor2021] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [AccountingRazor2021] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [AccountingRazor2021] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [AccountingRazor2021] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [AccountingRazor2021] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [AccountingRazor2021] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [AccountingRazor2021] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [AccountingRazor2021] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [AccountingRazor2021] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [AccountingRazor2021] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [AccountingRazor2021] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [AccountingRazor2021] SET  ENABLE_BROKER 
+GO
+ALTER DATABASE [AccountingRazor2021] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [AccountingRazor2021] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [AccountingRazor2021] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [AccountingRazor2021] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [AccountingRazor2021] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [AccountingRazor2021] SET READ_COMMITTED_SNAPSHOT ON 
+GO
+ALTER DATABASE [AccountingRazor2021] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [AccountingRazor2021] SET RECOVERY FULL 
+GO
+ALTER DATABASE [AccountingRazor2021] SET  MULTI_USER 
+GO
+ALTER DATABASE [AccountingRazor2021] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [AccountingRazor2021] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [AccountingRazor2021] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [AccountingRazor2021] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [AccountingRazor2021] SET DELAYED_DURABILITY = DISABLED 
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'AccountingRazor2021', N'ON'
+GO
+ALTER DATABASE [AccountingRazor2021] SET QUERY_STORE = OFF
+GO
+USE [AccountingRazor2021]
+GO
+/****** Object:  Schema [Accounting]    Script Date: 30/10/2021 17.33.50 ******/
+CREATE SCHEMA [Accounting]
+GO
+/****** Object:  Table [Accounting].[DataSaldoHarian]    Script Date: 30/10/2021 17.33.50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Accounting].[DataSaldoHarian](
+	[DataSaldoHarianId] [uniqueidentifier] NOT NULL,
+	[NoUrutId] [int] IDENTITY(1,1) NOT NULL,
+	[DataAccountId] [uniqueidentifier] NOT NULL,
+	[Debet] [money] NOT NULL,
+	[Kredit] [money] NOT NULL,
+	[Saldo] [money] NOT NULL,
+	[TanggalInput] [datetime] NOT NULL,
+ CONSTRAINT [PK_DataSaldoHarian] PRIMARY KEY CLUSTERED 
+(
+	[DataSaldoHarianId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[__EFMigrationsHistory]    Script Date: 30/10/2021 17.33.50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[__EFMigrationsHistory](
+	[MigrationId] [nvarchar](150) NOT NULL,
+	[ProductVersion] [nvarchar](32) NOT NULL,
+ CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY CLUSTERED 
+(
+	[MigrationId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[DataAccount]    Script Date: 30/10/2021 17.33.50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DataAccount](
+	[DataAccountId] [uniqueidentifier] NOT NULL,
+	[NoUrutId] [int] IDENTITY(1,1) NOT NULL,
+	[Lft] [int] NULL,
+	[Rgt] [int] NULL,
+	[Depth] [int] NULL,
+	[Parent] [nvarchar](15) NULL,
+	[KodeAccount] [nvarchar](25) NULL,
+	[Account] [varchar](150) NULL,
+	[NormalPos] [int] NULL,
+	[Kelompok] [varchar](2) NULL,
+	[Aktif] [nvarchar](max) NULL,
+ CONSTRAINT [PK_DataAccount] PRIMARY KEY CLUSTERED 
+(
+	[DataAccountId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[DataBuktiTransaksi]    Script Date: 30/10/2021 17.33.50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DataBuktiTransaksi](
+	[DataBuktiTransaksiId] [uniqueidentifier] NOT NULL,
+	[NoUrutId] [int] IDENTITY(1,1) NOT NULL,
+	[TipeJournalId] [int] NOT NULL,
+	[NoBukti] [nvarchar](max) NULL,
+	[TanggalInput] [datetime] NOT NULL,
+	[Keterangan] [nvarchar](max) NULL,
+	[ValidateBy] [nvarchar](max) NULL,
+	[ValidatedDate] [datetime] NOT NULL,
+	[Total] [money] NOT NULL,
+ CONSTRAINT [PK_DataBuktiTransaksi] PRIMARY KEY CLUSTERED 
+(
+	[DataBuktiTransaksiId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[DataJournal]    Script Date: 30/10/2021 17.33.50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DataJournal](
+	[DataJournalDetailsId] [uniqueidentifier] NOT NULL,
+	[NoUrutId] [int] IDENTITY(1,1) NOT NULL,
+	[DataJournalHeaderId] [uniqueidentifier] NOT NULL,
+	[DataAccountId] [uniqueidentifier] NOT NULL,
+	[Debit] [money] NULL,
+	[Kredit] [money] NULL,
+	[Keterangan] [varchar](400) NULL,
+	[TanggalInput] [datetime2](7) NOT NULL,
+ CONSTRAINT [PK_DataJournal] PRIMARY KEY CLUSTERED 
+(
+	[DataJournalDetailsId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[DataJournalHeader]    Script Date: 30/10/2021 17.33.50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DataJournalHeader](
+	[DataJournalHeaderId] [uniqueidentifier] NOT NULL,
+	[NoUrutId] [int] IDENTITY(1,1) NOT NULL,
+	[TanggalInput] [datetime2](7) NOT NULL,
+	[NoBuktiJournal] [varchar](40) NULL,
+	[Keterangan] [nvarchar](500) NULL,
+	[TipeJournalId] [int] NOT NULL,
+	[UserInput] [varchar](40) NULL,
+	[Validasi] [datetime] NULL,
+	[ValidasiOleh] [varchar](40) NULL,
+	[Aktif] [varchar](2) NULL,
+	[TotalRupiah] [money] NOT NULL,
+ CONSTRAINT [PK_DataJournalHeader] PRIMARY KEY CLUSTERED 
+(
+	[DataJournalHeaderId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[DataPeriode]    Script Date: 30/10/2021 17.33.50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DataPeriode](
+	[DataPeriodeId] [uniqueidentifier] NOT NULL,
+	[NoUrutId] [int] IDENTITY(1,1) NOT NULL,
+	[Mulai] [datetime] NOT NULL,
+	[Berakhir] [datetime] NOT NULL,
+	[IsAktif] [varchar](2) NULL,
+	[UserInput] [varchar](50) NULL,
+ CONSTRAINT [PK_DataPeriode] PRIMARY KEY CLUSTERED 
+(
+	[DataPeriodeId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[DataSaldoAwal]    Script Date: 30/10/2021 17.33.50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DataSaldoAwal](
+	[DataSaldoAwalId] [uniqueidentifier] NOT NULL,
+	[NoUrutId] [int] IDENTITY(1,1) NOT NULL,
+	[DataAccountId] [uniqueidentifier] NOT NULL,
+	[Debet] [money] NOT NULL,
+	[Kredit] [money] NOT NULL,
+	[Saldo] [money] NOT NULL,
+	[TanggalInput] [datetime] NOT NULL,
+ CONSTRAINT [PK_DataSaldoAwal] PRIMARY KEY CLUSTERED 
+(
+	[DataSaldoAwalId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TipeJournal]    Script Date: 30/10/2021 17.33.50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TipeJournal](
+	[TipeJournalId] [uniqueidentifier] NOT NULL,
+	[NoUrutId] [int] IDENTITY(1,1) NOT NULL,
+	[KodeJournal] [varchar](10) NULL,
+	[NamaJournal] [varchar](50) NULL,
+ CONSTRAINT [PK_TipeJournal] PRIMARY KEY CLUSTERED 
+(
+	[TipeJournalId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [Accounting].[DataSaldoHarian] ADD  DEFAULT ('2021-10-30T17:30:09.907') FOR [TanggalInput]
+GO
+ALTER TABLE [dbo].[DataJournal] ADD  DEFAULT ('0001-01-01T00:00:00.0000000') FOR [TanggalInput]
+GO
+ALTER TABLE [dbo].[DataSaldoAwal] ADD  DEFAULT ('2021-10-30T17:30:09.897') FOR [TanggalInput]
+GO
+/****** Object:  StoredProcedure [dbo].[MoveAccountSubtree]    Script Date: 30/10/2021 17.33.50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[MoveAccountSubtree]
+	@AccID INT
+	, @NewParentID INT
+	, @Debug BIT = 0
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	--Disable triggers during operations
+	ALTER TABLE DataAccount DISABLE TRIGGER trg_DataAccount_DEL;
+	ALTER TABLE DataAccount DISABLE TRIGGER trg_DataAccount_INS;
+	ALTER TABLE DataAccount DISABLE TRIGGER trg_DataAccount_UPD;
+
+	--Treat 0/-1/NULL the same: means we want to make the top of this subtree a Root node
+	IF (@NewParentID <= 0 OR @NewParentID IS NULL)
+	BEGIN
+		SET @NewParentID = -1;
+	END
+
+	--Cannot move a subtree under itself
+	ELSE IF @NewParentID IN (
+		SELECT SubAccount.NoUrutId
+		FROM DataAccount Account1
+		JOIN DataAccount SubAccount
+				ON SubAccount.Lft BETWEEN Account1.Lft AND Account1.Rgt
+		WHERE Account1.NoUrutId = @AccID)
+	BEGIN
+		RAISERROR (N'Cannot move subtree to a node within itself.', 18, 1);
+		RETURN;
+	END
+
+	--Cannot move subtree to a node that doesnt exist
+	ELSE IF NOT EXISTS (SELECT 1 FROM DataAccount WHERE NoUrutId = @NewParentID)
+	BEGIN
+		RAISERROR (N'Cannot move subtree to a node that doesn''t exist.', 18, 1);
+		RETURN;
+	END
+
+	--Cannot move subtree that doesnt exist
+	ELSE IF NOT EXISTS (SELECT 1 FROM DataAccount WHERE NoUrutId = @AccID)
+	BEGIN
+		RAISERROR (N'Cannot move subtree that doesn''t exist.', 18, 1);
+		RETURN;
+	END
+
+	--Get old Parent & Subtree size
+	DECLARE @OldParentID INT
+		, @SubtreeSize INT
+		, @SubtreeOldLeft INT
+		, @SubtreeOldRight INT
+		, @SubtreeOldDepth INT
+
+	SELECT @OldParentID = Parent,  @SubtreeSize = Rgt - Lft + 1
+		, @SubtreeOldLeft = Lft, @SubtreeOldRight = Rgt, @SubtreeOldDepth = Depth
+	FROM DataAccount
+	WHERE Account = @AccID
+
+	--Cannot move subtree to its own Parent, i.e. there's nothing to do b/c new parent is same as old
+	IF @OldParentID = @NewParentID
+	BEGIN
+		RAISERROR (N'Cannot move subtree to its own parent.', 18, 1);
+		RETURN;
+	END
+
+	--Get new Parent position
+	DECLARE @NewParentRight INT
+		, @NewParentDepth INT;
+
+	--If we're going Root, place it to the Right of existing Roots
+	IF @NewParentID = -1
+	BEGIN
+		SELECT @NewParentRight = MAX(Rgt) + 1, @NewParentDepth = -1
+		FROM DataAccount
+	END
+	--Else, place it to the Right of its new siblings-to-be
+	ELSE
+	BEGIN
+		SELECT @NewParentRight = Rgt, @NewParentDepth = Depth
+		FROM DataAccount
+		WHERE Account = @NewParentID
+	END
+
+	--Get new positions for use
+	SELECT NoUrutId
+		, Lft + @NewParentRight - @SubtreeOldLeft AS PLeft
+		, Rgt + @NewParentRight - @SubtreeOldLeft AS PRight
+		, Depth + (@NewParentDepth - @SubtreeOldDepth) + 1 AS Depth
+	INTO #MoveNodes
+	FROM DataAccount
+	WHERE NoUrutId IN (
+		SELECT SubAccount.NoUrutId
+		FROM DataAccount Account1
+		JOIN DataAccount SubAccount
+				ON SubAccount.Lft BETWEEN Account1.Lft AND Account1.Rgt
+		WHERE Account1.NoUrutId = @AccID
+	)
+
+	IF (@Debug = 1)
+		SELECT * FROM #MoveNodes
+		ORDER BY PLeft
+
+	--Make gap in tree (at destination branch) equal to the SubtreeSize
+	UPDATE DataAccount
+	SET Lft = CASE WHEN Lft > @NewParentRight THEN Lft + @SubtreeSize ELSE Lft END,
+		Rgt = CASE WHEN Rgt >= @NewParentRight THEN Rgt + @SubtreeSize ELSE Rgt END
+	WHERE Rgt >= @NewParentRight
+
+	--Update Subtree positions to new ones
+	UPDATE DataAccount
+	SET Lft = #MoveNodes.PLeft, Rgt = #MoveNodes.PRight, Depth = #MoveNodes.Depth
+	FROM DataAccount
+	JOIN #MoveNodes
+			ON DataAccount.NoUrutId= #MoveNodes.NoUrutId
+
+	--Maintain the Adjacency-List part (set ParentID)
+	UPDATE DataAccount
+	SET Parent = (CASE WHEN @NewParentID = -1 THEN NULL ELSE @NewParentID END)
+	WHERE NoUrutId = @AccID
+
+	--Close gaps, i.e. after the Subtree is gone from its old Parent, said old parent node has no children;
+	--while nodes to the right & above now have inflated values, except where they include the newly moved subtree.
+	UPDATE DataAccount
+	SET Lft = CASE WHEN Lft > @SubtreeOldRight THEN Lft - @SubtreeSize ELSE Lft END,
+		Rgt = CASE WHEN Rgt >= @SubtreeOldRight THEN Rgt - @SubtreeSize ELSE Rgt END
+	WHERE Rgt >= @SubtreeOldRight
+
+	--Re-enable triggers when done
+	ALTER TABLE DataAccount ENABLE TRIGGER trg_DataAccount_DEL;
+	ALTER TABLE DataAccount ENABLE TRIGGER trg_DataAccount_INS;
+	ALTER TABLE DataAccount ENABLE TRIGGER trg_DataAccount_UPD;
+END
+GO
+/****** Object:  StoredProcedure [dbo].[RebuildDataAccountTree]    Script Date: 30/10/2021 17.33.50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+Create PROCEDURE [dbo].[RebuildDataAccountTree]
+	@ParentID INT = NULL
+	, @Position INT = 0
+	, @Depth INT = 0
+AS
+BEGIN
+	SET NOCOUNT ON;
+	
+	--Starting depth; we will set this to the given Parent's Depth (or 0 if NULL)
+	--DECLARE @Depth INT
+	/*
+	SELECT @Depth = (CASE WHEN @ParentID IS NULL THEN 0 ELSE Depth END)
+		FROM nsm.Cat
+		WHERE (@ParentID IS NULL AND ParentID IS NULL)
+			OR ParentID = @ParentID
+	*/
+
+	--Cursor (loop) over child nodes of the given ParentID
+	DECLARE @Curff CURSOR 
+	SET @Curff = CURSOR READ_ONLY FAST_FORWARD FOR
+		SELECT NoUrutId
+		FROM DataAccount
+		WHERE (@ParentID IS NULL AND NoUrutId IS NULL)
+			OR NoUrutId = @ParentID
+		ORDER BY Lft
+
+	DECLARE @CatID INT
+	OPEN @Curff
+	FETCH NEXT FROM @Curff INTO @CatID
+
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+		--Assumption: @Position starts at the CORRECT # from the given parent
+		SET @Position = @Position + 1
+
+		--@Depth gets incremented when you travel down from parent to child
+		SET @Depth = @Depth + 1
+
+		--Update this node's PLeft & Depth
+		ALTER TABLE DataAccount DISABLE TRIGGER trg_DataAccount_UPD;
+
+		UPDATE DataAccount SET Lft = @Position, Depth = @Depth
+		WHERE NoUrutId = @CatID
+
+		ALTER TABLE DataAccount ENABLE TRIGGER trg_DataAccount_UPD;
+
+		--Recursively re-number this node's children
+		RAISERROR ('Calling RebuildCatTree %d, %d --at Depth=%d', 0, 1, @CatID, @Position, @Depth) WITH NOWAIT
+		
+		EXEC @Position = RebuildDataAccountTree @CatID, @Position, @Depth
+
+		--It returns the last PRight set on the sub-tree, so add +1 to get this node's PRight
+		SET @Position = @Position + 1
+
+		--@Depth gets decremented when you travel up from child to parent
+		SET @Depth = @Depth - 1
+
+		--Update this node's PRight as mentioned above
+		ALTER TABLE DataAccount DISABLE TRIGGER trg_DataAccount_UPD;
+
+		UPDATE DataAccount  SET Rgt = @Position
+		WHERE NoUrutId = @CatID
+
+		ALTER TABLE DataAccount ENABLE TRIGGER trg_DataAccount_UPD;
+
+		--continue looping
+		FETCH NEXT FROM @Curff INTO @CatID
+	END
+	CLOSE @Curff
+	DEALLOCATE @Curff
+
+	RAISERROR('RebuildCatTree for %d returning %d --at Depth=%d', 0, 1, @ParentID, @Position, @Depth) WITH NOWAIT
+
+	--Return PRight as set on this node, so that caller knows what it's new PRight should be
+	RETURN @Position
+END
+GO
+USE [master]
+GO
+ALTER DATABASE [AccountingRazor2021] SET  READ_WRITE 
+GO

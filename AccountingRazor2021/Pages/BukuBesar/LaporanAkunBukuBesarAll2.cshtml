@@ -5,19 +5,11 @@
 }
 
 
-
-<script language="javascript">
-    function printdiv(printpage) {
-        var headstr = "<html><head><title></title></head><body>";
-        var footstr = "</body>";
-        var newstr = document.all.item(printpage).innerHTML;
-        var oldstr = document.body.innerHTML;
-        document.body.innerHTML = headstr + newstr + footstr;
-        window.print();
-        document.body.innerHTML = oldstr;
-        return false;
+<style>
+    table, th, td {
+        border: 1px solid black;
     }
-</script>
+</style>
 <div class="hidden-print">
     <p></p>
     @*<a style="color:green;text-decoration:none;" href="javascript:window.print()">
@@ -33,7 +25,7 @@
     <div>
         <h2>Laporan Buku Besar</h2>
         @*<p>Akun : @ViewBag.Akun1</p>*@
-        <table class="table table-bordered table-striped grid" style="width:100%">
+        <table  style="width:100%">
             <caption style="text-align:center">Rincian Buku Besar</caption>
             @{int i = 1;
                 Decimal? debit11 = 0;
@@ -82,13 +74,13 @@
                                     <td style="padding-left:43px">@item.KodeNamaAkun</td>}*@
 
                             <td style="text-align:right">
-                                @string.Format("{0:c}", item.Debit1)
+                                @string.Format("{0:c0}", item.Debit1)
                             </td>
                             <td style="text-align:right">
-                                @string.Format("{0:c}", item.Kredit1)
+                                @string.Format("{0:c0}", item.Kredit1)
                             </td>
-                            <td>
-                                @string.Format("{0:c}", saldo1)
+                            <td style="text-align:right">
+                                @string.Format("{0:c0}", saldo1)
                             </td>
                         </tr>
                         debit11 = debit11 + item.Debit1;
@@ -112,8 +104,8 @@
                         { <p style="text-align:center">Seimbang</p>}
 
                     </td>
-                    <td style="text-align:right">   @string.Format("{0:c}", debit11)</td>
-                    <td style="text-align:right">@string.Format("{0:c}", kredit22)</td>
+                    <td style="text-align:right">   @string.Format("{0:c0}", debit11)</td>
+                    <td style="text-align:right">@string.Format("{0:c0}", kredit22)</td>
                 </tr>
 
             }
@@ -121,17 +113,31 @@
         </table>
     </div>
     <div class="report-footer">
-        <div class="otorisasi">
-            <div class="otorisasi-left">
-                <div class="jabatan">Dibuat Oleh</div>
-                <div class="nama">Bion</div>
-            </div>
-            <div class="otorisasi-right">
-                <div class="jabatan">Disetujui Oleh</div>
-                <div class="nama">Bion</div>
-            </div>
-            <div style="clear: both;"></div>
-        </div>
+        <table class="table table-bordered table-striped grid">
+            <tr>
+                <td colspan="3">Dibuat Oleh</td>
+                <td colspan="3">Disetujui Oleh</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
     </div>
 
 </div>
+
+
+
+<script language="javascript">
+    function printdiv(printpage) {
+        var headstr = "<html><head><title></title></head><body>";
+        var footstr = "</body>";
+        var newstr = document.all.item(printpage).innerHTML;
+        var oldstr = document.body.innerHTML;
+        document.body.innerHTML = headstr + newstr + footstr;
+        window.print();
+        document.body.innerHTML = oldstr;
+        return false;
+    }
+</script>

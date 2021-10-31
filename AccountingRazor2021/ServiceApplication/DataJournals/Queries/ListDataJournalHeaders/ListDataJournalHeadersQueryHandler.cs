@@ -30,7 +30,9 @@ namespace AccountingRazor2021.ServiceApplication.DataJournals.Queries.ListDataJo
              NoUrutId = x.NoUrutId,
              TanggalInput = x.TanggalInput,
              UserInput = x.UserInput,
-             ValidasiOleh = x.ValidasiOleh
+             ValidasiOleh = x.ValidasiOleh,
+             TotalRupiah = x.TotalRupiah
+
 
             }).AsNoTracking().ToListAsync(cancellationToken);
 

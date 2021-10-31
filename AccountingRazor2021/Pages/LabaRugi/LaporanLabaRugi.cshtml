@@ -4,11 +4,16 @@
     ViewData["Title"] = "LaporanLabaRugi";
 }
 
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
 
 
 <h2>Isian Periode Laporan Laba Rugi</h2>
 <div>
- 
+
     <form method="post">
         <table style="border:double">
             <tr style="border:double">Masukkan Periode Waktu</tr>
@@ -16,14 +21,14 @@
                 <th style="border:double">Periode Awal:</th>
                 <td style="border:double">
 
-                    <input  asp-for="Tanggal1" type="text" id="datepicker1" />
+                    <input asp-for="Tanggal1" type="datetime-local" />
                 </td>
             </tr>
             <tr style="border:double">
                 <th style="border:double">Periode Akhir:</th>
                 <td style="border:double">
 
-                    <input  asp-for="Tanggal2" type="text" id="datepicker2" />
+                    <input asp-for="Tanggal2" type="datetime-local" />
                 </td>
             </tr>
             <tr>
@@ -37,9 +42,9 @@
         </table>
     </form>
 
-        
 
-    </div>
+
+</div>
 
 
 <h2>LaporanLabaRugi</h2>
@@ -48,14 +53,15 @@
 {
 
 
-
     <div>
         <h1 style="text-align:center">Laporan Laba/Rugi</h1>
-        <h2 style="text-align:center">Periode @string.Format("{0:d}", ViewBag.Tgl1) s/d @string.Format("{0:d}", ViewBag.Tgl2)</h2>
-
+        @if (ViewBag.Tgl1 == new DateTime() && ViewBag.Tgl2 == new DateTime())
+        {
+            <h2 style="text-align:center">Periode @string.Format("{0:d}", ViewBag.Tgl1) s/d @string.Format("{0:d}", ViewBag.Tgl2)</h2>
+        }
     </div>
     <div>
-        <table class="table table-bordered table-striped grid">
+        <table >
             <thead>
                 <tr>
                     <th>No.</th>
@@ -127,15 +133,15 @@
                                         </td>*@
                                     <td>
                                         @*@Html.DisplayFor(modelItem => item.Debit1)*@
-                                        @string.Format("{0:c}", item.Debit1)
+                                        @string.Format("{0:c0}", item.Debit1)
                                     </td>
                                     <td>
                                         @*@Html.DisplayFor(modelItem => item.Kredit1)*@
-                                        @string.Format("{0:c}", item.Kredit1)
+                                        @string.Format("{0:c0}", item.Kredit1)
                                     </td>
                                     <td>
                                         @*@Html.DisplayFor(modelItem => item.Saldo1)*@
-                                        @string.Format("{0:c}", item.Saldo1)
+                                        @string.Format("{0:c0}", item.Saldo1)
                                     </td>
                                 </tr>
                                 i = i + item.Saldo1;
@@ -160,7 +166,7 @@
                             @*<span class="label label-primary">Avg Salary: @aa.Average(x => x.Salary).ToString("C")</span>*@
                         </td>
 
-                        <td> @String.Format("{0:c}", i)</td>
+                        <td> @String.Format("{0:c0}", i)</td>
 
                     </tr>
                     //   Profit = Profit + i;
@@ -174,7 +180,7 @@
                         <span>Laba Rugi Berjalan</span>
                     </td>
                     <td style="padding-left:100px;font-weight:bold">
-                        <span>@string.Format("{0:c}", i2)</span>
+                        <span>@string.Format("{0:c0}", i2)</span>
                     </td>
                 </tr>
             </tfoot>

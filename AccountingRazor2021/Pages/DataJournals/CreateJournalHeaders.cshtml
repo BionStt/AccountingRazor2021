@@ -20,6 +20,11 @@
                 <input type="datetime-local" title="Silahkan pilih tanggal (Bulan-Tanggal-Tahun)" asp-for="DataJournalHeaders.TanggalInput" class="form-control" />
                 <span asp-validation-for="DataJournalHeaders.TanggalInput" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="DataJournalHeaders.TotalRupiah"></label>
+                <input asp-for="DataJournalHeaders.TotalRupiah" class="form-control" type="number"/>
+
+            </div>
             @*<div class="form-group">
                     <label asp-for="NoBuktiJournal" class="control-label"></label>
                     <input asp-for="NoBuktiJournal" class="form-control" />

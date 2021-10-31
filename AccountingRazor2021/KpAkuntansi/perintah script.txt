@@ -1,0 +1,84 @@
+//parent root
+select (COUNT(parent.id)-1) as depth, node.id, node.kodeAccount, node.account,node.normalPos,node.kelompok, null as parent,
+(case
+when (node.rgt - node.lft) = 1 Then 'true' 
+	else 'false' 
+END) as hasChild
+from account as node, account as parent
+where node.lft between parent.lft and parent.rgt
+group by node.id ,node.kodeAccount, node.account,node.normalPos,node.kelompok,node.lft,node.rgt
+having (COUNT(parent.id)-1) = 0
+order by node.lft
+
+//select dibawah alias anak parent
+select node.id, node.kodeAccount, node.account, node.normalPos, node.kelompok,
+(case
+when  (node.rgt-node.lft)=1 then 'true' else 'false'
+end) as hasChild,
+(COUNT(parent.id) - (subTree.depth + 1)) as depth
+from account as node, account as parent, account as subParent,
+(select node.id, (COUNT(parent.id)-1) as depth 
+from account as node, account as parent
+where node.lft between parent.lft and parent.rgt and node.id = 2
+group by node.id
+) as subTree
+where node.lft between parent.lft and parent.rgt
+and node.lft between subParent.lft and subParent.rgt
+and subParent.id = subTree.id
+group by node.id,node.kodeAccount, node.account, node.normalPos, node.kelompok,node.rgt,node.lft,subTree.depth
+having depth=1
+order by node.lft
+
+
+
+//tanpa having depth =1 subTree.id = 84 == modal
+, subTree.id = 45 = pasiva, 
+subTree.id = 1 = aktiva,
+msubTree.id = 93 = pendapatan
+subTree.id = 115 = biaya Operasional
+subTree.id = 193 = Pendapatan dan Biaya Non Operasional
+
+select node.id, node.kodeAccount, node.account, node.normalPos, node.kelompok,node.parent,
+(case
+when  (node.rgt-node.lft)=1 then 'false' else 'true'
+end) as hasChild,
+(COUNT(parent.id) - (subTree.depth + 1)) as depth
+from account as node, account as parent, account as subParent,
+(select node.id, (COUNT(parent.id)-1) as depth 
+from account as node, account as parent
+where node.lft between parent.lft and parent.rgt 
+group by node.id
+) as subTree
+where node.lft between parent.lft and parent.rgt
+and node.lft between subParent.lft and subParent.rgt
+and subParent.id = subTree.id and subTree.id = 84
+group by node.id,node.kodeAccount, node.account, node.normalPos, node.kelompok,node.rgt,node.lft,subTree.depth,node.parent
+
+order by node.lft
+
+
+//sum dari angka journal
+SELECT TOP (100) PERCENT j.idAccount, SUM(j.debit - j.kredit) AS saldo, a.kodeAccount
+FROM   journal AS j INNER JOIN
+             bukti_transaksi AS b ON j.idBukti = b.id INNER JOIN
+             account AS a ON j.idAccount = a.id
+GROUP BY j.idAccount, a.kodeAccount
+
+//sum dari angka jurnal berdasarkan kodeAccount
+SELECT ISNULL(SUM(j_1.saldo), 0) AS jumlah
+FROM   account AS node INNER JOIN
+                 (SELECT TOP (100) PERCENT j.idAccount, SUM(j.debit - j.kredit) AS saldo
+                 FROM    journal AS j INNER JOIN
+                              bukti_transaksi AS b ON j.idBukti = b.id INNER JOIN
+                              account AS a ON j.idAccount = a.id
+                 GROUP BY j.idAccount) AS j_1 ON node.id = j_1.idAccount CROSS JOIN
+                 (SELECT id, lft, rgt, kodeAccount
+                 FROM    account
+                 WHERE (kodeAccount = '1.01.21.01')) AS parent
+WHERE (node.lft BETWEEN parent.lft AND parent.rgt)
+
+
+//Mendapatkan jumlah journal (debit, kredit) berdasarkan account per periode awal s/d akhir.
+//_fetchTransPeriode
+
+

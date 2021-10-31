@@ -23,13 +23,14 @@ namespace AccountingRazor2021.Persistence.Configurations
             //    .HasColumnType("datetime").HasDefaultValue("getdate()");
 
             builder.Property(e => e.NoBuktiJournal).HasColumnName("NoBuktiJournal").HasMaxLength(40).IsUnicode(false);
+            builder.Property(e => e.TotalRupiah).HasColumnType("money");
             builder.Property(e => e.Keterangan).HasColumnName("Keterangan").HasMaxLength(500);
             builder.Property(e => e.TipeJournalId);
             builder.Property(e => e.UserInput).HasColumnName("UserInput").HasMaxLength(40).IsUnicode(false);
             builder.Property(e => e.Validasi).HasColumnName("Validasi").HasColumnType("datetime");
             builder.Property(e => e.ValidasiOleh).HasColumnName("ValidasiOleh").HasMaxLength(40).IsUnicode(false);
             builder.Property(e => e.Aktif).HasColumnName("Aktif").HasMaxLength(2).IsUnicode(false);
-            builder.Property(e => e.DataPeriodeId);
+          //  builder.Property(e => e.DataPeriodeId);
         }
     }
 }

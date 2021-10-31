@@ -32,9 +32,11 @@ namespace AccountingRazor2021.Pages.BukuBesar
 
             if (!string.IsNullOrEmpty(NamaAkun2))
             {
-                listDataJournalDetailsByAkunTanggalResponse = await _mediator.Send(new ListDataJournalDetailsByAkunTanggalQuery { NoUrutId = NamaAkun2 });
+                listDataJournalDetailsByAkunTanggalResponse = await _mediator.Send(new ListDataJournalDetailsByAkunTanggalQuery { NoUrutId = NamaAkun2, PeriodeAwal= PeriodeAwal2, PeriodeAkhir= PeriodeAkhir2 });
                 var dtNamaAkun = await _mediator.Send(new GetNamaAkunByNoUrutIdQuery { NoUrutId = NamaAkun2 });
                 ViewData["dtNamaAkun2"] = dtNamaAkun.NamaAkun;
+                ViewData["PeriodeAwalA"] = PeriodeAwal2;
+                ViewData["PeriodeAkhirA"] = PeriodeAkhir2;
             }
 
 

@@ -4,14 +4,16 @@ using AccountingRazor2021.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AccountingRazor2021.Persistence.Migrations
 {
     [DbContext(typeof(AccountingDbContext))]
-    partial class AccountingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211030102845_InitialCreate4")]
+    partial class InitialCreate4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -196,7 +198,7 @@ namespace AccountingRazor2021.Persistence.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("TotalRupiah")
-                        .HasColumnType("money");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("UserInput")
                         .HasMaxLength(40)
@@ -284,7 +286,7 @@ namespace AccountingRazor2021.Persistence.Migrations
                     b.Property<DateTime>("TanggalInput")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
-                        .HasDefaultValue(new DateTime(2021, 10, 30, 17, 30, 9, 897, DateTimeKind.Local).AddTicks(4447))
+                        .HasDefaultValue(new DateTime(2021, 10, 30, 17, 28, 44, 979, DateTimeKind.Local).AddTicks(5610))
                         .HasColumnName("TanggalInput");
 
                     b.HasKey("DataSaldoAwalId");
@@ -321,7 +323,7 @@ namespace AccountingRazor2021.Persistence.Migrations
                     b.Property<DateTime>("TanggalInput")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
-                        .HasDefaultValue(new DateTime(2021, 10, 30, 17, 30, 9, 907, DateTimeKind.Local).AddTicks(5515))
+                        .HasDefaultValue(new DateTime(2021, 10, 30, 17, 28, 44, 990, DateTimeKind.Local).AddTicks(2946))
                         .HasColumnName("TanggalInput");
 
                     b.HasKey("DataSaldoHarianId");
@@ -358,63 +360,63 @@ namespace AccountingRazor2021.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            TipeJournalId = new Guid("8496a658-34c0-44b9-b703-6a89e7a3a276"),
+                            TipeJournalId = new Guid("443a5476-1c90-4fb8-a54d-d746aaccccaf"),
                             KodeJournal = "JU",
                             NamaJournal = "JURNAL UMUM",
                             NoUrutId = 0
                         },
                         new
                         {
-                            TipeJournalId = new Guid("8d202062-e258-4a67-9d14-097e92bac79f"),
+                            TipeJournalId = new Guid("e0b67142-7aba-40e1-86cc-44bcf6aba22b"),
                             KodeJournal = "JPMB",
                             NamaJournal = "JURNAL PEMBELIAN",
                             NoUrutId = 0
                         },
                         new
                         {
-                            TipeJournalId = new Guid("fa7c4d44-c6d7-4c44-a9c1-40b2dcb07804"),
+                            TipeJournalId = new Guid("70242bef-15af-4289-82e2-29ce699465b1"),
                             KodeJournal = "JPJ",
                             NamaJournal = "JURNAL PENJUALAN",
                             NoUrutId = 0
                         },
                         new
                         {
-                            TipeJournalId = new Guid("4f7f6fc3-86f6-49bc-9204-3bd5f14df446"),
+                            TipeJournalId = new Guid("2975f388-38b2-4155-a7c7-e98a0632fe62"),
                             KodeJournal = "JPNK",
                             NamaJournal = "JURNAL PENERIMAAN KAS",
                             NoUrutId = 0
                         },
                         new
                         {
-                            TipeJournalId = new Guid("e31792df-1141-4b75-872d-dba21276fe70"),
+                            TipeJournalId = new Guid("0d7f9c2b-b64b-4b71-a210-645158a268db"),
                             KodeJournal = "JPGNK",
                             NamaJournal = "JURNAL PENGELUARAN KAS",
                             NoUrutId = 0
                         },
                         new
                         {
-                            TipeJournalId = new Guid("46969f08-c4bd-4a0b-8d49-ef1f434c108b"),
+                            TipeJournalId = new Guid("9fb35591-6762-4db3-8117-423ccf48a467"),
                             KodeJournal = "JPEY",
                             NamaJournal = "JURNAL PENYESUAIAN",
                             NoUrutId = 0
                         },
                         new
                         {
-                            TipeJournalId = new Guid("7c8c8bd4-60c7-41e1-8567-b5c366acb547"),
+                            TipeJournalId = new Guid("3bcb7aea-f231-41f2-8d9d-5068efe356ae"),
                             KodeJournal = "JPMBK",
                             NamaJournal = "JURNAL PEMBUKA",
                             NoUrutId = 0
                         },
                         new
                         {
-                            TipeJournalId = new Guid("cf4510c8-f0cc-49cf-8451-aadfff40b033"),
+                            TipeJournalId = new Guid("983fdbba-0fb5-4e9f-a98d-a18812b7f5e3"),
                             KodeJournal = "JPNTP",
                             NamaJournal = "JURNAL PENUTUP",
                             NoUrutId = 0
                         },
                         new
                         {
-                            TipeJournalId = new Guid("44082c9f-c01a-4b35-96b1-95cf00b24957"),
+                            TipeJournalId = new Guid("e08f978b-f930-4d01-a5d3-24b7926c193e"),
                             KodeJournal = "JPMBLK",
                             NamaJournal = "JURNAL PEMBALIK",
                             NoUrutId = 0
