@@ -12,6 +12,15 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MediatR;
 using AccountingRazor2021.Persistence.Dapper;
+using AccountingRazor2021.Domain;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using NToastNotify;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Http;
+using AccountingRazor2021.Models;
+using AccountingRazor2021.Services;
 
 namespace AccountingRazor2021
 {
@@ -30,6 +39,27 @@ namespace AccountingRazor2021
             string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
             services.AddDbContext<AccountingDbContext>(options => options.UseSqlServer(connectionString));
 
+            services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+                 .AddEntityFrameworkStores<AccountingDbContext>()
+                 .AddDefaultUI()
+         .AddDefaultTokenProviders();
+
+       
+            services.AddMvc(o =>
+            {
+                //Add Authentication to all Controllers by default.
+                var policy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+                o.Filters.Add(new AuthorizeFilter(policy));
+            }).AddNToastNotifyNoty(new NotyOptions
+            {
+                Layout = "bottomRight",
+                ProgressBar = true,
+                Timeout = 5000,
+                Theme = "metroui"
+            }); ;
+
             services.AddTransient<IDbConnectionFactory>(x => new DapperConnectionFactory(connectionString));
 
             services.AddMediatR(typeof(Startup));
@@ -37,6 +67,11 @@ namespace AccountingRazor2021
             services.AddRazorPages();
             services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
 
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.Configure<SMTPSettings>(Configuration.GetSection("SMTPSettings"));
+            services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
+         
+            services.AddScoped<IEmailService, EmailService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,11 +88,14 @@ namespace AccountingRazor2021
                 app.UseHsts();
             }
 
+            app.UseNToastNotify();
+          
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

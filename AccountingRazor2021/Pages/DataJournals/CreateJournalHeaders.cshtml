@@ -2,10 +2,11 @@
 @model AccountingRazor2021.Pages.DataJournals.CreateJournalHeadersModel
 @{
     ViewData["Title"] = "CreateJournalHeaders";
+    Layout = "~/Pages/Shared/AdminLTE/_Layout.cshtml";
 }
 <h1>Create</h1>
 
-<h4>DataJournalHeader</h4>
+<h4>Tambah Bukti Transaksi</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -16,7 +17,7 @@
             <select asp-for="DataPeriodeId" class="form-control" asp-items="ViewBag.DataPeriodeId"></select>
         </div>*@
             <div class="form-group">
-                <label asp-for="DataJournalHeaders.TanggalInput" class="control-label"></label>
+                <label asp-for="DataJournalHeaders.TanggalInput" class="control-label">Tanggal Input</label>
                 <input type="datetime-local" title="Silahkan pilih tanggal (Bulan-Tanggal-Tahun)" asp-for="DataJournalHeaders.TanggalInput" class="form-control" />
                 <span asp-validation-for="DataJournalHeaders.TanggalInput" class="text-danger"></span>
             </div>
@@ -32,12 +33,12 @@
                 <span asp-validation-for="DataJournalHeaders.Keterangan" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label class="control-label" asp-for="DataJournalHeaders.TotalRupiah"></label>
+                <label class="control-label" asp-for="DataJournalHeaders.TotalRupiah">Nilai Rupiah</label>
                 <input asp-for="DataJournalHeaders.TotalRupiah" class="form-control" type="number" />
 
             </div>
             <div class="form-group">
-                <label asp-for="DataJournalHeaders.TipeJournalId" class="control-label"></label>
+                <label asp-for="DataJournalHeaders.TipeJournalId" class="control-label">Tipe Jurnal</label>
                 <select asp-for="DataJournalHeaders.TipeJournalId" class="form-control" asp-items="ViewBag.TipeJournalId"></select>
             </div>
             @*<div class="form-group">

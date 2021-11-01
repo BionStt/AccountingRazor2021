@@ -2,6 +2,7 @@
 @model AccountingRazor2021.Pages.LabaRugi.LaporanLabaRugiModel
 @{
     ViewData["Title"] = "LaporanLabaRugi";
+    Layout = "~/Pages/Shared/AdminLTE/_Layout.cshtml";
 }
 
 <style>
@@ -21,14 +22,16 @@
                 <th style="border:double">Periode Awal:</th>
                 <td style="border:double">
 
-                    <input value="@DateTime.Now.Date" asp-for="Tanggal1" type="datetime-local" />
+                    @*<input value="@DateTime.Now.Date" asp-for="Tanggal1" type="datetime-local" />*@
+                    <input value="1/10/2021" asp-for="Tanggal1" type="datetime" />
                 </td>
             </tr>
             <tr style="border:double">
                 <th style="border:double">Periode Akhir:</th>
                 <td style="border:double">
 
-                    <input value="@DateTime.Now.Date" asp-for="Tanggal2" type="datetime-local" />
+                    @*<input value="@DateTime.Now.Date" asp-for="Tanggal2" type="datetime-local" />*@
+                    <input value="31/12/2021" asp-for="Tanggal2" type="datetime" />
                 </td>
             </tr>
             <tr>
@@ -47,7 +50,7 @@
 </div>
 
 
-<h2>LaporanLabaRugi</h2>
+
 
 @if (Model.Item.Count != 0)
 {
@@ -166,7 +169,7 @@
                             @*<span class="label label-primary">Avg Salary: @aa.Average(x => x.Salary).ToString("C")</span>*@
                         </td>
 
-                        <td> @String.Format("{0:c0}", i)</td>
+                        <td style="text-align:right"> @String.Format("{0:c0}", i)</td>
 
                     </tr>
                     //   Profit = Profit + i;

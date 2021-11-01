@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/contohblog/databases/AccountingRazor2021",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:AccountingRazor2021ContextConnection",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

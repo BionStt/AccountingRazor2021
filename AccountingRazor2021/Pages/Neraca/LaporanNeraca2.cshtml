@@ -2,6 +2,7 @@
 @model AccountingRazor2021.Pages.Neraca.LaporanNeraca2Model
 @{
     ViewData["Title"] = "LaporanNeraca2";
+    Layout = "~/Pages/Shared/AdminLTE/_Layout.cshtml";
 }
 
 <h2>Isian Periode Laporan Neraca</h2>
@@ -18,14 +19,16 @@
             <th style="border:double">Periode Awal:</th>
             <td style="border:double">
 
-                <input value="@DateTime.Now.Date" asp-for="Tanggal1" type="datetime-local" />
+                @*<input value="@DateTime.Now.Date" asp-for="Tanggal1" type="datetime-local" />*@
+                <input value="1/10/2021" asp-for="Tanggal1" type="datetime" />
             </td>
         </tr>
         <tr style="border:double">
             <th style="border:double">Periode Akhir:</th>
             <td style="border:double">
 
-                <input value="@DateTime.Now.Date" asp-for="Tanggal2" type="datetime-local" />
+                @*<input value="@DateTime.Now.Date" asp-for="Tanggal2" type="datetime-local" />*@
+                <input value="31/12/2021" asp-for="Tanggal2" type="datetime" />
             </td>
         </tr>
         <tr>
