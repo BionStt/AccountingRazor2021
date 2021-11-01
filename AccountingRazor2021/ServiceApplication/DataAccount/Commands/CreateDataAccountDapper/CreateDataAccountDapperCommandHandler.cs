@@ -7,16 +7,19 @@ using System.Threading.Tasks;
 using MediatR;
 using Dapper;
 using AccountingRazor2021.Persistence.Dapper;
+using AccountingRazor2021.ServiceApplication.DataJournalsDetails.Commands.CreateSaldoAwal;
 
 namespace AccountingRazor2021.ServiceApplication.DataAccount.Commands.CreateDataAccountDapper
 {
     public class CreateDataAccountDapperCommandHandler : IRequestHandler<CreateDataAccountDapperCommand, Guid>
     {
         private readonly IDbConnectionFactory _connectionFactory;
+        private readonly IMediator _mediator;
 
-        public CreateDataAccountDapperCommandHandler(IDbConnectionFactory connectionFactory)
+        public CreateDataAccountDapperCommandHandler(IDbConnectionFactory connectionFactory, IMediator mediator)
         {
             _connectionFactory = connectionFactory;
+            _mediator = mediator;
         }
 
         public async Task<Guid> Handle(CreateDataAccountDapperCommand request, CancellationToken cancellationToken)
@@ -47,6 +50,8 @@ namespace AccountingRazor2021.ServiceApplication.DataAccount.Commands.CreateData
 
             }
             // var entity = Domain.DataAccount.CreateDataAccount(request.Parent, request.KodeAccount, request.Account, request.NormalPos, request.Kelompok);
+
+            await _mediator.Publish(new CreateSaldoAwalCommand {DataAccountId = xx, Debit=0,Kredit=0 });
 
             return xx;
 

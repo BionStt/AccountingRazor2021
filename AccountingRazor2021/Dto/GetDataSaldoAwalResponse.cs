@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AccountingRazor2021.Dto
 {
-    public class ListDataAccountQueryResponse
+    public class GetDataSaldoAwalResponse
     {
         public string Parent { get; set; }
         public string KodeAccount { get; set; }
@@ -15,5 +15,7 @@ namespace AccountingRazor2021.Dto
         public string Kelompok { get; set; }
         public int? Depth { get; set; }
         public int NoUrutId { get; set; }
+        public decimal Debit { get; set; }
+        public decimal Kredit { get; set; }
     }
 }

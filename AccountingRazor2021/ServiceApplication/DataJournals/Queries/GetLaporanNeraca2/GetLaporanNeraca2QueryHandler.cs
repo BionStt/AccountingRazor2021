@@ -22,11 +22,12 @@ namespace AccountingRazor2021.ServiceApplication.DataJournals.Queries.GetLaporan
 
         public async Task<IReadOnlyCollection<GetLaporanNeraca2Response>> Handle(GetLaporanNeraca2Query request, CancellationToken cancellationToken)
         {
+            //b2.Kelompok == "N" &&
             var returnQuery = await (from a1 in _context.DataAccounts
                        join b2 in _context.DataAccounts on a1.Parent equals b2.NoUrutId.ToString()
                        join c in _context.DataAccounts on a1.NoUrutId.ToString() equals c.Parent
                        join e in _context.DataAccounts on b2.Parent equals e.NoUrutId.ToString()
-                       from d in _context.DataJournalDetails.Where(x => x.NoUrutId == c.NoUrutId).DefaultIfEmpty()
+                       from d in _context.DataJournalDetails.Where(x => x.DataAccountId == c.DataAccountId).DefaultIfEmpty()
                        join f in _context.DataJournalHeaders on d.DataJournalHeaderId equals f.DataJournalHeaderId
                        where b2.Kelompok == "N" && (f.TanggalInput >= request.Tanggal1 && f.TanggalInput <= request.Tanggal2)
 
@@ -69,7 +70,7 @@ namespace AccountingRazor2021.ServiceApplication.DataJournals.Queries.GetLaporan
                       Debit1 = g.Sum(x => x.Debit1),
                       Kredit1 = g.Sum(x => x.Kredit1),
                       Saldo1 = g.Sum(x => x.Saldo1)
-                  }).AsNoTracking().ToListAsync();
+                  }).OrderBy(x=>x.KodeAccountParent1).AsNoTracking().ToListAsync();
 
             return returnQuery;
         }

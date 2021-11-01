@@ -29,7 +29,8 @@ namespace AccountingRazor2021.ServiceApplication.DataAccount.Queries.ListDataAcc
                Account = x.Account,
                NormalPos = x.NormalPos,
                Kelompok = x.Kelompok ,
-               Depth= x.Depth
+               Depth= x.Depth,
+               NoUrutId = x.NoUrutId
 
             }).AsNoTracking().OrderBy(x=>x.KodeAccount).ToListAsync(cancellationToken);
 

@@ -9,56 +9,57 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post" >
+        <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @*<div class="form-group">
-                    <label asp-for="DataPeriodeId" class="control-label"></label>
-                    <select asp-for="DataPeriodeId" class="form-control" asp-items="ViewBag.DataPeriodeId"></select>
-                </div>*@
+            <label asp-for="DataPeriodeId" class="control-label"></label>
+            <select asp-for="DataPeriodeId" class="form-control" asp-items="ViewBag.DataPeriodeId"></select>
+        </div>*@
             <div class="form-group">
                 <label asp-for="DataJournalHeaders.TanggalInput" class="control-label"></label>
                 <input type="datetime-local" title="Silahkan pilih tanggal (Bulan-Tanggal-Tahun)" asp-for="DataJournalHeaders.TanggalInput" class="form-control" />
                 <span asp-validation-for="DataJournalHeaders.TanggalInput" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label class="control-label" asp-for="DataJournalHeaders.TotalRupiah"></label>
-                <input asp-for="DataJournalHeaders.TotalRupiah" class="form-control" type="number"/>
 
-            </div>
             @*<div class="form-group">
-                    <label asp-for="NoBuktiJournal" class="control-label"></label>
-                    <input asp-for="NoBuktiJournal" class="form-control" />
-                    <span asp-validation-for="NoBuktiJournal" class="text-danger"></span>
-                </div>*@
+            <label asp-for="NoBuktiJournal" class="control-label"></label>
+            <input asp-for="NoBuktiJournal" class="form-control" />
+            <span asp-validation-for="NoBuktiJournal" class="text-danger"></span>
+        </div>*@
             <div class="form-group">
                 <label asp-for="DataJournalHeaders.Keterangan" class="control-label"></label>
                 <input asp-for="DataJournalHeaders.Keterangan" placeholder="Masukan inputan keterangan" class="form-control" />
                 <span asp-validation-for="DataJournalHeaders.Keterangan" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label class="control-label" asp-for="DataJournalHeaders.TotalRupiah"></label>
+                <input asp-for="DataJournalHeaders.TotalRupiah" class="form-control" type="number" />
+
+            </div>
+            <div class="form-group">
                 <label asp-for="DataJournalHeaders.TipeJournalId" class="control-label"></label>
                 <select asp-for="DataJournalHeaders.TipeJournalId" class="form-control" asp-items="ViewBag.TipeJournalId"></select>
             </div>
             @*<div class="form-group">
-                    <label asp-for="UserInput" class="control-label"></label>
-                    <input asp-for="UserInput" class="form-control" />
-                    <span asp-validation-for="UserInput" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Validasi" class="control-label"></label>
-                    <input asp-for="Validasi" class="form-control" />
-                    <span asp-validation-for="Validasi" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="ValidasiOleh" class="control-label"></label>
-                    <input asp-for="ValidasiOleh" class="form-control" />
-                    <span asp-validation-for="ValidasiOleh" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Aktif" class="control-label"></label>
-                    <input asp-for="Aktif" class="form-control" />
-                    <span asp-validation-for="Aktif" class="text-danger"></span>
-                </div>*@
+            <label asp-for="UserInput" class="control-label"></label>
+            <input asp-for="UserInput" class="form-control" />
+            <span asp-validation-for="UserInput" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Validasi" class="control-label"></label>
+            <input asp-for="Validasi" class="form-control" />
+            <span asp-validation-for="Validasi" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ValidasiOleh" class="control-label"></label>
+            <input asp-for="ValidasiOleh" class="form-control" />
+            <span asp-validation-for="ValidasiOleh" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Aktif" class="control-label"></label>
+            <input asp-for="Aktif" class="form-control" />
+            <span asp-validation-for="Aktif" class="text-danger"></span>
+        </div>*@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

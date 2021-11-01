@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="database\Database isi lion brother\" />
     <Folder Include="ServiceApplication\TipeJournal\Commands\" />
   </ItemGroup>
 

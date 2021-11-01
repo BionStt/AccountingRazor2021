@@ -82,3 +82,52 @@ WHERE (node.lft BETWEEN parent.lft AND parent.rgt)
 //_fetchTransPeriode
 
 
+SELECT node.id, node.kodeAccount, node.account, COUNT(parent.id) - (subTree.lvl + 1) AS lvl, ISNULL(j_2.debit, 0) AS debit, ISNULL(j_2.kredit, 0) AS kredit, ISNULL(j_2.saldo, 0) AS saldo, (CASE WHEN (node.lft = (node.rgt - 1)) THEN 'true' ELSE 'false' END) AS isLeaf
+FROM   (SELECT TOP (100) PERCENT node.id, COUNT(parent.id) - 1 AS lvl
+             FROM    account AS node CROSS JOIN
+                           account AS parent
+             WHERE  (node.lft BETWEEN parent.lft AND parent.rgt) AND (node.kodeAccount = '1')
+             GROUP BY node.id, node.lft
+             ORDER BY node.lft) AS subTree CROSS JOIN
+             account AS subParent CROSS JOIN
+             account AS node CROSS JOIN
+             account AS parent LEFT OUTER JOIN
+                 (SELECT TOP (100) PERCENT parent.id AS idAccount, SUM(j_1.debit) AS debit, SUM(j_1.kredit) AS kredit, SUM(j_1.debit - j_1.kredit) * parent.normalPos AS saldo
+                 FROM    account AS node INNER JOIN
+                                  (SELECT j.idAccount, j.debit, j.kredit
+                                  FROM    bukti_transaksi AS b INNER JOIN
+                                               journal AS j ON b.id = j.idBukti) AS j_1 ON node.id = j_1.idAccount CROSS JOIN
+                              account AS parent
+                 WHERE (node.lft BETWEEN parent.lft AND parent.rgt)
+                 GROUP BY parent.id, parent.normalPos, parent.lft
+                 ORDER BY parent.lft) AS j_2 ON node.id = j_2.idAccount
+WHERE (node.lft BETWEEN parent.lft AND parent.rgt) AND (node.lft BETWEEN subParent.lft AND subParent.rgt)
+GROUP BY node.id, node.lft, node.kodeAccount, node.account, subTree.lvl, subParent.rgt, parent.rgt, node.rgt, j_2.debit, j_2.kredit, j_2.saldo
+ORDER BY node.lft
+
+
+SELECT node.id, node.kodeAccount, node.account, COUNT(parent.id) - (subTree.lvl + 1) AS lvl, ISNULL(j_2.debit, 0) AS debit, ISNULL(j_2.kredit, 0) AS kredit, ISNULL(j_2.saldo, 0) AS saldo, (CASE WHEN (node.lft = (node.rgt - 1) OR
+             (COUNT(parent.id) - (subtree.lvl + 1) = 2)) THEN 'true' ELSE 'false' END) AS isLeaf
+FROM   (SELECT TOP (100) PERCENT node.id, COUNT(parent.id) - 1 AS lvl
+             FROM    account AS node CROSS JOIN
+                           account AS parent
+             WHERE  (node.lft BETWEEN parent.lft AND parent.rgt) AND (node.kodeAccount = '3')
+             GROUP BY node.id, node.lft
+             ORDER BY node.lft) AS subTree CROSS JOIN
+             account AS subParent CROSS JOIN
+             account AS node CROSS JOIN
+             account AS parent LEFT OUTER JOIN
+                 (SELECT TOP (100) PERCENT parent.id AS idAccount, SUM(j_1.debit) AS debit, SUM(j_1.kredit) AS kredit, SUM(j_1.debit - j_1.kredit) * parent.normalPos AS saldo
+                 FROM    account AS node INNER JOIN
+                                  (SELECT j.idAccount, j.debit, j.kredit
+                                  FROM    bukti_transaksi AS b INNER JOIN
+                                               journal AS j ON b.id = j.idBukti) AS j_1 ON node.id = j_1.idAccount CROSS JOIN
+                              account AS parent
+                 WHERE (node.lft BETWEEN parent.lft AND parent.rgt)
+                 GROUP BY parent.id, parent.normalPos, parent.lft
+                 ORDER BY parent.lft) AS j_2 ON node.id = j_2.idAccount
+WHERE (node.lft BETWEEN parent.lft AND parent.rgt) AND (node.lft BETWEEN subParent.lft AND subParent.rgt)
+GROUP BY node.id, node.lft, node.kodeAccount, node.account, subTree.lvl, subParent.rgt, parent.rgt, node.rgt, j_2.debit, j_2.kredit, j_2.saldo
+ORDER BY node.lft
+
+

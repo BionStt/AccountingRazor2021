@@ -39,12 +39,13 @@
     </table>
 </form>
 
-@if (Model.Item != null)
+@if (Model.Item.Count != 0)
 {
 
     <div>
         <h1 style="text-align:center">Laporan Neraca</h1>
-        @if(ViewBag.PeriodeAwalA == new DateTime() && ViewBag.PeriodeAkhirA == new DateTime()) { 
+        @if(ViewBag.PeriodeAwalA == new DateTime() && ViewBag.PeriodeAkhirA == new DateTime())
+        { 
         <h2 style="text-align:center">Periode @string.Format("{0:d}", ViewBag.PeriodeAwalA) s/d  @string.Format("{0:d}", ViewBag.PeriodeAkhirA)</h2>
         }
 
@@ -64,6 +65,9 @@
                 @{Decimal? i = 0;
                     Decimal? i2 = 0;
                     Decimal? i3 = 0;
+                    Decimal? Modal1 = 0;
+                    Decimal? Pasiva1 = 0;
+                    Decimal? Aktiva1 = 0;
                 }
 
                 @foreach (var item1 in Model.Item.GroupBy(x => x.KodeAkunInduk))
@@ -96,18 +100,18 @@
 
                                 //if (item.Saldo1 != 0) {
                                 <tr >
-                                    @*<td></td>*@
+                                    <td></td>
                                     <td style="padding-left:69px">@Html.DisplayFor(modelItem => item.NamaAkun)</td>
 
-                                    <td>
+                                    <td style="text-align:right">
 
                                         @string.Format("{0:c0}", item.Debit1)
                                     </td>
-                                    <td>
+                                    <td style="text-align:right">
 
                                         @string.Format("{0:c0}", item.Kredit1)
                                     </td>
-                                    <td>
+                                    <td style="text-align:right">
 
                                         @string.Format("{0:c0}", item.Saldo1)
                                     </td>
@@ -126,36 +130,61 @@
 
                     }
 
-                    <tr class="group-footer">
+            <tr class="group-footer">
 
-                        <td colspan="4" style="padding-left:100px;font-weight:bold">
-                            <span>@item1.Key</span>
+                <td colspan="4" style="padding-left:100px;font-weight:bold">
+                    <span>@item1.Key</span>
 
-                        </td>
+                </td>
 
+                @if (item1.Key == "1 - AKTIVA")
+                {
+                    Aktiva1 = i;
+                }
+                else@if (item1.Key == "2 - PASIVA / KEWAJIBAN")
+                {
+                    Pasiva1 = i;
+                }
+                else@if (item1.Key == "3 - MODAL / EKUITAS")
+                {
+                    Modal1 = i;
+                }
 
-                        @if (item1.Key == "1 - AKTIVA")
-                        {
-                            <td style="padding-left:100px;font-weight:bold"> @String.Format("{0:c0}", i)</td>
-                        }
-                        else
-                        {
-                            <td> @String.Format("{0:c0}", i)</td>
-                        }
+            @if (item1.Key == "1 - AKTIVA")
+            {
+                <td style="padding-left:100px;font-weight:bold"> @String.Format("{0:c0}", i)</td>
+            }
+            else
+            {
+                <td style="text-align: right; font-weight: bold"> @String.Format("{0:c0}", i) </td>
+            }
 
-                    </tr>
+            </tr>
 
                     i = 0;
-                }
+                 }
 
             </tbody>
             <tfoot>
                 <tr>
                     <td colspan="4" style="padding-left:100px;font-weight:bold">
+                        <span>Selisih Laba / Rugi Berjalan </span>
+                    </td>
+                    <td style="text-align:right;padding-left:100px;font-weight:bold">
+                        <span>@string.Format("{0:c0}", Aktiva1 - Pasiva1 - Modal1)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="padding-left:100px;font-weight:bold">
                         <span>Total Kewajiban Dan Modal</span>
                     </td>
                     <td style="padding-left:100px;font-weight:bold">
-                        <span>@string.Format("{0:c0}", i2 + i3)</span>
+                        @*<span>@string.Format("{0:c0}", i2 + i3)</span>*@
+                        <span>@string.Format("{0:c0}", Pasiva1 + Modal1 + (Aktiva1 - Pasiva1 - Modal1))</span>
                     </td>
                 </tr>
             </tfoot>

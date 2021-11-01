@@ -24,7 +24,7 @@ namespace AccountingRazor2021.ServiceApplication.DataAccount.Queries.GetDataAcco
         {
             var returnQuery = await (from a in _dbContext.DataAccounts
                             from b in _dbContext.DataAccounts
-                            where a.Parent == b.NoUrutId.ToString() && a.Depth==3
+                            where a.Parent == b.NoUrutId.ToString() && a.Depth>=3
 
                             select new GetDataAccountByDepthResponse {
                             NoUrutId = a.NoUrutId,

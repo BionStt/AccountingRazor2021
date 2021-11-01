@@ -24,9 +24,9 @@
     <a asp-action="">Create New</a>
 </p>
 <div id="div_print">
-    <table class="table">
+    <table >
         <thead>
-            <tr>
+            <tr height="30">
                 @*<th>
                         @Html.DisplayNameFor(model => model.Lft)
                     </th>
@@ -58,7 +58,7 @@
         <tbody>
             @foreach (var item in Model.Item)
             {
-                <tr>
+                <tr height="30">
                     @*<td>
                             @Html.DisplayFor(modelItem => item.Lft)
                         </td>
@@ -71,9 +71,38 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Depth)
                         </td>*@
-                    <td style="font-weight:bold">
-                        @Html.DisplayFor(modelItem => item.KodeAccount)
-                    </td>
+                      @if (item.Depth * 20 + 3 == 23)
+                    {
+                        <td style="padding-left:23px;font-weight:bold">
+                            @Html.DisplayFor(modelItem => item.KodeAccount)
+                        </td>
+                    }
+                    else if (item.Depth * 20 + 3 == 43)
+                    {
+                        <td style="padding-left:43px;font-weight:bold">
+                            @Html.DisplayFor(modelItem => item.KodeAccount)
+                        </td>
+                    }
+                    else if (item.Depth * 20 + 3 == 63)
+                    {
+                        <td style="padding-left:63px">
+                            @Html.DisplayFor(modelItem => item.KodeAccount)
+                        </td>
+                    }
+                    else if (item.Depth * 20 + 3 == 83)
+                    {
+                        <td style="padding-left:83px">
+                            @Html.DisplayFor(modelItem => item.KodeAccount)
+                        </td>
+                    }
+                    else if (item.Depth * 20 + 3 == 3)
+                    {
+                        <td style="padding-left:3px;font-weight:bold">
+                            @Html.DisplayFor(modelItem => item.KodeAccount)
+                        </td>
+                    }
+
+                 
                     @if (item.Depth * 20 + 3 == 23)
                     {
                         <td style="padding-left:23px;font-weight:bold">
@@ -88,7 +117,7 @@
                     }
                     else if (item.Depth * 20 + 3 == 63)
                     {
-                        <td style="padding-left:63px;font-weight:bold">
+                        <td style="padding-left:63px">
                             @Html.DisplayFor(modelItem => item.Account)
                         </td>
                     }
@@ -104,7 +133,7 @@
                             @Html.DisplayFor(modelItem => item.Account)
                         </td>
                     }
-                    <td>
+                    <td style="text-align:center">
                         @if (item.NormalPos == 1)
                         {
                             <p> Debit</p>
@@ -114,7 +143,7 @@
                             <p>Kredit</p>
                         }
                     </td>
-                    <td>
+                    <td style="text-align:center">
                         @if (item.Kelompok == "N")
                         {
                             <p>Neraca</p>
@@ -126,7 +155,7 @@
                             </p>}
 
                     </td>
-                    <td>
+                    <td style="text-align:center;" >
                         @Html.DisplayFor(modelItem => item.Depth)
                     </td>
 
