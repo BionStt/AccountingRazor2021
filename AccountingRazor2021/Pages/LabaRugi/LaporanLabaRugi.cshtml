@@ -1,8 +1,11 @@
 ﻿@page
+@using System.Globalization
 @model AccountingRazor2021.Pages.LabaRugi.LaporanLabaRugiModel
 @{
     ViewData["Title"] = "LaporanLabaRugi";
     Layout = "~/Pages/Shared/AdminLTE/_Layout.cshtml";
+    CultureInfo idID = CultureInfo.CreateSpecificCulture("id-ID");
+
 }
 
 <style>
@@ -23,7 +26,7 @@
                 <td style="border:double">
 
                     @*<input value="@DateTime.Now.Date" asp-for="Tanggal1" type="datetime-local" />*@
-                    <input value="1/10/2021" asp-for="Tanggal1" type="datetime" />
+                    <input value="1/1/2021" asp-for="Tanggal1" type="datetime" />
                 </td>
             </tr>
             <tr style="border:double">
@@ -60,11 +63,11 @@
         <h1 style="text-align:center">Laporan Laba/Rugi</h1>
         @if (ViewBag.Tgl1 == new DateTime() && ViewBag.Tgl2 == new DateTime())
         {
-            <h2 style="text-align:center">Periode @string.Format("{0:d}", ViewBag.Tgl1) s/d @string.Format("{0:d}", ViewBag.Tgl2)</h2>
+            <h2 style="text-align:center">Periode @string.Format(idID,"{0:d}", ViewBag.Tgl1) s/d @string.Format(idID,"{0:d}", ViewBag.Tgl2)</h2>
         }
     </div>
     <div>
-        <table >
+        <table>
             <thead>
                 <tr>
                     <th>No.</th>
@@ -136,15 +139,15 @@
                                         </td>*@
                                     <td style="text-align:right">
                                         @*@Html.DisplayFor(modelItem => item.Debit1)*@
-                                        @string.Format("{0:c0}", item.Debit1)
+                                        @string.Format(idID,"{0:c0}", item.Debit1)
                                     </td>
                                     <td style="text-align:right">
                                         @*@Html.DisplayFor(modelItem => item.Kredit1)*@
-                                        @string.Format("{0:c0}", item.Kredit1)
+                                        @string.Format(idID,"{0:c0}", item.Kredit1)
                                     </td>
                                     <td style="text-align:right">
                                         @*@Html.DisplayFor(modelItem => item.Saldo1)*@
-                                        @string.Format("{0:c0}", item.Saldo1)
+                                        @string.Format(idID,"{0:c0}", item.Saldo1)
                                     </td>
                                 </tr>
                                 i = i + item.Saldo1;
@@ -169,7 +172,7 @@
                             @*<span class="label label-primary">Avg Salary: @aa.Average(x => x.Salary).ToString("C")</span>*@
                         </td>
 
-                        <td style="text-align:right"> @String.Format("{0:c0}", i)</td>
+                        <td style="text-align:right"> @String.Format(idID,"{0:c0}", i)</td>
 
                     </tr>
                     //   Profit = Profit + i;
@@ -183,7 +186,7 @@
                         <span>Laba Rugi Berjalan</span>
                     </td>
                     <td style="padding-left:100px;font-weight:bold">
-                        <span>@string.Format("{0:c0}", i2)</span>
+                        <span>@string.Format(idID,"{0:c0}", i2)</span>
                     </td>
                 </tr>
             </tfoot>

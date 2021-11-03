@@ -21,6 +21,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.AspNetCore.Http;
 using AccountingRazor2021.Models;
 using AccountingRazor2021.Services;
+using System.Globalization;
 
 namespace AccountingRazor2021
 {
@@ -29,14 +30,20 @@ namespace AccountingRazor2021
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            _cultures = Configuration.GetSection("Cultures").Get<string[]>().Select(p => new CultureInfo(p)).ToList();
         }
 
         public IConfiguration Configuration { get; }
+        private readonly IList<CultureInfo> _cultures;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+          
+
             string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+
             services.AddDbContext<AccountingDbContext>(options => options.UseSqlServer(connectionString));
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -64,7 +71,8 @@ namespace AccountingRazor2021
 
             services.AddMediatR(typeof(Startup));
 
-            services.AddRazorPages();
+            services.AddRazorPages().AddViewLocalization().AddDataAnnotationsLocalization();
+
             services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
 
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -87,6 +95,13 @@ namespace AccountingRazor2021
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new("id-ID"),
+                SupportedCultures = _cultures,
+                SupportedUICultures = _cultures
+            });
 
             app.UseNToastNotify();
           

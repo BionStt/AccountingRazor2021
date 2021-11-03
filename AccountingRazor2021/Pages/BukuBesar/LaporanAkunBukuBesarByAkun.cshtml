@@ -1,8 +1,11 @@
 ﻿@page
+@using System.Globalization
 @model AccountingRazor2021.Pages.BukuBesar.LaporanAkunBukuBesarByAkunModel
 @{
     ViewData["Title"] = "Laporan Akun Buku Besar Berdasarkan Akun";
     Layout = "~/Pages/Shared/AdminLTE/_Layout.cshtml";
+    CultureInfo idID = CultureInfo.CreateSpecificCulture("id-ID");
+
 }
 
 <style>
@@ -19,12 +22,12 @@
             <th>Tindakan </th>
         </tr>
         <tr>
-           
+
             <td>
 
                 <select name="Akun1" asp-items="@ViewBag.Akun1"></select>
             </td>
-            <td>   <input type="submit" value="Tampilkan"  class="btn btn-default" /></td>
+            <td>   <input type="submit" value="Tampilkan" class="btn btn-default" /></td>
         </tr>
     </table>
 </form>
@@ -39,8 +42,8 @@
     <div>
         <p>Akun : @ViewBag.dtNamaAkun2</p>
         <p style="text-align:center">Rincian Buku Besar</p>
-        <table  style="width:100%">
-            
+        <table style="width:100%">
+
             @{int i = 1;
                 Decimal? debit11 = 0;
                 decimal? kredit22 = 0;
@@ -65,7 +68,7 @@
                     <tr>
                         <td style="text-align:center">@i</td>
                         <td>
-                            @string.Format("{0:d}", item.TanggalInput)
+                            @string.Format(idID,"{0:d}", item.TanggalInput)
                         </td>
                         <td>@item.NoBuktiJurnal</td>
                         <td>@item.Keterangan</td>
@@ -77,13 +80,13 @@
                                 <td style="padding-left:43px">@item.KodeNamaAkun</td>}*@
 
                         <td style="text-align:right">
-                            @string.Format("{0:c0}", item.Debit1)
+                            @string.Format(idID,"{0:c0}", item.Debit1)
                         </td>
                         <td style="text-align:right">
-                            @string.Format("{0:c0}", item.Kredit1)
+                            @string.Format(idID,"{0:c0}", item.Kredit1)
                         </td>
                         <td style="text-align:right">
-                            @string.Format("{0:c0}", saldo1)
+                            @string.Format(idID,"{0:c0}", saldo1)
                         </td>
                     </tr>
                     debit11 = debit11 + item.Debit1;
@@ -106,8 +109,8 @@
                         { <p style="text-align:center">Seimbang</p>}
 
                     </td>
-                    <td style="text-align:right">   @string.Format("{0:c0}", debit11)</td>
-                    <td style="text-align:right">@string.Format("{0:c0}", kredit22)</td>
+                    <td style="text-align:right">   @string.Format(idID,"{0:c0}", debit11)</td>
+                    <td style="text-align:right">@string.Format(idID,"{0:c0}", kredit22)</td>
                 </tr>
 
             }

@@ -1,7 +1,10 @@
 ﻿@page
+@using System.Globalization
 @model AccountingRazor2021.Pages.Neraca.LaporanNeraca3Model
 @{
     ViewData["Title"] = "LaporanNeraca";
+    CultureInfo idID = CultureInfo.CreateSpecificCulture("id-ID");
+
 }
 
 <h2>Isian Periode Laporan Neraca</h2>
@@ -46,7 +49,7 @@
         <h1 style="text-align:center">Laporan Neraca</h1>
         @if (ViewBag.Tgl1 == new DateTime() && ViewBag.Tgl2 == new DateTime())
         {
-            <h2 style="text-align:center">Periode @string.Format("{0:d}", ViewBag.Tgl1) s/d  @string.Format("{0:d}", ViewBag.Tgl2) </h2>
+            <h2 style="text-align:center">Periode @string.Format(idID,"{0:d}", ViewBag.Tgl1) s/d  @string.Format(idID,"{0:d}", ViewBag.Tgl2) </h2>
         }
     </div>
 
@@ -93,31 +96,31 @@
                                         {
 
                                             <tr class="group-header">
-                                                    <td colspan="6" style="padding-left:23px;font-weight:bold">
-                                                        <span>@item3.Key</span>
-                                                    </td>
-                                                </tr>
+                                                <td colspan="6" style="padding-left:23px;font-weight:bold">
+                                                    <span>@item3.Key</span>
+                                                </td>
+                                            </tr>
                                             foreach (var item in item3)
                                             {
 
                                                 //if (item.Saldo1 != 0) {
                                                 <tr>
-                                                        <td></td>
-                                                        <td>@Html.DisplayFor(modelItem => item.NamaAkun)</td>
+                                                    <td></td>
+                                                    <td>@Html.DisplayFor(modelItem => item.NamaAkun)</td>
 
-                                                        <td>
+                                                    <td>
 
-                                                            @string.Format("{0:c0}", item.Debit1)
-                                                        </td>
-                                                        <td>
+                                                        @string.Format(idID,"{0:c0}", item.Debit1)
+                                                    </td>
+                                                    <td>
 
-                                                            @string.Format("{0:c0}", item.Kredit1)
-                                                        </td>
-                                                        <td>
+                                                        @string.Format(idID,"{0:c0}", item.Kredit1)
+                                                    </td>
+                                                    <td>
 
-                                                            @string.Format("{0:c0}", item.Saldo1)
-                                                        </td>
-                                                    </tr>
+                                                        @string.Format(idID,"{0:c0}", item.Saldo1)
+                                                    </td>
+                                                </tr>
                                                 i = i + item.Saldo1;
                                                 i4 = i4 + item.Saldo1;
                                                 //if (item1.Key == "1 - AKTIVA") { i3 = i; };
@@ -134,7 +137,7 @@
                                                 <span>@item2.Key</span>
 
                                             </td>
-                                            <td> @String.Format("{0:c0}", i4)</td>
+                                            <td> @String.Format(idID,"{0:c0}", i4)</td>
                                         </tr>
                                         i4 = 0;
                                     }
@@ -146,16 +149,16 @@
                                             <span>@item1.Key</span>
 
                                         </td>
-                                        <td style="text-align:right"> @String.Format("{0:c0}", i)</td>
+                                        <td style="text-align:right"> @String.Format(idID,"{0:c0}", i)</td>
 
                                         @if (item1.Key == "1 - AKTIVA")
-                                            {
-                                                <td style="padding-left:100px;font-weight:bold"> @String.Format("{0:c0}", i)</td>
-                                            }
-                                            else
-                                            {
-                                                <td> @String.Format("{0:c0}", i)</td>
-                                            };
+                                        {
+                                            <td style="padding-left:100px;font-weight:bold"> @String.Format(idID,"{0:c0}", i)</td>
+                                        }
+                                        else
+                                        {
+                                            <td> @String.Format(idID,"{0:c0}", i)</td>
+                                        };
 
                                     </tr>
 
@@ -198,31 +201,31 @@
                                         {
 
                                             <tr class="group-header">
-                                                    <td colspan="6" style="padding-left:23px;font-weight:bold">
-                                                        <span>@item3.Key</span>
-                                                    </td>
-                                                </tr>
+                                                <td colspan="6" style="padding-left:23px;font-weight:bold">
+                                                    <span>@item3.Key</span>
+                                                </td>
+                                            </tr>
                                             foreach (var item in item3)
                                             {
 
 
                                                 <tr>
-                                                                    <td></td>
-                                                                    <td>@Html.DisplayFor(modelItem => item.NamaAkun)</td>
+                                                    <td></td>
+                                                    <td>@Html.DisplayFor(modelItem => item.NamaAkun)</td>
 
-                                                                    <td>
+                                                    <td>
 
-                                                        @string.Format("{0:c0}", item.Debit1)
+                                                        @string.Format(idID,"{0:c0}", item.Debit1)
                                                     </td>
                                                     <td>
 
-                                                        @string.Format("{0:c0}", item.Kredit1)
+                                                        @string.Format(idID,"{0:c0}", item.Kredit1)
                                                     </td>
-                                                                    <td>
+                                                    <td>
 
-                                                                        @string.Format("{0:c}", item.Saldo1)
-                                                                    </td>
-                                                                </tr>
+                                                        @string.Format(idID,"{0:c}", item.Saldo1)
+                                                    </td>
+                                                </tr>
                                                 ia = ia + item.Saldo1;
                                                 //if (item1.Key == "1 - AKTIVA") { i3 = i; };
                                                 i5a = i5a + item.Saldo1;
@@ -239,7 +242,7 @@
                                                 <span>@item2.Key</span>
 
                                             </td>
-                                            <td style="text-align:right"> @String.Format("{0:c0}", i5a)</td>
+                                            <td style="text-align:right"> @String.Format(idID,"{0:c0}", i5a)</td>
                                         </tr>
                                         i5a = 0;
                                     }
@@ -250,16 +253,16 @@
                                             <span>@item1.Key</span>
 
                                         </td>
-                                        <td style="text-align:right"> @String.Format("{0:c0}", ia)</td>
+                                        <td style="text-align:right"> @String.Format(idID,"{0:c0}", ia)</td>
 
                                         @if (item1.Key == "1 - AKTIVA")
-                                            {
-                                                <td style="padding-left:100px;font-weight:bold"> @String.Format("{0:c0}", i)</td>
-                                            }
-                                            else
-                                            {
-                                                <td> @String.Format("{0:c0}", i)</td>
-                                            };
+                                        {
+                                            <td style="padding-left:100px;font-weight:bold"> @String.Format(idID,"{0:c0}", i)</td>
+                                        }
+                                        else
+                                        {
+                                            <td> @String.Format(idID,"{0:c0}", i)</td>
+                                        };
 
                                     </tr>
 

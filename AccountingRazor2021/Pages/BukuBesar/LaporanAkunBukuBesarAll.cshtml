@@ -1,8 +1,11 @@
 ﻿@page
+@using System.Globalization
 @model AccountingRazor2021.Pages.BukuBesar.LaporanAkunBukuBesarAllModel
 @{
     ViewData["Title"] = "LapAkunBukuBesarAll";
     Layout = "~/Pages/Shared/AdminLTE/_Layout.cshtml";
+    CultureInfo idID = CultureInfo.CreateSpecificCulture("id-ID");
+
 }
 
 
@@ -65,7 +68,7 @@
                         <tr>
                             <td style="text-align:center">@i</td>
                             <td>
-                                @string.Format("{0:d}", item.TanggalInput)
+                                @string.Format(idID,"{0:d}", item.TanggalInput)
                             </td>
                             <td>@item.NoBuktiJurnal</td>
                             <td>@item.Ket1</td>
@@ -77,13 +80,13 @@
                                     <td style="padding-left:43px">@item.KodeNamaAkun</td>}*@
 
                             <td style="text-align:right">
-                                @string.Format("{0:c0}", item.Debit1)
+                                @string.Format(idID,"{0:c0}", item.Debit1)
                             </td>
                             <td style="text-align:right">
-                                @string.Format("{0:c0}", item.Kredit1)
+                                @string.Format(idID,"{0:c0}", item.Kredit1)
                             </td>
                             <td style="text-align:right">
-                                @string.Format("{0:c0}", saldo1)
+                                @string.Format(idID,"{0:c0}", saldo1)
                             </td>
                         </tr>
                         debit11 = debit11 + item.Debit1;
@@ -118,8 +121,8 @@
                         { <p style="text-align:center">Seimbang</p>}
 
                     </td>
-                    <td style="text-align:right">   @string.Format("{0:c0}", debit11a)</td>
-                    <td style="text-align:right">@string.Format("{0:c0}", kredit22a)</td>
+                    <td style="text-align:right">   @string.Format(idID,"{0:c0}", debit11a)</td>
+                    <td style="text-align:right">@string.Format(idID,"{0:c0}", kredit22a)</td>
                 </tr>
 
             }

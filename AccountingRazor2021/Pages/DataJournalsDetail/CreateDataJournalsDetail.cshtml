@@ -1,8 +1,11 @@
 ﻿@page
+@using System.Globalization
 @model AccountingRazor2021.Pages.DataJournalsDetail.CreateDataJournalsDetailModel
 @{
     ViewData["Title"] = "CreateDataJournalDetail";
     Layout = "~/Pages/Shared/AdminLTE/_Layout.cshtml";
+    CultureInfo idID = CultureInfo.CreateSpecificCulture("id-ID");
+
 }
 <div>
     <a asp-action="Index">Back to List</a>
@@ -35,7 +38,7 @@
             <div>
                 <p>Silahkan pilih data transaksi Anda</p>
                 <table style="width:100%">
-                   
+
                     <tr style="width:100%">
                         <th style="width:50%">Akun</th>
                         <th>Debit</th>
@@ -102,7 +105,7 @@
             </tr>
             <tr>
                 <td>@ViewBag.NoBuktij11</td>
-                <td>@string.Format("{0:d}", ViewBag.TglInputjournal)</td>
+                <td>@string.Format(idID,"{0:d}", ViewBag.TglInputjournal)</td>
                 <td>@ViewBag.Keterangan1</td>
             </tr>
         </table>
@@ -134,10 +137,10 @@
                             <td style="text-align:center">@i</td>
                             <td>@item.KodeNamaAkun</td>
                             <td>
-                                @string.Format("{0:c0}", item.Debit1)
+                                @string.Format(idID,"{0:c0}", item.Debit1)
                             </td>
                             <td>
-                                @string.Format("{0:c0}", item.Kredit1)
+                                @string.Format(idID,"{0:c0}", item.Kredit1)
                             </td>
                         </tr>
                         debit11 = debit11 + item.Debit1;
@@ -157,8 +160,8 @@
                             { <p style="text-align:center">Seimbang</p>}
 
                         </td>
-                        <td>   @string.Format("{0:c0}", debit11)</td>
-                        <td>@string.Format("{0:c0}", kredit22)</td>
+                        <td>   @string.Format(idID,"{0:c0}", debit11)</td>
+                        <td>@string.Format(idID,"{0:c0}", kredit22)</td>
                     </tr>
 
                 }
@@ -170,6 +173,6 @@
 </div>
 
 
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    }
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,8 +1,10 @@
 ﻿@page
+@using System.Globalization
 @model AccountingRazor2021.Pages.Neraca.LaporanNeraca2Model
 @{
     ViewData["Title"] = "LaporanNeraca2";
     Layout = "~/Pages/Shared/AdminLTE/_Layout.cshtml";
+    CultureInfo idID = CultureInfo.CreateSpecificCulture("id-ID");
 }
 
 <h2>Isian Periode Laporan Neraca</h2>
@@ -20,7 +22,7 @@
             <td style="border:double">
 
                 @*<input value="@DateTime.Now.Date" asp-for="Tanggal1" type="datetime-local" />*@
-                <input value="1/10/2021" asp-for="Tanggal1" type="datetime" />
+                <input value="1/1/2021" asp-for="Tanggal1" type="datetime" />
             </td>
         </tr>
         <tr style="border:double">
@@ -35,7 +37,7 @@
             <th></th>
             <td style="border:double">
                 <div class="form-group">
-                    <input  type="submit" value="Tampilkan" class="btn-info" />
+                    <input type="submit" value="Tampilkan" class="btn-info" />
                 </div>
             </td>
         </tr>
@@ -47,14 +49,14 @@
 
     <div>
         <h1 style="text-align:center">Laporan Neraca</h1>
-        @if(ViewBag.PeriodeAwalA == new DateTime() && ViewBag.PeriodeAkhirA == new DateTime())
-        { 
-        <h2 style="text-align:center">Periode @string.Format("{0:d}", ViewBag.PeriodeAwalA) s/d  @string.Format("{0:d}", ViewBag.PeriodeAkhirA)</h2>
+        @if (ViewBag.PeriodeAwalA == new DateTime() && ViewBag.PeriodeAkhirA == new DateTime())
+        {
+            <h2 style="text-align:center">Periode @string.Format(idID, "{0:d}", ViewBag.PeriodeAwalA) s/d  @string.Format(idID,"{0:d}", ViewBag.PeriodeAkhirA)</h2>
         }
 
     </div>
     <div>
-        <table >
+        <table>
             <thead>
                 <tr>
                     <th>No.</th>
@@ -93,30 +95,30 @@
                         {
 
                             @*<tr class="group-header">
-                                <td colspan="6" style="padding-left:46px;font-weight:bold">
-                                    <span>@item3.Key</span>
-                                </td>
+                                    <td colspan="6" style="padding-left:46px;font-weight:bold">
+                                        <span>@item3.Key</span>
+                                    </td>
 
-                            </tr>*@
+                                </tr>*@
                             foreach (var item in item3)
                             {
 
                                 //if (item.Saldo1 != 0) {
-                                <tr >
+                                <tr>
                                     <td></td>
                                     <td style="padding-left:69px">@Html.DisplayFor(modelItem => item.NamaAkun)</td>
 
                                     <td style="text-align:right">
 
-                                        @string.Format("{0:c0}", item.Debit1)
+                                        @string.Format(idID,"{0:c0}", item.Debit1)
                                     </td>
                                     <td style="text-align:right">
 
-                                        @string.Format("{0:c0}", item.Kredit1)
+                                        @string.Format(idID,"{0:c0}", item.Kredit1)
                                     </td>
                                     <td style="text-align:right">
 
-                                        @string.Format("{0:c0}", item.Saldo1)
+                                        @string.Format(idID,"{0:c0}", item.Saldo1)
                                     </td>
                                 </tr>
                                 i = i + item.Saldo1;
@@ -133,39 +135,39 @@
 
                     }
 
-            <tr class="group-footer">
+                    <tr class="group-footer">
 
-                <td colspan="4" style="padding-left:100px;font-weight:bold">
-                    <span>@item1.Key</span>
+                        <td colspan="4" style="padding-left:100px;font-weight:bold">
+                            <span>@item1.Key</span>
 
-                </td>
+                        </td>
 
-                @if (item1.Key == "1 - AKTIVA")
-                {
-                    Aktiva1 = i;
-                }
-                else@if (item1.Key == "2 - PASIVA / KEWAJIBAN")
-                {
-                    Pasiva1 = i;
-                }
-                else@if (item1.Key == "3 - MODAL / EKUITAS")
-                {
-                    Modal1 = i;
-                }
+                        @if (item1.Key == "1 - AKTIVA")
+                        {
+                            Aktiva1 = i;
+                        }
+                        else@if (item1.Key == "2 - PASIVA / KEWAJIBAN")
+                        {
+                            Pasiva1 = i;
+                        }
+                        else@if (item1.Key == "3 - MODAL / EKUITAS")
+                        {
+                            Modal1 = i;
+                        }
 
-            @if (item1.Key == "1 - AKTIVA")
-            {
-                <td style="padding-left:100px;font-weight:bold"> @String.Format("{0:c0}", i)</td>
-            }
-            else
-            {
-                <td style="text-align: right; font-weight: bold"> @String.Format("{0:c0}", i) </td>
-            }
+                        @if (item1.Key == "1 - AKTIVA")
+                        {
+                            <td style="padding-left:100px;font-weight:bold"> @String.Format(idID,"{0:c0}", i)</td>
+                        }
+                        else
+                        {
+                            <td style="text-align: right; font-weight: bold"> @String.Format(idID,"{0:c0}", i) </td>
+                        }
 
-            </tr>
+                    </tr>
 
                     i = 0;
-                 }
+                }
 
             </tbody>
             <tfoot>
@@ -174,7 +176,7 @@
                         <span>Selisih Laba / Rugi Berjalan </span>
                     </td>
                     <td style="text-align:right;padding-left:100px;font-weight:bold">
-                        <span>@string.Format("{0:c0}", Aktiva1 - Pasiva1 - Modal1)</span>
+                        <span>@string.Format(idID,"{0:c0}", Aktiva1 - Pasiva1 - Modal1)</span>
                     </td>
                 </tr>
                 <tr>
@@ -187,7 +189,7 @@
                     </td>
                     <td style="padding-left:100px;font-weight:bold">
                         @*<span>@string.Format("{0:c0}", i2 + i3)</span>*@
-                        <span>@string.Format("{0:c0}", Pasiva1 + Modal1 + (Aktiva1 - Pasiva1 - Modal1))</span>
+                        <span>@string.Format(idID,"{0:c0}", Pasiva1 + Modal1 + (Aktiva1 - Pasiva1 - Modal1))</span>
                     </td>
                 </tr>
             </tfoot>
