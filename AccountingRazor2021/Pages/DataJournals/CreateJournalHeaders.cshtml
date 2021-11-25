@@ -35,7 +35,7 @@
             <div class="form-group">
                 <label class="control-label" asp-for="DataJournalHeaders.TotalRupiah">Nilai Rupiah</label>
                 <input asp-for="DataJournalHeaders.TotalRupiah" class="form-control" type="number" />
-
+            
             </div>
             <div class="form-group">
                 <label asp-for="DataJournalHeaders.TipeJournalId" class="control-label">Tipe Jurnal</label>
@@ -67,6 +67,7 @@
         </form>
     </div>
 </div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
