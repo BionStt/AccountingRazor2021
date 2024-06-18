@@ -1,0 +1,811 @@
+--truncate table DataAccount 
+
+-- First batch of entries
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('a069b1c5-1c24-4d06-91f1-0030f410621f', NULL, '1', 'AKTIVA', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('b317e5e2-4568-4866-8040-01c60e3c8ffa', '1', '01.01.00', 'AKTIVA LANCAR', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('103fc109-e901-4ac6-aafe-0270b75c614b', '2', '01.01.01', 'KAS', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('608e9c34-e9d8-4f73-9ff2-02edd6a949a9', '3', '1.01.01.01', 'KAS KASIR', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('d84eac21-0515-4e68-884d-02f0bb179fd0', '3', '1.01.01.02', 'KAS OUTSTANDING', 1, 'N')
+
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('2dcca5d3-ade2-4cc1-a2ac-080180fa8499', '2', '01.01.02', 'BANK', 1, 'N')
+
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('f32162db-1580-4e0e-898c-0b233cabda52', '4', '1.01.02.01', 'BANK BCA', 1, 'N')
+
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('cc1d9d61-5652-4100-831a-0c55531fbc03', '4', '1.01.02.02', 'BANK BNI', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('975f0b88-82c7-41ef-8271-0d24a229702f', '4', '1.01.02.03', 'BANK MANDIRI', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('bc1777e3-028d-4db5-827c-0d36b658dc30', '4', '1.01.02.04', 'BANK DANAMON', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('50aafafe-799f-4ed7-bd09-0d8284e43508', '4', '1.01.02.05', 'BANK PANIN', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('3be49d2f-2c21-4378-915b-0de42359c367', '4', '1.01.02.06', 'BANK BRI', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('ad4895e0-d424-423b-890a-0e5a40cd86b7', '4', '1.01.02.07', 'BANK MEGA', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('28a55f30-4fba-46af-818e-0e8c2b22d550', '4', '1.01.02.08', 'BANK OCBC', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('fda10c18-2570-4c72-a9b8-0ebe86a09324', '4', '1.01.02.09', 'BANK CIMB NIAGA', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('0ec0993a-2c83-4984-a7a1-10b3d4165490', '4', '1.01.02.10', 'BANK BPD', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('ae3e7b45-9952-459d-8691-10feecde6f44', '2', '01.01.03', 'PIUTANG USAHA', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('7b486d58-e7f3-4c9b-859d-114050d9a4e6', '5', '1.01.03.01', 'PIUTANG PT ADIRA', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('8c060e45-f63a-4150-8197-1448a412e421', '5', '1.01.03.02', 'PIUTANG PT SOF', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('12fb1e86-e071-4c4d-9fb0-14d7f508a0c5', '5', '1.01.03.03', 'PIUTANG PT MANDALA FINANCE', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('2b28a0c3-2af0-44d3-b8be-1adabed82c5e', '5', '1.01.03.04', 'PIUTANG PT SFI', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('77fc33c2-1ab5-47ce-90be-1b6fb1baa080', '5', '1.01.03.05', 'PIUTANG PT IMFI', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('cc0ba14b-a071-4dc2-9860-1d4b4ee19ec7', '5', '1.01.03.06', 'PIUTANG PT MUF', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('4ac1dbb5-4865-400b-b968-1e14f7c785c2', '5', '1.01.03.07', 'PENYISIHAN PIUTANG RAGU-RAGU', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('12c9e4fe-b873-4222-8b44-1fae5cfac039', '2', '01.01.04', 'PIUTANG KARYAWAN', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('eb448b1b-9078-49d8-9507-1fff582b6eaf', '65', '1.01.04.01', 'BASRI', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('7d9d5fcc-be42-46d8-837c-202c6a8bd8a7', '65', '1.01.04.02', 'NURUL', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('795f5c77-0e5c-45f4-819f-20f5e98fdc7d', '65', '1.01.04.03', 'SULTAN', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('d1d008e1-e567-446b-9fb3-221c0afd2b8a', '2', '01.01.05', 'UANG MUKA PEMASOK', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('8a6df802-ebaf-46d2-b7d9-2370859c7f6a', '66', '1.01.05.01', 'BAYAR DULUAN KE PT SGP', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('27c179c6-73d4-4e09-9b25-242c07650578', '66', '1.01.05.02', 'BAYAR DULUAN KE PT SPS', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('4a2a7317-e951-4ee5-8a2e-24827868044e', '66', '1.01.05.03', 'UANG MUKA PEMBELIAN - AKTIVA TETAP', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('22a8284f-10bf-4437-a7f3-28fac3e5b59b', '2', '01.01.06', 'PERSEDIAAN BARANG DAGANGAN', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('70858f36-895b-4666-809b-2b44d3f0e63c', '6', '1.01.06.01', 'STOK SUZUKI TJM', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('50efd603-214f-468f-9cf2-2bed57dd7e9c', '6', '1.01.06.02', 'STOK SUZUKI PANCIRO', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('f13a5fc4-3808-4b68-9da5-2ca493f60c38', '6', '1.01.06.03', 'STOK KAWASAKI PALANGGA', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('7752325a-d463-4543-9143-2d11d110d6bb', '6', '1.01.06.04', 'STOK HONDA SMM', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('f8ad48a1-2017-47a4-8082-2de22e3ca785', '2', '01.01.07', 'SEWA / BIAYA DIBAYAR DIMUKA', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('6ef442ad-82ee-4838-9a5a-2e4ce535ef12', '7', '1.01.07.01', 'SEWA GEDUNG', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('342afcda-d8c0-4ec5-878c-2f38a90929cd', '7', '1.01.07.02', 'SEWA LAHAN PARKIR', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('c4f4891e-76e5-42b6-9ab3-3276b955af2f', '7', '1.01.07.03', 'SEWA RUKO', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('3b043158-a8ad-4a7b-8c94-3977ee394a04', '7', '1.01.07.04', 'PERSEKOT ASURANSI', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('d3dfbe26-8691-48ef-bc7f-3a58fb442afd', '7', '1.01.07.05', 'PERSEKOT BIAYA PERJALANAN', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('243b1f46-e63c-493a-8bab-3ac35b843151', '7', '1.01.07.06', 'PERSEKOT BIAYA IKLAN', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('36e810b5-06d8-4262-b852-3d381b2e262e', '2', '01.01.08', 'PENDAPATAN YANG MASIH HARUS DITERIMA', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('b68b3d86-0bc8-43a3-819a-3dd946ec9cc3', '8', '1.01.08.01', 'BUNGA DEPOSITO', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('ecdc0745-df99-4a84-a25c-3e05a896ea4f', '8', '1.01.08.02', 'BUNGA OBLIGASI', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('0f922537-52bf-4179-a068-3ec30815dd86', '8', '1.01.08.03', 'DEVIDEN', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('dfbe7ab0-218a-4ae8-8851-401cbe91cfa1', '8', '1.01.08.04', 'JASA KEAGENAN', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('12945303-cb2d-4a3e-8f4c-406effec2edd', '2', '01.01.09', 'PAJAK DIBAYAR DIMUKA', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('ee9a4969-29b2-44d8-90de-4085ccee0d6f', '9', '1.01.09.01', 'PPN MASUKAN(PEMBELIAN)', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('3597bf55-76cb-4218-93a5-40cbdfe25c1e', '9', '1.01.09.02', 'PPH 21', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('434cf5f8-4e04-4d04-a0a2-44dd252ce644', '9', '1.01.09.03', 'PPH 23', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('a95c1ebf-a693-4064-8a95-463dd390dad1', '9', '1.01.09.04', 'PPH FINAL PS 4 AYAT 2', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('11b35a4b-96f7-4297-baf1-47cb0366a284', '9', '1.01.09.05', 'PPH 25', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('ea2789f8-f42e-48b1-8ea8-4b108246a14c', '2', '01.01.10', 'INVESTASI JANGKA PANJANG', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('a1fe668c-cd39-40a1-987c-4ea3627065a5', '10', '1.01.10.01', 'PENYERTAAN SAHAM', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('e6534d35-7d6d-4c3b-a4e2-5180b224ba02', '10', '1.01.10.02', 'OBLIGASI', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('fea968dd-3f41-4c1d-a8f6-51a1e8c033fb', '10', '1.01.10.03', 'INVESTASI PROPERTI', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('804d84b1-f34a-4064-b5b2-53defb0ef253', '1', '01.02.00', 'AKTIVA TETAP', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('650f6056-1fed-4e92-94cb-570a249e77b1', '11', '01.02.01', 'MESIN DAN PERALATAN', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('1b646832-08d3-407f-b83c-582cb283d92d', '11', '01.02.02', 'AKUMULASI PENYU MESIN DAN PERALATAN', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('bc484a03-fa92-46dd-a574-5856eb8fe1cf', '11', '01.02.03', 'KENDARAAN', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('00a1b22b-af93-4806-8ac8-5a0591c445f4', '11', '01.02.04', 'AKUMULASI PENYU KENDARAAN', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('d6123a7a-3099-4a83-b19f-5ad799d355b4', '11', '01.02.05', 'INVENTARIS KANTOR', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('006f3ea2-b787-4b5e-a764-5b3a5c5c7966', '11', '01.02.06', 'AKUMULASI PENYU INVENTARIS KANTOR', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('485228fe-359c-431f-933a-5cbc8f10adef', '11', '01.02.07', 'GEDUNG DAN TANAH', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('893fafc1-2ae9-4af4-9bbd-5f4e11e7fb44', '18', '1.02.07.01', 'GEDUNG', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('f5c4b16b-31c4-41f6-9c78-60ab6854f7b1', '18', '1.02.07.02', 'TANAH', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('6a435e4e-df4b-44e5-8a06-610fd930b8cb', '13', '01.02.08', 'AKUMULASI PENYU GEDUNG DAN TANAH', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('4ac2c78c-7a08-4c91-9f64-61b0c23a4047', '19', '1.02.08.01', 'AKUMULASI PENYU GEDUNG', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('34997c92-a1b9-48af-b944-61c6cc9898fe', '19', '1.02.08.02', 'AKUMULASI PENYUSUTAN TANAH', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('c6b7dfac-7e14-4749-8909-627a8f64e0ed', '1', '01.03.00', 'AKTIVA TIDAK BERWUJUD', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('d11f0646-b41d-4f07-a69d-62fc4aed4d86', '20', '01.03.01', 'HAK PATEN', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('b1894d62-9c85-4bb9-a423-638468d97f2b', '20', '01.03.02', 'MEREK DAN CAP DAGANG', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('abcae203-2d68-400b-a6a0-64e3ca23420d', '20', '01.03.03', 'FRANCHISE', 1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('19190c60-1ed3-4db8-8508-650043e92bd5', NULL, '2', 'PASIVA / KEWAJIBAN', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('02d54070-a809-4873-9763-665b4f39883e', '21', '02.01.00', 'KEWAJIBAN  HUTANG LANCAR', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('a1ad23b9-ff80-4423-9f24-679b2efb0d6f', '111', '02.01.01', 'HUTANG USAHA', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('9264d451-bc87-418a-8bdf-689edda33213', '104', '2.01.01.01', 'HUTANG GAJI', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('19485f1c-9a8e-4ca9-a9f8-6b132e212cd9', '104', '2.01.01.02', 'HUTANG BRI', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('2ffdc966-2220-4668-99db-6b132e212cd9', '104', '2.01.01.03', 'HUTANG BCA', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('a47e06c1-3542-498f-9ab9-6ca0dfbf7d1d', '104', '2.01.01.04', 'HUTANG BIAYA', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('3e5d4a9c-cdb5-4362-9faf-6e47bd786ee2', '104', '2.01.01.05', 'HUTANG PROYEK SEWA KOMPUTER', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('cd4c62b3-5149-4b88-9d63-6f9f94133bed', '104', '2.01.01.06', 'HUTANG BPJS', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('ee52581c-e931-42ba-9167-713771de6641', '104', '2.01.01.07', 'HUTANG SEWA KENDARAAN', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('b6153955-305e-46a9-8e24-7143f58c7fdc', '104', '2.01.01.08', 'HUTANG ADIRA FINANCE', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('b3b49a5f-a5ec-449c-a54f-71e5c1303d56', '104', '2.01.01.09', 'HUTANG BPR AA', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('0e62e9eb-bf84-414d-be76-73e4ddfc5497', '104', '2.01.01.10', 'HUTANG CV ABU HITAM', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('3dbd2b8b-ae85-4cbf-87b7-740576e8daca', '104', '2.01.01.11', 'HUTANG PENDAPATAN', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('11aaeeda-2efc-4248-ae1d-7579f586f8ba', '104', '2.01.01.12', 'HUTANG SEWA', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('ca13c170-4808-45b1-bbbb-7593bd4b76bf', '111', '02.01.02', 'HUTANG PAJAK', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('4dd882db-f04a-40af-a043-77e761d0c1c9', '117', '2.01.02.01', 'PPN MASUKAN', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('666b4dc6-ade8-4dca-aa01-7937becaf297', '117', '2.01.02.02', 'PPN KELUARAN', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('00c2fa0f-1572-4c3c-b361-7ab435f720de', '117', '2.01.02.03', 'HUTANG PAJAK PENJUALAN', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('44385b5a-5307-4c6e-b74f-7afa4aa15a0a', '117', '2.01.02.04', 'PPH 21', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('168d6344-76b1-4f50-bd6d-7cc8baa9605b', '117', '2.01.02.05', 'PPH 23', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('1343f987-4d8d-4993-9868-7d55cf9ee81f', '117', '2.01.02.06', 'PPH 25', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('2aef1487-0550-4c5c-a060-7d8ceb390ce4', '117', '2.01.02.07', 'PPH 22', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('d7ff8c5c-5333-4952-b0b8-7e0d2a540be9', '117', '2.01.02.08', 'PPH 29', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('e1c478f4-58c8-405b-bd85-7ef5d9ab321c', '117', '2.01.02.09', 'PBB', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('c35b37e5-63f7-4e89-a1bd-7efb8f2d5084', '117', '2.01.02.10', 'STP PAJAK', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('96e5b557-7fe4-4415-b231-7f28859a5d1e', '111', '02.01.03', 'HUTANG PINJAMAN', -1, 'N')
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('68affd2b-76d2-44c5-bf7c-7f7dd56794de', '118', '2.01.03.01', 'PINJAMAN DARI IBU LUSI', -1, 'N');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('4742deb2-34df-4dae-bc72-81336464b905', '118', '2.01.03.02', 'PINJAMAN DARI BAPAK ACO', -1, 'N');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('494f12cd-6f70-49de-b40b-8368004dc441', '118', '2.01.03.03', 'PINJAMAN DARI PT JAYA TERUS', -1, 'N');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('8f7e1348-c9af-4e8f-9c02-852548994604', '118', '2.01.03.04', 'PINJAMAN DARI PT DAGANG JAYA', -1, 'N');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('285f8b4c-4f5e-4e9a-976e-86b3cc000a15', '111', '02.01.04', 'PENDAPATAN DITERIMA DIMUKA', -1, 'N');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('32857877-88cc-47dc-82ca-87444d3a240e', '23', '02.02.00', 'KEWAJIBAN HUTANG JANGKA PANJANG', -1, 'N');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('55a254d0-066e-4132-bfa2-8a317040440c', '103', '02.02.01', 'HUTANG BANK', -1, 'N');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('f76d6375-927a-4fbe-ab90-8a7f0b51edb9', '103', '02.02.02', 'HUTANG JANGKA PANJANG LAIN', -1, 'N');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('f3d88549-9314-4bab-8eeb-8c16103ee931', NULL, '3', 'MODAL / EKUITAS', -1, 'N');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('6ee7ddd7-e802-4f7c-9eb1-8c8a51463d6f', '22', '03.01.00', 'MODAL DISETOR', -1, 'N');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('65cfd070-a058-4d52-a28d-90f2e478cf5a', '23', '03.01.01', 'MODAL AWAL', -1, 'N');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('0db230a9-35e4-4a56-80a3-92f25e6cd92b', '136', '3.01.01.01', 'MODAL WALTHON', -1, 'N');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('9099447c-b548-4aa2-aa79-94e1cc3ac3d2', '136', '3.01.01.02', 'MODAL DERMAWAN', -1, 'N');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('c2a2cb6c-8b31-4f0c-9bfc-98704e098953', '23', '03.01.02', 'AGIO SAHAM', -1, 'N');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('dd6e2f1a-9435-40c3-9ebe-999cbc7002c1', '22', '03.02.00', 'LABA DITAHAN', -1, 'N');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('ea45430f-31e4-4695-bfd0-99b6aae4067e', '22', '03.03.00', 'LABA/RUGI PERIODE BERJALAN', -1, 'N');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('4748d929-ac3f-4e43-b476-9a2e56c4d186', '22', '03.04.00', 'KOREKSI LABA', -1, 'N');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('8e7a0e29-ab5a-4510-b3b6-9d1f2975cd33', '26', '03.04.01', 'KOREKSI LABA DITAHAN', -1, 'N');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('48b25ee8-dc63-463d-aa60-9d77515c11f3', '26', '03.04.02', 'KOREKSI LABA RUGI PERIODE BERJALAN', -1, 'N');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('d47bb94c-dece-46d1-b025-9d94cff6a4ce', NULL, '4', 'PENDAPATAN', -1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('712852f5-7bb1-4e9e-83e1-9e3978ee6b34', '27', '04.01.00', 'PENDAPATAN PROYEK', -1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('6e9e2d93-0b32-48ce-b966-a1491e3fc318', '28', '04.01.01', 'PENDAPATAN SEWA KOMPUTER', -1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('079e9b15-7f5b-4de3-81e8-a3f2a20bd8fa', '28', '04.01.02', 'PENDAPATAN PENGEMBANGAN DATA', -1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('0fd9741e-d81a-46bb-be90-a3fba0e3b020', '28', '04.01.03', 'PENDAPATAN PROYEK PDAM', -1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('8e158b89-4258-4e2b-859c-a7db43c7a503', '27', '04.02.00', 'PENJUALAN BARANG DAGANGAN', -1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('c3f0ad8d-5622-496f-84b1-a878e95be5ee', '29', '04.02.01', 'PENJUALAN SUZUKI', -1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('b43b35e0-94ff-47da-bf60-a8feb15fffd1', '145', '4.02.01.01', 'PENJUALAN SUZUKI CAB PANCIRO', -1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('f477ec92-3fd5-48bc-a2c3-a944fddeed50', '29', '04.02.02', 'PENJUALAN KAWASAKI', -1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('00535184-77d4-4195-ba74-a96077de027c', '29', '04.02.03', 'PENJUALAN HONDA', -1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('5a5fda2e-c512-4342-b91c-a98670a6fcba', '29', '04.02.04', 'PENJUALAN YAMAHA', -1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('9ee03978-b901-489b-aaf1-ac1fde9b7d71', '29', '04.02.05', 'PENJUALAN 3 RODA', -1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('b07d2ca3-112f-498c-8a64-af9a01cc7c46', '27', '04.03.00', 'RETURN PENJUALAN DAN PENGURANGAN HARGA', -1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('33bb89d5-2294-4328-a3ab-afee0f03700c', '30', '04.03.01', 'RETURN PENJUALAN SUZUKI', -1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('5f5c2692-b309-4eb1-9f99-b08085bfc4cb', '151', '4.03.01.01', 'RETURN PENJUALAN SUZUKI CAB PANCIRO', -1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('e011b4d1-ba94-4cc4-9de0-b09c1827eb33', '27', '04.04.00', 'POTONGAN PENJUALAN', -1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('57942888-79bc-46dc-b91d-b10eeb36db23', '27', '04.05.00', 'PENDAPATAN BIAYA KIRIM', -1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('556b95f8-0a55-4423-b1dd-b5fef0de8062', NULL, '5', 'HARGA POKOK / HPP', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('338f9233-0bff-41a5-8537-b60a1b41bff3', '33', '05.01.00', 'HPP BARANG DAGANGAN', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('212ae542-4f71-4c85-9519-b631935e2a06', '34', '05.01.01', 'HPP UNIT SUZUKI', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('d9f961fc-e4c1-465a-ad90-b68a8995c488', '153', '5.01.01.01', 'HPP UNIT SUZUKI CAB PANCIRO', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('7b8e818f-e24c-48f2-84ef-b7ab5900c1c4', '33', '05.02.00', 'RETURN PEMBELIAN DAN PENGURANGAN HARGA', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('ab16b2a2-1537-4340-9c8c-b80ef8ef6260', '33', '05.03.00', 'POTONGAN PEMBELIAN', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('25e6bc11-5ef0-484b-a46f-b850f0b85009', NULL, '6', 'BIAYA', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('49baa48a-1350-471b-a867-b87f76b366d4', '37', '06.01.00', 'BIAYA OPERASIONAL', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('dff1e8a0-594f-4a13-a8f2-b8c111821aeb', '38', '06.01.01', 'BIAYA PROYEK', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('cc42366a-0760-4ab3-bf93-b8ee420ad776', '155', '6.01.01.01', 'BIAYA TUL', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('c53173c4-a09c-4286-82a9-b908771e1cbc', '155', '6.01.01.02', 'BIAYA DINAS GANGGUAN', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('b2b3dc8c-be2b-4a3a-b024-b9725c8c5e08', '155', '6.01.01.03', 'BIAYA SEWA KOMPUTER', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('ee0829ee-2ee6-4768-94d4-b9bc4881fbb9', '38', '06.01.02', 'BIAYA OVERHEAD PROYEK', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('6ce03851-49fa-44d3-b06f-bc1d13facacd', '159', '6.01.02.01', 'BIAYA TINTA', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('7f268438-6574-46bf-a168-be2983dac73f', '159', '6.01.02.02', 'BIAYA KERTAS', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('f538b5b5-d568-406d-b337-bfa1fed2760a', '159', '6.01.02.03', 'BIAYA CETAK/JILID', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('8808198b-8dba-4a1e-8bd7-c047c273fa20', '38', '06.01.03', 'BIAYA MARKETING', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('0beb0d6d-3dab-4fbd-b4ed-c0d065118a89', '163', '6.01.03.01', 'BIAYA ENTERTAINMENT', 1, 'L');
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('6273367a-8d4b-481e-8f7c-c260c5062c24', '163', '6.01.03.02', 'BIAYA PERJALANAN DINAS', 1, 'L');
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('93d53f08-0ee2-4b7b-96d1-c593031bf807', '163', '6.01.03.03', 'BIAYA PROPOSAL', 1, 'L');
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('fe42a609-7aee-4866-afbd-c9ae3e85b248', '163', '6.01.03.04', 'BIAYA KITA MARKETING', 1, 'L');
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('a374383b-b7b5-4053-a1d0-ca397fa4d7fa', '38', '06.01.04', 'BIAYA IKLAN', 1, 'L');
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('da57d6d8-ee97-4741-b1ca-cc1b9778769a', '168', '6.01.04.01', 'BIAYA IKLAN KORAN', 1, 'L');
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('e89d0ad7-cbf0-477d-89d4-cead2ae9b369', '168', '6.01.04.02', 'BIAYA IKLAN MEDSOS', 1, 'L');
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('a9e52ba3-5128-4454-b935-d1bad4b589bf', '37', '06.02.00', 'BIAYA NON OPERASIONAL', 1, 'L');
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('9b533fe8-0570-442b-8fd4-d61b4f1f1c40', '39', '06.02.01', 'BIAYA NON OPERASIONAL', 1, 'L');
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('22f6bc0b-a608-4db6-ab8e-d62d915c261f', '171', '6.02.01.01', 'BIAYA PENYUSUTAN ASET', 1, 'L');
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('d884112a-c057-40e8-b0d5-d8ef169d3306', '171', '6.02.01.02', 'BIAYA SEWA GEDUNG', 1, 'L');
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('a76493bd-645c-43c8-b59d-d948139ffcea', '171', '6.02.01.03', 'BIAYA SEWA LAHAN PARKIR', 1, 'L');
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('70923012-b78a-4c70-8502-daa1c2b6dab8', '171', '6.02.01.04', 'BUNGA PINJAMAN', 1, 'L');
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('faee9d56-bcee-40ee-bcd3-dcb651f2633f', '171', '6.02.01.05', 'BIAYA ADMINISTRASI BANK', 1, 'L');
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('6c8f7d7c-a6f6-4cd0-91c1-dce91c9c33da', '171', '6.02.01.06', 'BIAYA DIVIDEN', 1, 'L');
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('3507528f-fde7-4d43-baee-dec1a8f3fe14', '171', '6.02.01.07', 'BIAYA ADMINISTRASI PINJAMAN', 1, 'L');
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('453b8323-a473-49a3-93f9-dfdafe320ac8', '171', '6.02.01.08', 'BIAYA PENYUSUTAN GEDUNG', 1, 'L');
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('a9dbceae-8c18-4ea9-a425-e0742227003a', '37', '06.03.00', 'BIAYA ADMINISTRASI', 1, 'L');
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('42783565-cb4e-4b4f-b3b4-e20710b19d08', '40', '06.03.01', 'BIAYA PEGAWAI', 1, 'L');
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('af0da748-7499-40b9-ac45-e26dba42534a', '180', '6.03.01.01', 'BIAYA GAJI', 1, 'L');
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('dbf1083d-c46e-4770-b41f-e3fb55e2ed9c', '180', '6.03.01.02', 'BIAYA THR', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('52489daa-2a15-49fa-abc5-e48397182d88', '180', '6.03.01.03', 'BIAYA BONUS', 1, 'L');
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES
+('26cc5619-be20-4be6-ae64-e7f1a1475b49', '180', '6.03.01.04', 'BIAYA PAKAIAN SERAGAM', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('7c23b8a4-e31e-4316-9e5b-e981db31416b', '180', '6.03.01.05', 'BIAYA TUNJANGAN ASURANSI', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('c00dd9a2-d0fb-4391-9ddc-e9b9b4f26a89', '180', '6.03.01.06', 'BIAYA ASURANSI', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('bfe34856-edbb-49d8-92e8-ea30e621de7b', '40', '06.03.02', 'BIAYA TRANSPORTASI', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('17adb51e-46cc-4059-b448-ea4c880c0959', '181', '6.03.02.01', 'BIAYA BENSIN', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('5c103377-0d80-45c1-9e49-ed48d2fb1a61', '181', '6.03.02.02', 'BIAYA TOL', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('e76090bd-99f4-4b1b-a274-ed7c10ca1b5f', '40', '06.03.03', 'BIAYA KOMUNIKASI DAN LISTRIK', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('7f7871bc-6d29-4c8c-967d-ee685fd9e150', '198', '6.03.03.01', 'BIAYA TELEPON', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('7c715f95-227c-4aac-b6c3-ef6a15ddd544', '198', '6.03.03.02', 'BIAYA INTERNET', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('a2c54586-dcda-400c-9773-f0700887be24', '198', '6.03.03.03', 'BIAYA PDAM', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('c70a4642-de1a-4e04-8230-f14b89c33ac9', '40', '06.03.04', 'BIAYA PEMELIHARAAN ASET', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('1acb92ee-034c-4391-ad78-f4fdb73e22f6', '40', '06.03.05', 'BIAYA PERALATAN ADMINISTRASI', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('e022221d-6ce4-42ea-83b2-f560d5fa0e1d', '40', '06.03.06', 'BIAYA PERIJINAN', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('d5f62f5a-c0e4-4778-8a02-f6549e26c69f', '40', '06.03.07', 'BIAYA PERPAJAKAN', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('3f87c15f-143b-4ba2-8fa4-f6738895af7a', '40', '06.03.08', 'BIAYA KOMSUMSI', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('8ace4723-5028-44dc-ae67-f7651240c610', '40', '06.03.09', 'BIAYA PENDIDIKAN DAN PELATIHAN', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('34ff868d-081f-4fda-bfa2-f7ff865ced3b', '40', '06.03.10', 'BIAYA ADMINISTRASI LAINNYA', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('7ec19626-36d0-423e-afea-f8dc70db6bc0', NULL, '8', 'PENDAPATAN LAIN LAIN', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('9d47f5ec-7400-4be2-834d-fa03904c3ef6', '41', '08.01.00', 'PENDAPATAN NON OPERASIONAL', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('fb5f19c0-37e4-4358-b807-fcc9aa2270a8', NULL, '9', 'BIAYA LAIN-LAIN', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('cdbd4d91-eaca-4dda-879a-fdb92dee3322', '43', '09.01.00', 'BIAYA BUNGA PINJAMAN BANK', 1, 'L');
+
+INSERT INTO AccountingRazor2021B.dbo.DataAccount
+(DataAccountId, Parent, KodeAccount, Account, NormalPos, Kelompok)
+VALUES('5e36cdea-191f-4b10-8147-fedd4ed81630', '43', '09.03.00', 'RUGI PENJUALAN AKTIVA', 1, 'L');

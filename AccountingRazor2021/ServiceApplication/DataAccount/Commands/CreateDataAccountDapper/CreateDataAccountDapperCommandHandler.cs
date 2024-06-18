@@ -24,7 +24,7 @@ namespace AccountingRazor2021.ServiceApplication.DataAccount.Commands.CreateData
 
         public async Task<Guid> Handle(CreateDataAccountDapperCommand request, CancellationToken cancellationToken)
         {
-             var xx = Guid.NewGuid();
+            var xx = Guid.NewGuid();
             var parameters = new DynamicParameters();
             parameters.Add("KodeAccount", request.KodeAccount);
             parameters.Add("Account", request.Account.ToUpper());
@@ -37,21 +37,22 @@ namespace AccountingRazor2021.ServiceApplication.DataAccount.Commands.CreateData
             {
                 parameters.Add("Parent", request.Parent);
             }
-            else 
+            else
             {
-                parameters.Add("Parent", (string)null); 
+                parameters.Add("Parent", (string)null);
             }
-          
+
             var sql = "INSERT INTO DataAccount(KodeAccount, Account, NormalPos, Kelompok, DataAccountId,Parent) VALUES(@KodeAccount, @Account, @NormalPos, @Kelompok, @DataAccountId,@Parent)";
 
             using (var conn = _connectionFactory.GetDbConnection())
             {
-                await conn.QueryAsync(sql,parameters);
+                await conn.QueryAsync(sql, parameters);
 
             }
             // var entity = Domain.DataAccount.CreateDataAccount(request.Parent, request.KodeAccount, request.Account, request.NormalPos, request.Kelompok);
 
-            await _mediator.Publish(new CreateSaldoAwalCommand {DataAccountId = xx, Debit=0,Kredit=0 });
+            //await _mediator.Publish(new CreateSaldoAwalCommand { DataAccountId = xx, Debit = 0, Kredit = 0 });
+            await _mediator.Send(new CreateSaldoAwalCommand { DataAccountId = xx, Debit = 0, Kredit = 0 });
 
             return xx;
 
@@ -77,7 +78,7 @@ namespace AccountingRazor2021.ServiceApplication.DataAccount.Commands.CreateData
             //{
             //    var id = connection.Query<int>(sql, new { Name = name }).Single();
             //    return id;
-            
+
 
 
         }

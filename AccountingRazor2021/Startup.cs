@@ -22,6 +22,7 @@ using Microsoft.AspNetCore.Http;
 using AccountingRazor2021.Models;
 using AccountingRazor2021.Services;
 using System.Globalization;
+using System.Reflection;
 
 namespace AccountingRazor2021
 {
@@ -70,7 +71,13 @@ namespace AccountingRazor2021
 
             services.AddTransient<IDbConnectionFactory>(x => new DapperConnectionFactory(connectionString));
 
-            services.AddMediatR(typeof(Startup));
+            //services.AddMediatR(typeof(Startup));
+            // Register MediatR
+          
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+            //var typeFinder = new AppTypeFinder();
+            //var assemblies = typeFinder.GetAssemblies();
+            //services.AddMediatR(assemblies.ToArray());
 
             services.AddRazorPages().AddViewLocalization().AddDataAnnotationsLocalization();
 
