@@ -1,0 +1,138 @@
+SELECT 
+    b.DataAccountId AS AccountingDataAccountId,
+    c.DataJournalHeaderId AS AccountingDataJournalIdH,
+    (b.KodeAccount + ' - ' + b.Account) AS DataAkun,
+    a.Debit AS Debit1,
+    a.Kredit AS Kredit1,
+    a.Keterangan AS Ket1,
+    c.TanggalInput AS TanggalInput,
+    c.NoBuktiJournal AS NoBuktiJurnal
+FROM 
+    AccountingRazor2021B.dbo.DataJournal a
+LEFT JOIN 
+    AccountingRazor2021B.dbo.DataAccount b ON a.DataAccountId = b.DataAccountId
+INNER JOIN 
+    AccountingRazor2021B.dbo.DataJournalHeader c ON a.DataJournalHeaderId = c.DataJournalHeaderId
+
+    select * from DataAccount da 
+    
+    select * from DataJournal dj 
+    
+    select * from DataJournalHeader djh 
+    
+     SELECT [d0].[DataAccountId] AS [AccountingDataAccountId], [d1].[DataJournalHeaderId] AS [AccountingDataJournalIdH], COALESCE([d0].[KodeAccount], N'') + N' - ' + COALESCE([d0].[Account], N'') AS [DataAkun], [d].[Debit] AS [Debit1], [d].[Kredit] AS [Kredit1], [d].[Keterangan] AS [Ket1], [d1].[TanggalInput], [d1].[NoBuktiJournal] AS [NoBuktiJurnal]
+      FROM [DataJournal] AS [d]
+      LEFT JOIN [DataAccount] AS [d0] ON [d].[DataAccountId] = [d0].[DataAccountId]
+      INNER JOIN [DataJournalHeader] AS [d1] ON [d].[DataJournalHeaderId] = [d1].[DataJournalHeaderId]
+      
+      
+      declare @tanggal1 datetime='2021-01-01', @tanggal2 datetime = '2024-12-31';
+      WITH DataJournalDetailsWithHeaders AS (
+--       declare @tanggal1 datetime='2021-01-01', @tanggal2 datetime = '2024-12-31';
+    SELECT
+        d.Debit,
+        d.Kredit,
+        d.DataAccountId,
+        f.DataJournalHeaderId,
+        f.TanggalInput
+    FROM
+        DataJournal d
+        LEFT JOIN DataJournalHeader f ON d.DataJournalHeaderId = f.DataJournalHeaderId
+    WHERE
+        f.TanggalInput >= @Tanggal1 AND f.TanggalInput <= @Tanggal2
+)
+
+SELECT
+    c.KodeAccount + ' - ' + c.Account AS nm,
+    a1.Depth,
+    e.KodeAccount + ' - ' + e.Account AS KodeAkunInduk,
+    e.NormalPos AS normalPosInduk,
+    b2.KodeAccount + ' - ' + b2.Account AS KodeAccountParent,
+    b2.Account AS AccountParent,
+    a1.KodeAccount AS KodeAccountParent1,
+    a1.Account AS AccountParent1,
+    c.KodeAccount AS KodeAccount1,
+    c.Account AS Account1a,
+    SUM(COALESCE(d.Debit, 0)) AS Debit1,
+    SUM(COALESCE(d.Kredit, 0)) AS Kredit1,
+    SUM((COALESCE(d.Debit, 0) - COALESCE(d.Kredit, 0)) * c.NormalPos) AS Saldo1
+FROM
+    DataAccount a1
+    JOIN DataAccount b2 ON a1.Parent = CAST(b2.NoUrutId AS VARCHAR)
+    JOIN DataAccount c ON a1.NoUrutId = CAST(c.Parent AS INT)
+    JOIN DataAccount e ON b2.Parent = CAST(e.NoUrutId AS VARCHAR)
+    LEFT JOIN DataJournalDetailsWithHeaders d ON c.DataAccountId = d.DataAccountId
+WHERE
+    b2.Kelompok = 'N'
+GROUP BY
+    c.Account,
+    b2.KodeAccount,
+    b2.Account,
+    a1.KodeAccount,
+    a1.Account,
+    c.KodeAccount,
+    c.Account,
+    a1.Depth,
+    e.KodeAccount,
+    e.Account,
+    e.NormalPos
+ORDER BY
+    a1.KodeAccount;
+
+
+
+
+    CREATE TRIGGER [dbo].[trg_DataAccount_INS]
+	ON [dbo].[DataAccount]
+	AFTER INSERT
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	--Cannot function on more than 1 inserted record at a time
+	IF (SELECT COUNT(1) FROM Inserted) > 1
+	BEGIN
+		RAISERROR (N'This table does not support multiple inserts in one SQL statement', 18, 1)
+
+		DELETE FROM DataAccount
+		WHERE NoUrutId IN (SELECT NoUrutId FROM Inserted)
+
+		RETURN
+	END
+
+	--If Root node, simply place at the end (right) of all other Roots (i.e. max-right)
+	IF ((SELECT Parent FROM Inserted) IS NULL
+		OR (SELECT Parent FROM Inserted) = -1) -- root node
+	BEGIN
+		DECLARE @Left INT
+
+		SELECT @Left = COALESCE(MAX(Rgt), 0) + 1
+		FROM DataAccount
+
+		UPDATE DataAccount
+		SET Lft = @Left, Rgt = @Left + 1, Depth = 0
+		WHERE NoUrutId = (SELECT NoUrutId FROM Inserted)
+	END
+	--Else, shift ALL sub-trees over (right) by 2
+	--& place the newly Inserted at the tail-end (right) of its siblings
+	ELSE
+	BEGIN
+		DECLARE @ParentRight INT, @Depth INT
+
+		SELECT @ParentRight = Rgt, @Depth = Depth + 1
+		FROM DataAccount
+		WHERE NoUrutId = (SELECT Parent FROM Inserted)
+
+		--SHIFT EVERYTHING ELSE OVER (right) 2
+		UPDATE DataAccount
+		SET Lft = CASE WHEN Lft > @ParentRight THEN Lft + 2 ELSE Lft END
+		  , Rgt = CASE WHEN Rgt >= @ParentRight THEN Rgt + 2 ELSE Rgt END
+		WHERE Rgt >= @ParentRight
+
+		--new record goes "below" (to the right of) its right-most sibling
+		UPDATE DataAccount
+		SET Lft = @ParentRight, Rgt = @ParentRight + 1
+		  , Depth = @Depth
+		WHERE NoUrutId = (SELECT NoUrutId FROM Inserted)
+	END
+END
