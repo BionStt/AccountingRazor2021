@@ -22,23 +22,40 @@ namespace AccountingRazor2021.ServiceApplication.DataJournals.Queries.GetDataJou
 
         public async Task<IReadOnlyCollection<GetDataJournalAllResponse>> Handle(GetDataJournalAllQuery request, CancellationToken cancellationToken)
         {
-            var returnQuery = await (from a in _dbContext.DataJournalDetails
-                            join b in _dbContext.DataAccounts on a.DataAccountId equals b.DataAccountId into ps
-                            from b in ps.DefaultIfEmpty()
-                            join c in _dbContext.DataJournalHeaders on a.DataJournalHeaderId equals c.DataJournalHeaderId
+            //var returnQuery = await (from a in _dbContext.DataJournalDetails
+            //                join b in _dbContext.DataAccounts on a.DataAccountId equals b.DataAccountId into ps
+            //                from b in ps.DefaultIfEmpty()
+            //                join c in _dbContext.DataJournalHeaders on a.DataJournalHeaderId equals c.DataJournalHeaderId
 
-                            select new GetDataJournalAllResponse
-                            {
-                                AccountingDataAccountId = b.DataAccountId,
-                                AccountingDataJournalIdH = c.DataJournalHeaderId,
-                                DataAkun = b.KodeAccount + " - " + b.Account,
-                                Debit1 = a.Debit,
-                                Kredit1 = a.Kredit,
-                                Ket1 = a.Keterangan,
-                                TanggalInput = c.TanggalInput,
-                                NoBuktiJurnal = c.NoBuktiJournal
-                            }).AsNoTracking().ToListAsync(cancellationToken);
-                     
+            //                select new GetDataJournalAllResponse
+            //                {
+            //                    AccountingDataAccountId = b.DataAccountId,
+            //                    AccountingDataJournalIdH = c.DataJournalHeaderId,
+            //                    DataAkun = b.KodeAccount + " - " + b.Account,
+            //                    Debit1 = a.Debit,
+            //                    Kredit1 = a.Kredit,
+            //                    Ket1 = a.Keterangan,
+            //                    TanggalInput = c.TanggalInput,
+            //                    NoBuktiJurnal = c.NoBuktiJournal
+            //                }).AsNoTracking().ToListAsync(cancellationToken);
+
+            var returnQuery = await (from a in _dbContext.DataJournalDetails
+                join b in _dbContext.DataAccounts on a.DataAccountId equals b.DataAccountId into ps
+                from b in ps.DefaultIfEmpty()
+                join c in _dbContext.DataJournalHeaders on a.DataJournalHeaderId equals c.DataJournalHeaderId
+
+                select new GetDataJournalAllResponse
+                {
+                    AccountingDataAccountId = b != null ? b.DataAccountId : Guid.Empty,
+                    AccountingDataJournalIdH = c != null ? c.DataJournalHeaderId : Guid.Empty,
+                    DataAkun = b != null ? (b.KodeAccount + " - " + b.Account) : "N/A",
+                    Debit1 = a.Debit,
+                    Kredit1 = a.Kredit,
+                    Ket1 = a.Keterangan,
+                    TanggalInput = c != null ? c.TanggalInput : default(DateTime),
+                    NoBuktiJurnal = c != null ? c.NoBuktiJournal : "N/A"
+                }).AsNoTracking().ToListAsync(cancellationToken);
+
             return returnQuery;
         }
     }

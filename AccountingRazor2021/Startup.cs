@@ -23,6 +23,7 @@ using AccountingRazor2021.Models;
 using AccountingRazor2021.Services;
 using System.Globalization;
 using System.Reflection;
+using Microsoft.Extensions.Logging;
 
 namespace AccountingRazor2021
 {
@@ -41,13 +42,18 @@ namespace AccountingRazor2021
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-          
+
 
             string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
             services.AddLocalization(options => options.ResourcesPath = "Resources");
 
-            services.AddDbContext<AccountingDbContext>(options => options.UseSqlServer(connectionString));
-
+            //services.AddDbContext<AccountingDbContext>(options => options.UseSqlServer(connectionString));
+            
+            services.AddDbContext<AccountingDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+                    .EnableSensitiveDataLogging()
+                    .LogTo(Console.WriteLine, LogLevel.Information));
+            
             services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                  .AddEntityFrameworkStores<AccountingDbContext>()
                  .AddDefaultUI()

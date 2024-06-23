@@ -1,0 +1,413 @@
+﻿Anda benar, jurnal pemotongan kas perlu dicatat untuk menyelesaikan transaksi. Berikut adalah jurnal lengkapnya:
+
+Jurnal Pemotongan PPh 21 Bulanan dan Pembayaran Kas:
+1. Jurnal Pemotongan PPh 21 Bulanan:
+
+No	Tanggal	Keterangan	Debit	Kredit
+1	31 Jan 2023	Beban Pajak PPh 21	318.000	D
+2		Utang Pajak PPh 21		318.000 K
+2. Jurnal Pembayaran PPh 21 ke Kas Negara:
+
+No	Tanggal	Keterangan	Debit	Kredit
+1	10 Feb 2023	Utang Pajak PPh 21	318.000	
+2		Kas		318.000 K
+Penjelasan:
+Pemotongan PPh 21 Bulanan: Mencatat beban pajak PPh 21 dan utang pajak PPh 21.
+Pembayaran PPh 21: Mencatat pembayaran utang pajak PPh 21 dengan kas.
+Dengan jurnal ini, transaksi pemotongan dan pembayaran PPh 21 tercatat dengan lengkap dan sesuai prinsip akuntansi.
+
+
+Ikhtisar Laba Rugi adalah akun sementara yang digunakan untuk menutup akun pendapatan dan beban pada akhir periode akuntansi sebelum dipindahkan ke akun ekuitas seperti laba ditahan. Ketentuannya adalah sebagai berikut:
+
+Pendapatan ditutup ke Ikhtisar Laba Rugi dengan mengkreditkan akun pendapatan dan mendebitkan Ikhtisar Laba Rugi.
+Beban ditutup ke Ikhtisar Laba Rugi dengan mendebitkan akun beban dan mengkreditkan Ikhtisar Laba Rugi.
+Setelah semua pendapatan dan beban ditutup, saldo Ikhtisar Laba Rugi akan menunjukkan laba atau rugi bersih yang kemudian dipindahkan ke akun ekuitas.
+
+Contoh Jurnal Penutupan:
+1. Menutup Akun Pendapatan:
+
+No	Tanggal	Keterangan	Debit	Kredit
+1	31 Des 2023	Pendapatan Usaha	xxx.xxx.xxx	
+2		Ikhtisar Laba Rugi		xxx.xxx.xxx
+2. Menutup Akun Beban:
+
+No	Tanggal	Keterangan	Debit	Kredit
+1	31 Des 2023	Ikhtisar Laba Rugi	yyy.yyy.yyy	
+2		Biaya Penyusutan Gedung		zz.zzz.zzz
+3		Biaya Operasional Lainnya		ww.www.www
+3. Memindahkan Saldo Ikhtisar Laba Rugi ke Laba Ditahan:
+
+No	Tanggal	Keterangan	Debit	Kredit
+1	31 Des 2023	Ikhtisar Laba Rugi	saldo	
+2		Laba Ditahan		saldo
+Dengan cara ini, semua akun pendapatan dan beban ditutup, dan laba atau rugi bersih dipindahkan ke akun ekuitas.
+
+Berikan contoh dengan nilai nominal
+ChatGPT
+Berikut adalah contoh dengan nilai nominal untuk penutupan ikhtisar laba rugi.
+
+Data
+Pendapatan Usaha: Rp 900.000.000
+Biaya Penyusutan Gedung: Rp 45.000.000
+Biaya Operasional Lainnya: Rp 150.000.000
+Langkah-langkah dan Jurnal Penutupan
+1. Menutup Akun Pendapatan:
+
+No	Tanggal	Keterangan	Debit	Kredit
+1	31 Des 2023	Pendapatan Usaha	900.000.000	
+2		Ikhtisar Laba Rugi		900.000.000 K
+2. Menutup Akun Beban:
+
+No	Tanggal	Keterangan	Debit	Kredit
+1	31 Des 2023	Ikhtisar Laba Rugi	195.000.000	
+2		Biaya Penyusutan Gedung		45.000.000
+3		Biaya Operasional Lainnya		150.000.000
+3. Memindahkan Saldo Ikhtisar Laba Rugi ke Laba Ditahan:
+
+Laba Bersih (Pendapatan - Beban): Rp 900.000.000 - Rp 195.000.000 = Rp 705.000.000
+No	Tanggal	Keterangan	Debit	Kredit
+1	31 Des 2023	Ikhtisar Laba Rugi	705.000.000	
+2		Laba Ditahan		705.000.000
+Penjelasan:
+Menutup Pendapatan ke Ikhtisar Laba Rugi: Akun pendapatan dikreditkan dan akun ikhtisar laba rugi didebitkan.
+Menutup Beban ke Ikhtisar Laba Rugi: Akun ikhtisar laba rugi dikreditkan dan akun beban didebitkan.
+Memindahkan Saldo Ikhtisar Laba Rugi ke Laba Ditahan: Saldo bersih dari ikhtisar laba rugi dipindahkan ke akun laba ditahan, mencerminkan laba bersih tahun berjalan yang ditambahkan ke ekuitas pemilik.
+Dengan contoh ini, proses penutupan akun ikhtisar laba rugi dan pemindahan ke laba ditahan dapat dipahami dengan jelas.
+
+
+Akun penyusutan gedung tidak akan menjadi nol pada saat closing bulanan maupun tahunan. Akun penyusutan gedung terdiri dari dua jenis akun dalam chart of accounts:
+
+Akun Biaya Penyusutan Gedung (Beban) - Akun ini akan ditutup setiap bulan (atau tahun) ke akun laba rugi.
+Akun Akumulasi Penyusutan Gedung (Kontra Aktiva) - Akun ini mencatat jumlah total penyusutan yang telah diakumulasikan sejak gedung tersebut mulai digunakan dan tidak pernah ditutup menjadi nol kecuali gedung tersebut dihapus dari pembukuan (misalnya dijual atau dihentikan penggunaannya).
+Contoh Perhitungan dan Pencatatan
+Misalkan pada akhir Januari 2023, penyusutan gedung dihitung sebesar Rp 3.750.000.
+
+Jurnal Penyusutan Bulanan (Januari 2023):
+
+No	Tanggal	Keterangan	Debit	Kredit
+1	31 Jan 2023	Biaya Penyusutan Gedung	3.750.000	
+2		Akumulasi Penyusutan Gedung		3.750.000
+Pada akhir bulan, akun Biaya Penyusutan Gedung akan ditutup ke akun laba rugi bulanan, tetapi akun Akumulasi Penyusutan Gedung tetap ada dan bertambah setiap bulan.
+
+Penutupan Biaya Penyusutan Bulanan (Januari 2023):
+
+No	Tanggal	Keterangan	Debit	Kredit
+1	31 Jan 2023	Laba Rugi Bulanan	3.750.000	
+2		Biaya Penyusutan Gedung		3.750.000
+Akumulasi Penyusutan Gedung pada Akhir Tahun
+Misalkan penyusutan gedung setiap bulan adalah Rp 3.750.000. Maka, pada akhir tahun (Desember 2023), akumulasi penyusutan akan menjadi:
+
+Akumulasi Penyusutan Gedung
+=
+3.750.000
+×
+12
+=
+45.000.000
+Akumulasi Penyusutan Gedung=3.750.000×12=45.000.000
+Akun Akumulasi Penyusutan Gedung akan tetap menunjukkan jumlah ini dalam neraca.
+
+Neraca PT. ABC per 31 Desember 2023 Setelah Penutupan
+Aktiva	Rp	Kewajiban dan Ekuitas	Rp
+Aktiva Lancar		Kewajiban	
+Kas	500.000.000	Hutang Usaha	300.000.000
+Piutang Usaha	200.000.000	Total Kewajiban	300.000.000
+Persediaan	150.000.000		
+Total Aktiva Lancar	850.000.000	Ekuitas	
+Modal Pemilik	2.105.000.000
+Aktiva Tetap		Total Ekuitas	2.105.000.000
+Gedung	1.000.000.000		
+Akumulasi Penyusutan Gedung	(45.000.000)		
+Total Aktiva Tetap	955.000.000		
+Total Aktiva	1.805.000.000	Total Kewajiban dan Ekuitas	2.405.000.000
+Kesimpulan
+Biaya Penyusutan Gedung (akun beban) akan menjadi nol setelah ditutup setiap bulan/tahun.
+Akumulasi Penyusutan Gedung (akun kontra aktiva) tidak akan menjadi nol dan akan terus bertambah seiring berjalannya waktu, hingga aktiva tersebut dihentikan atau dijual.
+Apabila gedung dijual 1300000000. Baimana proses jurnalnya . Pendapatan kah ?
+ChatGPT
+Jika gedung dijual seharga Rp 1.300.000.000, proses pencatatan jurnal harus melibatkan beberapa langkah untuk mencatat pelepasan gedung dari buku besar, pengakuan laba atau rugi dari penjualan, dan penerimaan kas dari penjualan.
+
+Informasi yang Diperlukan:
+Nilai buku gedung saat ini (harga perolehan dikurangi akumulasi penyusutan).
+Harga jual gedung.
+Akumulasi penyusutan gedung.
+Langkah-langkah Pencatatan:
+Hapus Nilai Buku Gedung dari Buku Besar:
+
+Kurangi akun aktiva tetap gedung dengan nilai perolehannya.
+Kurangi akun akumulasi penyusutan gedung dengan total akumulasi penyusutan.
+Catat Penerimaan Kas dari Penjualan:
+
+Tambahkan ke akun kas.
+Catat Laba atau Rugi dari Penjualan:
+
+Jika harga jual lebih tinggi dari nilai buku, catat laba.
+Jika harga jual lebih rendah dari nilai buku, catat rugi.
+Contoh Perhitungan:
+Harga Perolehan Gedung: Rp 1.000.000.000
+Akumulasi Penyusutan: Rp 45.000.000
+Nilai Buku Gedung: Rp 1.000.000.000 - Rp 45.000.000 = Rp 955.000.000
+Harga Jual Gedung: Rp 1.300.000.000
+Laba dari Penjualan: Rp 1.300.000.000 - Rp 955.000.000 = Rp 345.000.000
+Jurnal Penjualan Gedung:
+1. Hapus Nilai Buku Gedung dan Akumulasi Penyusutan:
+
+No	Tanggal	Keterangan	Debit	Kredit
+1	31 Des 2023	Akumulasi Penyusutan Gedung	45.000.000	
+2		Gedung	955.000.000	
+3		Laba Penjualan Aktiva Tetap	345.000.000	
+4		Kas		1.300.000.000
+Penjelasan Jurnal:
+Debit Akumulasi Penyusutan Gedung sebesar Rp 45.000.000 untuk menghapus akumulasi penyusutan dari buku besar.
+Debit Gedung sebesar Rp 955.000.000 untuk menghapus nilai buku gedung dari buku besar.
+Kredit Kas sebesar Rp 1.300.000.000 untuk mencatat penerimaan kas dari penjualan gedung.
+Kredit Laba Penjualan Aktiva Tetap sebesar Rp 345.000.000 untuk mencatat laba dari penjualan gedung.
+Neraca dan Laporan Laba Rugi:
+Laba dari Penjualan Gedung akan dicatat dalam laporan laba rugi sebagai pendapatan non-operasional atau laba dari penjualan aktiva tetap.
+Kas dalam neraca akan bertambah sebesar Rp 1.300.000.000.
+Akun Gedung dan Akumulasi Penyusutan Gedung akan nol dalam neraca setelah penjualan.
+Dengan jurnal-jurnal ini, transaksi penjualan gedung akan tercatat dengan benar sesuai dengan prinsip akuntansi yang berlaku.
+
+Proses closing bulanan pada dasarnya mirip dengan closing tahunan, tetapi dilakukan setiap akhir bulan untuk memindahkan pendapatan dan beban bulan tersebut ke akun laba rugi. Namun, saldo laba rugi tidak dipindahkan ke laba ditahan hingga akhir tahun. Berikut adalah langkah-langkah dan jurnal yang diperlukan untuk proses closing bulanan:
+
+1. Menutup Akun Pendapatan dan Beban ke Akun Laba Rugi Bulanan
+Jurnal Penutupan Pendapatan Bulanan:
+
+No	Tanggal	Keterangan	Debit	Kredit
+1	31 Jan 2023	Pendapatan Usaha	xxx.xxx.xxx	
+2		Laba Rugi Bulanan		xxx.xxx.xxx
+Jurnal Penutupan Beban Bulanan:
+
+No	Tanggal	Keterangan	Debit	Kredit
+1	31 Jan 2023	Laba Rugi Bulanan	yyy.yyy.yyy	
+2		Biaya Penyusutan Gedung		zz.zzz.zzz
+3		Biaya Operasional Lainnya		ww.www.www
+Contoh Angka:
+Misalkan Pendapatan Usaha bulan Januari adalah Rp 75.000.000, Biaya Penyusutan Gedung adalah Rp 3.750.000, dan Biaya Operasional Lainnya adalah Rp 12.500.000.
+
+Jurnal Penutupan Bulan Januari:
+Penutupan Pendapatan Bulanan:
+
+No	Tanggal	Keterangan	Debit	Kredit
+1	31 Jan 2023	Pendapatan Usaha	75.000.000	
+2		Laba Rugi Bulanan		75.000.000
+Penutupan Beban Bulanan:
+
+No	Tanggal	Keterangan	Debit	Kredit
+1	31 Jan 2023	Laba Rugi Bulanan	16.250.000	
+2		Biaya Penyusutan Gedung		3.750.000
+3		Biaya Operasional Lainnya		12.500.000
+2. Menutup Akun Laba Rugi Bulanan ke Laba Rugi Akumulatif (untuk tujuan pelaporan interim)
+Pada akhir bulan, saldo dari akun "Laba Rugi Bulanan" bisa dipindahkan ke "Laba Rugi Akumulatif" yang akan dikumpulkan hingga akhir tahun.
+
+Jurnal Penutupan Laba Rugi Bulanan ke Laba Rugi Akumulatif:
+
+No	Tanggal	Keterangan	Debit	Kredit
+1	31 Jan 2023	Laba Rugi Bulanan	58.750.000	
+2		Laba Rugi Akumulatif		58.750.000
+Penjelasan
+Akun Laba Rugi Bulanan digunakan untuk menutup pendapatan dan beban setiap bulan.
+Akun Laba Rugi Akumulatif digunakan untuk mengumpulkan laba/rugi dari bulan ke bulan hingga akhir tahun.
+Proses Closing Tahunan
+Pada akhir tahun, saldo dari akun "Laba Rugi Akumulatif" akan ditutup ke akun "Laba Ditahan". Proses penutupan tahunan ini memastikan bahwa laba/rugi bersih tahunan dicatat dalam akun ekuitas.
+
+Jurnal Penutupan Laba Rugi Akumulatif ke Laba Ditahan:
+
+No	Tanggal	Keterangan	Debit	Kredit
+1	31 Des 2023	Laba Rugi Akumulatif	zzz.zzz.zzz	
+2		Laba Ditahan 2023		zzz.zzz.zzz
+Dalam hal ini, "zzz.zzz.zzz" adalah total laba/rugi akumulatif untuk seluruh tahun 2023.
+
+Kesimpulan
+Proses closing bulanan mirip dengan tahunan tetapi dilakukan setiap bulan. Pada akhir tahun, saldo laba rugi akumulatif ditutup ke akun laba ditahan. Ini memastikan pendapatan dan beban bulanan tercatat dan direkap secara tahunan dengan benar
+
+
+Berikut adalah langkah-langkah dan jurnal untuk mencatat laba tahun berjalan 2023 ke dalam akun modal dengan nama "Laba Ditahan 2023" pada saat closing tahunan:
+
+1. Menutup Akun Pendapatan dan Beban ke Akun Laba Rugi
+Jurnal Penutupan Pendapatan:
+
+No	Tanggal	Keterangan	Debit	Kredit
+1	31 Des 2023	Pendapatan Usaha	900.000.000	
+2		Laba Rugi		900.000.000
+Jurnal Penutupan Beban:
+
+No	Tanggal	Keterangan	Debit	Kredit
+1	31 Des 2023	Laba Rugi	195.000.000	
+2		Biaya Penyusutan Gedung		45.000.000
+3		Biaya Operasional Lainnya		150.000.000
+2. Menutup Akun Laba Rugi ke Akun Laba Ditahan
+Jurnal Penutupan Laba Rugi ke Laba Ditahan:
+
+No	Tanggal	Keterangan	Debit	Kredit
+1	31 Des 2023	Laba Rugi	705.000.000	
+2		Laba Ditahan 2023		705.000.000
+3. Menutup Akun Laba Ditahan ke Modal
+Jurnal Penutupan Laba Ditahan ke Modal:
+
+No	Tanggal	Keterangan	Debit	Kredit
+1	31 Des 2023	Laba Ditahan 2023	705.000.000	
+2		Modal Pemilik		705.000.000
+Penjelasan
+Jurnal Penutupan Pendapatan: Mengurangi akun pendapatan dan memindahkannya ke akun laba rugi.
+Jurnal Penutupan Beban: Mengurangi akun beban dan memindahkannya ke akun laba rugi.
+Jurnal Penutupan Laba Rugi ke Laba Ditahan: Memindahkan saldo akun laba rugi ke akun laba ditahan.
+Jurnal Penutupan Laba Ditahan ke Modal: Memindahkan saldo akun laba ditahan ke akun modal pemilik, mencerminkan bahwa laba bersih tahun 2023 telah ditambahkan ke ekuitas pemilik.
+Dengan jurnal-jurnal ini, kita menyelesaikan proses closing tahunan, dan laba bersih dari tahun 2023 secara resmi dicatat dalam akun modal sebagai laba ditahan..
+
+
+
+Berikut adalah contoh chart of account (daftar akun) dan cara menulis posisi akun neraca terkait gedung dan akumulasi penyusutan.
+
+Contoh Chart of Account
+Kode Akun	Nama Akun	Jenis Akun
+101	Kas	Aktiva Lancar
+102	Piutang Usaha	Aktiva Lancar
+103	Persediaan	Aktiva Lancar
+201	Gedung	Aktiva Tetap
+301	Akumulasi Penyusutan Gedung	Kontra Aktiva
+401	Hutang Usaha	Kewajiban
+501	Modal Pemilik	Ekuitas
+601	Pendapatan Usaha	Pendapatan
+701	Biaya Penyusutan Gedung	Beban
+702	Biaya Operasional Lainnya	Beban
+Contoh Penulisan Posisi Akun Neraca Terkait Gedung dan Akumulasi Penyusutan
+Neraca PT. ABC per 31 Desember 2023
+
+Aktiva	Rp	Kewajiban dan Ekuitas	Rp
+Aktiva Lancar		Kewajiban	
+Kas	500.000.000	Hutang Usaha	300.000.000
+Piutang Usaha	200.000.000	Total Kewajiban	300.000.000
+Persediaan	150.000.000		
+Total Aktiva Lancar	850.000.000	Ekuitas	
+Modal Pemilik	1.400.000.000
+Aktiva Tetap		Laba Ditahan	493.500.000
+Gedung	1.000.000.000	Total Ekuitas	1.893.500.000
+Akumulasi Penyusutan Gedung	(45.000.000)		
+Total Aktiva Tetap	955.000.000		
+Total Aktiva	1.805.000.000	Total Kewajiban dan Ekuitas	2.193.500.000
+Penjelasan
+Aktiva Lancar mencakup aset yang mudah dicairkan menjadi kas dalam waktu satu tahun seperti kas, piutang usaha, dan persediaan.
+Aktiva Tetap mencakup aset yang digunakan dalam operasi perusahaan dan memiliki umur ekonomis lebih dari satu tahun, seperti gedung.
+Akumulasi Penyusutan Gedung adalah akun kontra aktiva yang digunakan untuk mengurangi nilai buku gedung.
+Kewajiban mencakup hutang usaha yang merupakan kewajiban perusahaan kepada pihak lain.
+Ekuitas mencakup modal pemilik dan laba ditahan.
+Dengan format ini, kita dapat melihat posisi keuangan perusahaan, termasuk nilai gedung setelah dikurangi akumulasi penyusutan dalam neraca.
+
+Berikut adalah contoh laporan laba rugi PT. ABC untuk tahun yang berakhir pada 31 Desember 2023, berdasarkan informasi yang diberikan sebelumnya:
+
+Laporan Laba Rugi PT. ABC
+Untuk Tahun yang Berakhir pada 31 Desember 2023
+
+Keterangan	Jumlah (Rp)
+Pendapatan	
+Pendapatan Usaha	900.000.000
+Total Pendapatan	900.000.000
+Beban	
+Biaya Penyusutan Gedung	45.000.000
+Biaya Operasional Lainnya	150.000.000
+Total Beban	195.000.000
+Laba (Rugi) Bersih	
+Laba Bersih Sebelum Pajak	705.000.000
+Pajak Penghasilan (30%)	211.500.000
+Laba Bersih Setelah Pajak	493.500.000
+Penjelasan
+Pendapatan Usaha mencatat seluruh pendapatan yang diperoleh dari aktivitas usaha selama tahun 2023.
+Total Pendapatan merupakan jumlah keseluruhan pendapatan yang diperoleh.
+Biaya Penyusutan Gedung mencatat beban penyusutan gedung sebesar Rp 45.000.000.
+Biaya Operasional Lainnya mencatat semua biaya operasional selain biaya penyusutan yang sebesar Rp 150.000.000.
+Total Beban merupakan jumlah keseluruhan beban yang dikeluarkan.
+Laba Bersih Sebelum Pajak dihitung dengan mengurangi total beban dari total pendapatan.
+Pajak Penghasilan dihitung sebesar 30% dari laba bersih sebelum pajak.
+Laba Bersih Setelah Pajak merupakan laba bersih setelah dikurangi pajak penghasilan.
+Laporan laba rugi ini menunjukkan bahwa PT. ABC menghasilkan laba bersih sebesar Rp 493.500.000 setelah dikurangi semua beban dan pajak penghasilan untuk tahun yang berakhir pada 31 Desember 2023.
+
+Berikut adalah contoh neraca saldo yang mencakup pencatatan aktiva gedung, akumulasi penyusutan gedung, dan biaya penyusutan gedung dari contoh sebelumnya.
+
+Neraca Saldo PT. ABC per 31 Desember 2023
+No. Akun	Nama Akun	Debit (Rp)	Kredit (Rp)
+101	Kas	500.000.000	
+102	Piutang Usaha	200.000.000	
+103	Persediaan	150.000.000	
+201	Gedung	1.000.000.000	
+301	Akumulasi Penyusutan Gedung		45.000.000
+401	Hutang Usaha		300.000.000
+501	Modal Pemilik		1.400.000.000
+601	Pendapatan		900.000.000
+701	Biaya Penyusutan Gedung	45.000.000	
+702	Biaya Operasional Lainnya	150.000.000	
+Total	2.045.000.000	2.045.000.000
+Penjelasan
+Kas mencatat saldo kas perusahaan.
+Piutang Usaha mencatat jumlah piutang dari pelanggan.
+Persediaan mencatat nilai persediaan barang dagangan.
+Gedung mencatat nilai perolehan gedung sebesar Rp 1.000.000.000.
+Akumulasi Penyusutan Gedung mencatat akumulasi penyusutan gedung sebesar Rp 45.000.000.
+Hutang Usaha mencatat kewajiban perusahaan kepada kreditur.
+Modal Pemilik mencatat modal yang disetor oleh pemilik.
+Pendapatan mencatat total pendapatan yang diperoleh selama periode.
+Biaya Penyusutan Gedung mencatat biaya penyusutan gedung untuk periode tersebut.
+Biaya Operasional Lainnya mencatat biaya-biaya operasional lainnya.
+Dengan neraca saldo ini, kita dapat melihat posisi keuangan PT. ABC per 31 Desember 2023 dengan total saldo debit dan kredit yang seimbang.
+
+
+Berikut adalah penjelasan mengenai chart of account untuk aktiva nama gedung, akun penyusutan aktiva gedung, dan akun biaya penyusutan gedung, beserta contoh soal dan jawabannya.
+
+Tabel Penjelasan
+Nama Akun	Jenis Akun	Penjelasan
+Aktiva Nama Gedung	Aktiva Tetap	Akun yang mencatat nilai gedung yang dimiliki perusahaan sebagai aset tetap.
+Akun Penyusutan Aktiva Gedung	Kontra Aktiva	Akun yang mencatat akumulasi penyusutan gedung dari periode ke periode.
+Biaya Penyusutan Gedung	Biaya	Akun yang mencatat biaya penyusutan gedung untuk periode tertentu yang dilaporkan dalam laporan laba rugi.
+Contoh Soal
+Soal:
+PT. ABC membeli sebuah gedung seharga Rp 1.000.000.000 pada tanggal 1 Januari 2023. Gedung tersebut memiliki umur ekonomis selama 20 tahun dengan nilai residu sebesar Rp 100.000.000. Pada akhir tahun 2023, berapa penyusutan yang harus dicatat oleh PT. ABC, dan bagaimana pencatatannya dalam jurnal?
+
+Jawaban:
+
+Menghitung Penyusutan Tahunan:
+
+Formula penyusutan garis lurus:
+
+Penyusutan Tahunan
+=
+Harga Perolehan - Nilai Residu
+Umur Ekonomis
+Penyusutan Tahunan= 
+Umur Ekonomis
+Harga Perolehan - Nilai Residu
+​
+ 
+
+Penyusutan Tahunan
+=
+𝑅
+𝑝
+1.000.000.000
+−
+𝑅
+𝑝
+100.000.000
+20
+=
+𝑅
+𝑝
+45.000.000
+Penyusutan Tahunan= 
+20
+Rp1.000.000.000−Rp100.000.000
+​
+ =Rp45.000.000
+Pencatatan Jurnal:
+
+Pada akhir tahun 2023, PT. ABC akan mencatat penyusutan gedung dengan jurnal sebagai berikut:
+
+No	Tanggal	Keterangan	Debit	Kredit
+1	31 Des 2023	Biaya Penyusutan Gedung	Rp 45.000.000	
+2		Akumulasi Penyusutan Gedung		Rp 45.000.000
+Jurnal ini menunjukkan bahwa biaya penyusutan sebesar Rp 45.000.000 diakui sebagai beban dalam laporan laba rugi, dan akumulasi penyusutan dicatat dalam kontra aktiva sebagai pengurang dari nilai buku gedung.
+
+Kesimpulan
+Aktiva Nama Gedung mencatat nilai perolehan gedung.
+Akun Penyusutan Aktiva Gedung mencatat akumulasi penyusutan gedung.
+Biaya Penyusutan Gedung mencatat beban penyusutan yang dilaporkan dalam laporan laba rugi setiap periode.
+Dengan cara ini, pencatatan penyusutan dilakukan dengan benar sesuai dengan prinsip akuntansi yang berlaku.

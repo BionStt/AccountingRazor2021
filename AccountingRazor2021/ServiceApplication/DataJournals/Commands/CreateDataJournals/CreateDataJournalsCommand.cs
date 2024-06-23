@@ -11,7 +11,7 @@ namespace AccountingRazor2021.ServiceApplication.DataJournals.Commands.CreateDat
     {
        // public string NoBuktiJournal { get; set; }
         public string Keterangan { get; set; }
-        public DateTime TanggalInput{ get; set; }
+        public DateTime TanggalInput{ get; set; } = DateTime.Now.Date;
         public int TipeJournalId { get; set; }
         public decimal TotalRupiah { get; set; }
         public string UserInput { get; set; }

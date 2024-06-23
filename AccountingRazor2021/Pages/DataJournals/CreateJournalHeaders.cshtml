@@ -32,10 +32,11 @@
                 <input asp-for="DataJournalHeaders.Keterangan" placeholder="Masukan inputan keterangan" class="form-control" />
                 <span asp-validation-for="DataJournalHeaders.Keterangan" class="text-danger"></span>
             </div>
+           
             <div class="form-group">
                 <label class="control-label" asp-for="DataJournalHeaders.TotalRupiah">Nilai Rupiah</label>
                 <input asp-for="DataJournalHeaders.TotalRupiah" class="form-control" type="number" />
-            
+                <span asp-validation-for="DataJournalHeaders.TotalRupiah" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DataJournalHeaders.TipeJournalId" class="control-label">Tipe Jurnal</label>
